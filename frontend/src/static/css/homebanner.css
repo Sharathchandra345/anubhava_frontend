@@ -1,0 +1,23 @@
+
+  
+  .swiper-button-next {
+    color: #ffffff; /* change to your desired next button color */
+  }
+  .swiper-button-prev {
+    color: #ffffff; /* change to your desired previous button color */
+  }
+
+
+
+
+
+    .swiper-pagination-bullet {
+      @apply bg-gray-400;
+      height: 16px;
+      width: 16px;
+      
+    }
+    
+    .swiper-pagination-bullet-active {
+      @apply bg-primary-color;
+    }
