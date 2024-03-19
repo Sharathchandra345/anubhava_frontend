@@ -29,12 +29,16 @@ export const AuthContextProvider = ({ children }) => {
   // Handle Log Out
   const logOut = () => {
     signOut(auth);
-  }
+  };
 
   // Handle Sign Up
   const signUp = async (email, password, name) => {
     try {
-      const { user } = await createUserWithEmailAndPassword(auth, email, password);
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       if (user) {
         await updateProfile(user, {
           displayName: name,
@@ -59,7 +63,7 @@ export const AuthContextProvider = ({ children }) => {
         logOut();
         return "verify_email";
       }
-      return "signed_in"
+      return "signed_in";
     } catch (error) {
       return error;
     }
@@ -75,16 +79,20 @@ export const AuthContextProvider = ({ children }) => {
       console.log(error);
       return error;
     }
-  }
+  };
 
   useEffect(() => {
     const unscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
-    return () => { unscribe() };
+    return () => {
+      unscribe();
+    };
   }, []);
   return (
-    <AuthContext.Provider value={{ googleSignIn, logOut, user, signUp, signIn, forgotPassword }}>
+    <AuthContext.Provider
+      value={{ googleSignIn, logOut, user, signUp, signIn, forgotPassword }}
+    >
       {children}
     </AuthContext.Provider>
   );

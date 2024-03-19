@@ -33,7 +33,6 @@ function SignupPage() {
                 text: 'Please check your email for the confirmation link',
                 icon: 'success',
                 confirmButtonColor: '#36528b', // primary-color
-
                 confirmButtonText: 'Ok'
             })
         }
@@ -165,8 +164,9 @@ function SignupPage() {
                     <li></li>
                 </ul>
             </div >
-        </div>
+                 </div>
     )
 }
 
 export default SignupPage;
+
