@@ -64,7 +64,7 @@ function Company() {
 
   async function fetchData() {
     const response = await fetch(
-      "https://ignite-backend.onrender.com/companies/" + id
+      "https://anubhava-backend.vercel.app/companies/" + id
     );
     const data = await response.json();
     if (data != null) {
