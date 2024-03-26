@@ -1,17 +1,43 @@
 import React from "react";
-export default function YouTubeBanner({ image, link }) {
+
+export default function YouTubeBanner() {
   return (
-    <div className="flex flex-row md:gap-10 gap-2 px-3 md:px-10 justify-center items-center md:h-[521.88px] h-[350px] bg-new">
-      <div className="md:w-[310px] md:h-[153px] font-semibold md:text-4xl text-2xl md:leading-[51px] leading-2 text-white ">
-        <span className="text-white">Check out this </span>video for a better
-        understanding
+    <div className="flex flex-col items-center justify-center px-3 md:p-20 bg-new">
+      <div className="text-center text-white py-8">
+        <h2 className="font-semibold text-2xl md:text-3xl">
+          Check out these videos for a better understanding:
+        </h2>
       </div>
-      <div
-        className=" md:w-[750px] cursor-pointer"
-        onClick={() => window.open(link, "_blank")}
-      >
-        <img className=" rounded-xl" src={image} alt="youtube" />
+      <div className="flex flex-col md:flex-row w-full justify-center space-y-4 md:space-y-0 md:space-x-4">
+        <iframe
+          width="100%"
+          height="280px"
+          src="https://www.youtube.com/embed/t-zkR6x3axo?si=g3YiQErAW0OXNxuZ"
+          title="YouTube video 1"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+        <iframe
+          width="100%"
+          height="280px"
+          src="https://www.youtube.com/embed/toCq3rvec6E?si=d-3PvT8S9OuFiUSS"
+          title="YouTube video 2"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          iframe {
+            height: 200px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

@@ -1,25 +1,26 @@
 .rec.rec-arrow {
-  @apply bg-primary-color;
+  /* @apply bg-primary-color; */
   @apply text-light-color;
 }
 /* round buttons on hover */
 
 .rec.rec-arrow:hover {
-  @apply bg-primary-light !important;
+  /* @apply bg-primary-light !important; */
   @apply text-light-color !important;
 }
 
 .rec-dot {
-    @apply bg-dark-color;
-  }
-  
-  .rec .rec-dot_active {
-    @apply bg-primary-color;
-    @apply border-primary-color;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 1px 2px;
-  }
+  @apply bg-primary-new;
+}
 
-  .dkEaAU:hover:enabled, .dkEaAU:focus:enabled {
-    @apply bg-primary-light !important;
-    @apply text-light-color !important;
-  }
+.rec .rec-dot_active {
+  @apply bg-primary-color;
+  @apply border-primary-new;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 1px 2px;
+}
+
+.dkEaAU:hover:enabled,
+.dkEaAU:focus:enabled {
+  /* @apply bg-primary-light !important; */
+  @apply text-light-color !important;
+}

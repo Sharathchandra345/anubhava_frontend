@@ -11,12 +11,7 @@ function HowToApply() {
   return (
     <div className="md:mt-20 mt-[65px] flex flex-col">
       <PageBanner image={banner} bannerText={"How to apply"} />
-      <YouTubeBanner
-        image={youtube}
-        link={
-          "https://www.youtube.com/playlist?list=PLySNCsn_f6eIao6J3zslEOZcckFN2RwLn"
-        }
-      />
+      <YouTubeBanner />
       <div className="flex flex-col gap-5 md:px-10 px-5 my-5 md:my-10">
         <div className="flex flex-row items-center gap-2 mb-3">
           <svg

@@ -27,6 +27,7 @@ module.exports = {
         "primary-new": "#071831", // Can be changed 1
         "primary-gray": "#737373", // Can be changed 1
         "primary-gray2": "#475363", // Can be changed 1
+        "primary-third": "#212234", // Can be changed 1
       },
     },
   },

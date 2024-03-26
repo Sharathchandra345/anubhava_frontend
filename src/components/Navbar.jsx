@@ -54,11 +54,17 @@ function Navbar() {
   }, [width]);
   return (
     <div className="z-50 fixed px-4 left-0 right-0 top-0 h-auto shadow-md  bg-black">
-      <nav className="md:flex md:items-center mx-auto h-full md:justify-between">
-        <div className="flex justify-between items-center">
+      <nav className="md:flex md:items-center mx-auto h-full md:justify-around">
+        <div className="flex justify-around items-center">
           <span onClick={handleClick} className="cursor-pointer">
             {/* <img src={college} alt="logo" className="h-16 inline pr-5" /> */}
-            <img src={anubhava} alt="logo" className="h-16 pb-3 inline mt-3" />
+            <div className="flex justify-start">
+              <img
+                src={anubhava}
+                alt="logo"
+                className="h-16 pb-3 inline mt-3"
+              />
+            </div>
           </span>
 
           <span className="text-3xl md:hidden block cursor-pointer mx-2">
@@ -89,7 +95,7 @@ function Navbar() {
           >
             <NavBarTabs
               disable={menu}
-              text="Home"
+              text="HOME"
               link="/"
               bg={
                 location.pathname === "/"
@@ -99,7 +105,7 @@ function Navbar() {
             />
             <NavBarTabs
               disable={menu}
-              text="About"
+              text="ABOUT"
               link="/about"
               bg={
                 location.pathname == "/about"
@@ -109,7 +115,7 @@ function Navbar() {
             />
             <NavBarTabs
               disable={menu}
-              text="Companies"
+              text="COMPANIES"
               link="/companies"
               bg={
                 location.pathname.includes("compan")
@@ -119,7 +125,7 @@ function Navbar() {
             />
             <NavBarTabs
               disable={menu}
-              text="How to Apply"
+              text="HOW TO APPLY"
               link="/how-to-apply"
               bg={
                 location.pathname == "/how-to-apply"
@@ -129,7 +135,7 @@ function Navbar() {
             />
             <NavBarTabs
               disable={menu}
-              text="Resources"
+              text="RESOURCES"
               link="/resources"
               bg={
                 location.pathname == "/resources"
@@ -139,7 +145,7 @@ function Navbar() {
             />
             <NavBarTabs
               disable={menu}
-              text="Contact Us"
+              text="CONTACT US"
               link="/contact-us"
               bg={
                 location.pathname == "/contact-us"

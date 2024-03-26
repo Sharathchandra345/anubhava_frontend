@@ -1,0 +1,35 @@
+.timeline-connector {
+  background-color: white;
+  height: 2px;
+  width: 67.5%;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+}
+
+.right-connector {
+  right: 100%;
+}
+
+.left-connector {
+  left: 100%;
+}
+
+@media (max-width: 650px) {
+  .timeline-line {
+    display: none;
+  }
+  .timeline-connector {
+    display: none;
+  }
+
+  .right-connector,
+  .left-connector {
+    display: none;
+  }
+  .timeline-item {
+    width: auto;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}

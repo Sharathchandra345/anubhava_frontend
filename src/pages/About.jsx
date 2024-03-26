@@ -195,7 +195,7 @@ function About() {
 
           <div className="about_parallax">
             <div className="about_parallax_overlay"></div>
-            <div className="h-full w-full my-10 ">
+            <div className="h-full w-full my-10 text-white sansfont ">
               <AboutBoardOfAdvisors
                 text="The Board of Directors"
                 images={images}

@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "./customCss/company.css";
+
 function Companies() {
-  // scroll to top
   window.scrollTo(0, 0);
   document.title = "Companies";
 
@@ -55,7 +55,6 @@ function Companies() {
   const renderItems = () => {
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    // Check if on last page
     if (currentPage === pagesCount) {
       return companies.slice(start);
     } else {
@@ -70,20 +69,14 @@ function Companies() {
       "https://anubhava-backend.vercel.app/companies"
     );
     const data = await response.json();
-    // shuffle the array
-    // for (let i = data.length - 1; i > 0; i--) {
-    //     const j = Math.floor(Math.random() * (i + 1));
-    //     [data[i], data[j]] = [data[j], data[i]];
-    // }
     setCompanies(data);
     setLoading(false);
   }
+
   const handleFilter = (e) => {
     e.preventDefault();
-    // clear the pagination index
     localStorage.setItem("companiesPaginationIndex", 1);
     setCurrentPage(1);
-    // reset the pagination number
     pagination = [];
     MySwal.fire({
       icon: "info",
@@ -121,13 +114,12 @@ function Companies() {
       },
       allowOutsideClick: false,
       allowEscapeKey: false,
-      confirmButtonColor: "#36528b", // primary-color
+      confirmButtonColor: "#36528b",
       allowEnterKey: false,
     });
   };
 
   const handleSearch = (val) => {
-    // set the pagination index to 1
     localStorage.setItem("companiesPaginationIndex", 1);
     setCurrentPage(1);
     setCompanies([]);
@@ -139,7 +131,7 @@ function Companies() {
           icon: "error",
           title: "Oops...",
           text: "Please enter a search term!",
-          confirmButtonColor: "#36528b", // primary-color
+          confirmButtonColor: "#36528b",
         });
         return;
       }
@@ -164,7 +156,7 @@ function Companies() {
             icon: "error",
             title: "Oops...",
             text: "No results found!",
-            confirmButtonColor: "#36528b", // primary-color
+            confirmButtonColor: "#36528b",
           });
           setCompanies([]);
         } else {
@@ -175,6 +167,7 @@ function Companies() {
       .catch((error) => console.log("error", error));
     search = "";
   };
+
   const clearSearch = () => {
     setSearchString("");
     document.getElementById("searchbox").value = "";
@@ -187,26 +180,20 @@ function Companies() {
     margin: "0 auto",
     padding: "0",
     opacity: 1,
-
-    // borderColor: "teal",
   };
 
   useEffect(() => {
     fetchData();
-    // check local storage for pagination index if it exists then do not do anything if it does not exist then set it to 0
     if (localStorage.getItem("companiesPaginationIndex") === null) {
       localStorage.setItem("companiesPaginationIndex", 0);
     }
   }, []);
+
   return (
     <div className="md:mt-20 mt-[65px] flex flex-col relative h-full w-full">
-      {/*TEAL COLOR*/}
       <div
         style={{
-          // backgroundImage: `linear-gradient(0deg, rgba(15, 111, 123, 0.7), rgba(15, 111, 123, 0.7)) , url(${desk})`, // default
-          // backgroundImage: `linear-gradient(0deg, rgba(48, 153, 117, 0.7), rgba(48, 153, 117, 0.7)) , url(${desk})`, // 1
-          // backgroundImage: `linear-gradient(0deg, rgba(13, 27, 42, 0.7), rgba(13, 27, 42, 0.7)), url(${desk})`, // 2 // Black
-          backgroundImage: `linear-gradient(0deg, rgba(15, 37, 80, 0.7), rgba(15, 37, 80, 0.7)), url(${desk})`, // 3
+          backgroundImage: `linear-gradient(0deg, rgba(15, 37, 80, 0.7), rgba(15, 37, 80, 0.7)), url(${desk})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -217,17 +204,14 @@ function Companies() {
         <div className="h-80 z-1">
           <div className="flex items-center justify-center w-full h-full">
             <h1 className="md:text-5xl font-bold text-4xl text-light-color md:font-medium text-center">
-              {" "}
               Find your favourite company!
             </h1>
           </div>
         </div>
-        {/* search BAR*/}
         <div className="w-full justify-center items-center flex ">
           <div className="shadow-md absolute top-64 bottom-0 flex m-10 items-center bg-light-color h-20 w-11/12 rounded-lg mx-8 my-6 px-10">
             <div className="flex flex-col w-full md:pr-10 pr-5">
               <div className="flex justify-between items-center w-12/12">
-                {/* // search icon */}
                 <input
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
@@ -264,7 +248,7 @@ function Companies() {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" />
+                  <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L14 1.41Z" />
                 </svg>
               </div>
               <div className="h-px w-12/12 bg-primary-color my-0 mx-2"></div>
@@ -310,11 +294,7 @@ function Companies() {
             } grid grid-cols-2 md:grid-cols-4 md:gap-4 gap-2 md:px-16 px-4 mb-10`}
           >
             {renderItems().map((company) => (
-              <motion.button
-                key={company._id}
-                // whileHover={{ scale: 1.1 }}
-                // whileTap={{ scale: 0.9 }}
-              >
+              <motion.button key={company._id}>
                 <div
                   onClick={() =>
                     window.open(`/companies/${company._id}`, "_blank")
@@ -352,131 +332,67 @@ function Companies() {
           </div>
         </div>
       ) : (
-        <div className={`${!usersearched ? `hidden` : `visible`}`}>
-          <h1
-            className={`${
-              !loading ? `opacity-100` : `opacity-0`
-            } flex flex-row text-2xl md:text-4xl text-yellow-400 font-medium content-center md:mt-16 md:mb-8 md:mx-16 mt-16 mb-6 mx-4 `}
-          >
-            <svg
-              onClick={clearSearch}
-              className="cursor-pointer md:mr-5 mr-2 fill-primary-color"
-              width="32"
-              height="33"
-              viewBox="0 0 32 33"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M32 14.5H7.66L18.84 3.32L16 0.5L0 16.5L16 32.5L18.82 29.68L7.66 18.5H32V14.5Z" />
-            </svg>
-            Search results for "
-            <span className="text-dark-color">{searchString}</span>"
-          </h1>
-          <div className="items-start justify-start w-12/12 grid grid-row md:gap-4 gap-2 md:px-14 px-4 mb-10">
-            {renderItems().length > 0 ? (
-              renderItems().map((company) => (
-                <motion.button
-                  key={company._id}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.9 }}
+        <div
+          className={`${
+            !usersearched ? `visible` : `hidden`
+          } grid grid-cols-2 md:grid-cols-4 md:gap-4 gap-2 md:px-16 px-4 mb-10`}
+        >
+          {renderItems().map((company) => (
+            <motion.button key={company._id}>
+              <div className="max-h-50 w-full flex flex-col overflow-hidden companycard">
+                <div
+                  onClick={() =>
+                    window.open(`/companies/${company._id}`, "_blank")
+                  }
+                  className="w-full h-40 bg-light-color overflow-hidden flex items-center justify-center company-image-container"
                 >
-                  <div
-                    onClick={() =>
-                      window.open(`/companies/${company._id}`, "_blank")
-                    }
-                    className={`bg-primary-color h-44 w-full rounded-xl flex flex-row gap-4 items-center justify-start`}
-                  >
-                    <div className="bg-light-color h-[90px] w-2/12 md:h-[120px]  flex items-center justify-center">
-                      <img
-                        className="h-full w-full object-contain"
-                        src={company.image}
-                      ></img>
-                    </div>
-                    <div className="flex flex-col gap-5 justify-between w-10/12 mx-4">
-                      <h1 className="md:block text-xl text-light-color font-medium text-start">
-                        {company.name}
-                      </h1>
-                      <h1
-                        style={{
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          display: "-webkit-box",
-                          WebkitLineClamp: 3,
-                          WebkitBoxOrient: "vertical",
-                        }}
-                        className=" text-start text-lg font-normal text-light-color md:block"
-                      >
-                        {company.about_comp}
-                      </h1>
-                    </div>
+                  <img
+                    className="object-cover h-full w-auto"
+                    src={company.image}
+                    alt={company.name}
+                  />
+                  {/* Show paragraph on hover */}
+                  <div className="company-description">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                      sint occaecat cupidatat non proident, sunt in culpa qui
+                      officia deserunt mollit anim id est laborum.
+                    </p>
                   </div>
-                </motion.button>
-              ))
-            ) : (
-              <div className="h-[500px] w-full flex flex-col justify-center items-center"></div>
-            )}
-          </div>
+                </div>
+                <div className="w-full h-1/5 flex items-center justify-center companyName">
+                  <h1 className="text-xl text-light-color font-medium text-center cnamediv">
+                    {screenSize < 768
+                      ? company.name.length > 10
+                        ? company.name.substring(0, 10) + "..."
+                        : company.name
+                      : company.name}
+                  </h1>
+                </div>
+              </div>
+            </motion.button>
+          ))}
         </div>
       )}
-
-      <div className="flex flex-row justify-center items-center mb-5">
-        <ul className="flex flex-row gap-2 ">
-          <svg
-            className="w-6 h-6 cursor-pointer m-auto text-yellow-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            onClick={(e) => handleClick(e, currentPage - 1)}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          {pagination.map((number) => (
-            <li
-              onClick={(e) => handleClick(e, number)}
-              key={number}
-              className={` h-[50px] w-[50px] border-solid border-2  cursor-pointer flex flex-row items-center justify-center  rounded-lg 
-                        ${
-                          currentPage === number
-                            ? "border-primary-light  font-bold text-yellow-400"
-                            : "bg-primary-light text-light-color font-semibold"
-                        }`}
+      <div className="w-full justify-center items-center flex my-10">
+        <div className="flex flex-row items-center justify-center">
+          {pagination.map((page, index) => (
+            <button
+              key={index}
+              onClick={(e) => handleClick(e, page)}
+              className={`${
+                page === currentPage ? "bg-primary-color text-light-color" : ""
+              } hover:bg-primary-color hover:text-light-color text-primary-color font-bold py-1 px-4 mx-1 border border-primary-color rounded`}
             >
-              <a className="my-auto" href="/">
-                {number}
-              </a>
-            </li>
+              {page}
+            </button>
           ))}
-          <svg
-            className="w-6 h-6 cursor-pointer m-auto text-yellow-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            onClick={(e) => handleClick(e, currentPage + 1)}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-          <div className="h-[50px] w-[70px] flex flex-row items-center justify-center  rounded-lg">
-            <h1
-              className="
-                        text-yellow-400 text-lg font-semibold
-                        "
-            >
-              {currentPage} of {pagesCount}
-            </h1>
-          </div>
-        </ul>
+        </div>
       </div>
     </div>
   );
