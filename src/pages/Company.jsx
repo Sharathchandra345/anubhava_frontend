@@ -337,7 +337,7 @@ function Company() {
               opacity: 1,
             }}
             size={150}
-            className="text-primary-color"
+            className="text-white"
             color="#36528b"
             loading={loading}
           />
@@ -349,10 +349,7 @@ function Company() {
             <div className="basis-6/12 w-30">
               <h1 className="text-dark-color md:text-4xl text-start md:mb-0 mb-3 text-3xl font-bold">
                 {" "}
-                About the<span className="text-primary-color">
-                  {" "}
-                  Company
-                </span>{" "}
+                About the<span className="text-white"> Company</span>{" "}
               </h1>
             </div>
             <div className="flex flex-row w-full md:basis-6/12 auto md:w-64 justify-between">
@@ -377,9 +374,9 @@ function Company() {
               <div className="flex flex-col w-full gap-4">
                 <button
                   onClick={handleDownload}
-                  className="flex flex-col h-12 w-full items-center px-4 py-2 shadow-lg  bg-light-color text-primary-color font-semibold hover:bg-gray-300 rounded-lg text-sm"
+                  className="flex flex-col h-12 w-full items-center px-4 py-2 shadow-lg  bg-light-color text-white font-semibold hover:bg-gray-300 rounded-lg text-sm"
                 >
-                  <i className="fa fa-download text-primary-color mx-2"></i>{" "}
+                  <i className="fa fa-download text-white mx-2"></i>{" "}
                   <span className="hidden md:block">
                     {" "}
                     Download Job Description{" "}
@@ -394,8 +391,8 @@ function Company() {
                   }}
                   onClick={() => console.log(window.location.href)}
                 >
-                  <button className="flex flex-col h-12 w-full items-center px-4 py-2 shadow-lg  bg-light-color text-primary-color font-semibold hover:bg-gray-300 rounded-lg text-sm">
-                    <i className="fa fa-share text-primary-color mx-2"></i>{" "}
+                  <button className="flex flex-col h-12 w-full items-center px-4 py-2 shadow-lg  bg-light-color text-white font-semibold hover:bg-gray-300 rounded-lg text-sm">
+                    <i className="fa fa-share text-white mx-2"></i>{" "}
                     <span className="hidden md:block"> Share </span>
                     <span className="block md:hidden">Share </span>
                   </button>
@@ -449,9 +446,8 @@ function Company() {
           !loading ? "opacity-100" : "opacity-50"
         } flex flex-col md:mx-16 md:my-16 mx-3 my-8 md:gap-10 gap-0 text-center`}
       >
-        <h1 className="font-bold md:text-4xl text-3xl text-primary-color">
-          Job Profiles{" "}
-          <span className="text-dark-color">and their description</span>
+        <h1 className="font-bold md:text-4xl text-3xl text-white">
+          Job Profiles <span className="text-white">and their description</span>
         </h1>
         <ReactElasticCarousel
           easing="cubic-bezier(1,.15,.55,1.54)"

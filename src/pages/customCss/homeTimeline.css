@@ -1,0 +1,19 @@
+.timeline-item {
+  width: 30%;
+}
+
+.left-item {
+  align-self: flex-start;
+}
+
+.right-item {
+  align-self: flex-end;
+}
+
+.box-shape {
+  width: 30%;
+}
+
+.timeline-bg {
+  background: #131424;
+}

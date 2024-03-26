@@ -363,7 +363,7 @@ export default function AccountPage() {
             onClick={handleUploadClick}
             className={`${
               loading ? "" : "hover:bg-primary-light"
-            } cursor-pointer md:w-[860px] md:h-[72px] bg-primary-color text-light-color font-bold py-2 px-4 rounded-lg mt-10 flex items-center justify-center flex-row gap-2`}
+            } cursor-pointer md:w-[860px] md:h-[72px] bg-white text-primary-new font-bold py-2 px-4 rounded-lg mt-10 flex items-center justify-center flex-row gap-2 `}
           >
             <svg
               width="17"
@@ -384,7 +384,7 @@ export default function AccountPage() {
           </div>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col text-white">
           <h1 className="text-red-500 text-base font-semibold mb-5">
             *Profile can be updated every 10 mins
           </h1>
@@ -397,7 +397,7 @@ export default function AccountPage() {
             {user ? user.email : "No applications yet"}
           </h1>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col text-white">
           <h1 className="text-lg font-semibold">Number of applications</h1>
           <h1
             id="number_of_applications"
@@ -407,7 +407,7 @@ export default function AccountPage() {
           </h1>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col text-white">
           <h1 className="text-lg font-semibold">
             Contact Number <span className="text-red-500">*</span>
           </h1>
@@ -422,7 +422,7 @@ export default function AccountPage() {
           />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col text-white">
           <h1 className="text-lg font-semibold">
             College <span className="text-red-500">*</span>
           </h1>
@@ -437,7 +437,7 @@ export default function AccountPage() {
           />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col text-white">
           <h1 className="text-lg font-semibold">
             Course <span className="text-red-500">*</span>
           </h1>
@@ -452,7 +452,7 @@ export default function AccountPage() {
           />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col text-white">
           <h1 className="text-lg font-semibold">
             Year of Study <span className="text-red-500">*</span>
           </h1>
@@ -477,7 +477,7 @@ export default function AccountPage() {
         onClick={handleSubmit}
         className={`${
           !loading ? "opacity-100 hover:bg-primary-light" : "opacity-50"
-        } md:w-[420px] w-36 cursor-pointer md:h-[46px] rounded-lg bg-primary-color text-light-color font-bold py-2 px-4 mt-10 flex items-center justify-center flex-row `}
+        } md:w-[420px] w-36 cursor-pointer md:h-[46px] rounded-lg bg-white text-primary-new  font-bold py-2 px-4 mt-10 flex items-center justify-center flex-row `}
       >
         Submit
       </motion.button>

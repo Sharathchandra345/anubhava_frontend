@@ -115,8 +115,8 @@ export default function AboutBoardOfAdvisors({ images, text, special }) {
 
                                 <img src={image['img']} alt="image" className='w-[144px] h-[144px] rounded-xl' />
                                 <div>
-                                    <h1 className='md:text-xl text-lg text-primary-color font-bold'> {image['first']} </h1>
-                                    <h1 className='md:text-xl text-lg text-primary-color font-bold'> {image['last']} </h1>
+                                    <h1 className='md:text-xl text-lg text-primary-new font-bold'> {image['first']} </h1>
+                                    <h1 className='md:text-xl text-lg text-primary-new font-bold'> {image['last']} </h1>
                                 </div>
                             </div>
                         </motion.button>

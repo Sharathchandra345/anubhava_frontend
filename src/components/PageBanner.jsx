@@ -1,7 +1,7 @@
 import React from "react";
 export default function PageBanner({ image, bannerText }) {
     return (
-        <div className='flex flex-col h-full w-full'>
+        <div className='flex flex-col h-full w-full text-white'>
             <div
                 style={{
                     // backgroundImage: `linear-gradient(0deg, rgba(15, 111, 123, 0.7), rgba(15, 111, 123, 0.7)), url(${image})`, // default

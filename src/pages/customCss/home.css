@@ -1,0 +1,26 @@
+.main-heading {
+  margin-top: 30px;
+  color: #ffc815;
+  font-size: 0.2rem;
+  font-weight: bold;
+  position: absolute;
+  color: transparent;
+}
+body {
+  background: #131424;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-paragraph {
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-size: 2px;
+  color: transparent;
+  position: absolute;
+}

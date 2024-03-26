@@ -4,7 +4,7 @@ import desk from "../static/images/desk.jpg";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-
+import "./customCss/company.css";
 function Companies() {
   // scroll to top
   window.scrollTo(0, 0);
@@ -236,7 +236,7 @@ function Companies() {
                   }}
                   id="searchbox"
                   disabled={loading}
-                  className="bg-light-color p-2 text-sm outline-none w-full"
+                  className="bg-light-color  text-sm outline-none w-full"
                   type="text"
                   placeholder="COMPANIES OR PROFILES"
                 />
@@ -295,13 +295,13 @@ function Companies() {
       <DotLoader
         cssOverride={override}
         size={150}
-        className="text-primary-color"
+        className="text-yellow-400"
         color="#36528b"
         loading={loading}
       />
       {!usersearched ? (
         <div className={`${!usersearched ? `visible` : `hidden`}`}>
-          <h1 className="text-2xl md:text-4xl text-primary-color font-medium content-center md:mt-16 md:mb-8 md:mx-16 mt-16 mb-6 mx-4">
+          <h1 className="text-2xl md:text-4xl text-yellow-400 font-medium content-center md:mt-16 md:mb-8 md:mx-16 mt-16 mb-6 mx-4">
             Our top recruiters!
           </h1>
           <div
@@ -312,29 +312,40 @@ function Companies() {
             {renderItems().map((company) => (
               <motion.button
                 key={company._id}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                // whileHover={{ scale: 1.1 }}
+                // whileTap={{ scale: 0.9 }}
               >
                 <div
                   onClick={() =>
                     window.open(`/companies/${company._id}`, "_blank")
                   }
-                  className="bg-primary-color h-56 md:w-9/12 w-full items-center rounded-xl p-5 justify-center flex flex-col overflow-hidden"
+                  className="max-h-50 w-full flex flex-col overflow-hidden companycard"
+                  style={{ backgroundColor: "#0B0F1B" }}
                 >
-                  <div className="w-[180px] h-5/6 md:w-[250px] bg-light-color rounded-md items-center justify-center flex overflow-hidden">
-                    {/* <img className='object-contain h-full w-full' src={company.image} ></img> */}
-                    <img
-                      className="object-contain h-full w-full"
-                      src="https://th.bing.com/th/id/R.ea54db5822a3b2fdbd590b49c57d8033?rik=h7e4LIz%2bY8DMwg&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fyio%2f69M%2fyio69MBoT.jpg&ehk=XuNU9Y%2fhF72ZA3cHcWcAlucA5DA0wl1zzkrLCOAL8%2bs%3d&risl=&pid=ImgRaw&r=0"
-                    ></img>
+                  <div className="w-full h-40 bg-light-color overflow-hidden flex items-center justify-center">
+                    {company.image ? (
+                      <img
+                        className="object-cover h-full w-auto"
+                        src={company.image}
+                        alt={company.name}
+                      />
+                    ) : (
+                      <img
+                        className="object-cover h-full w-auto"
+                        src="https://th.bing.com/th/id/R.ea54db5822a3b2fdbd590b49c57d8033?rik=h7e4LIz%2bY8DMwg&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fyio%2f69M%2fyio69MBoT.jpg&ehk=XuNU9Y%2fhF72ZA3cHcWcAlucA5DA0wl1zzkrLCOAL8%2bs%3d&risl=&pid=ImgRaw&r=0"
+                        alt="No Image Available"
+                      />
+                    )}
                   </div>
-                  <h1 className="text-xl h-1/6 text-light-color font-medium content-center">
-                    {screenSize < 768
-                      ? company.name.length > 10
-                        ? company.name.substring(0, 10) + "..."
-                        : company.name
-                      : company.name}
-                  </h1>
+                  <div className="w-full h-1/5 flex items-center justify-center companyName">
+                    <h1 className="text-xl text-light-color font-medium text-center cnamediv">
+                      {screenSize < 768
+                        ? company.name.length > 10
+                          ? company.name.substring(0, 10) + "..."
+                          : company.name
+                        : company.name}
+                    </h1>
+                  </div>
                 </div>
               </motion.button>
             ))}
@@ -345,7 +356,7 @@ function Companies() {
           <h1
             className={`${
               !loading ? `opacity-100` : `opacity-0`
-            } flex flex-row text-2xl md:text-4xl text-primary-color font-medium content-center md:mt-16 md:mb-8 md:mx-16 mt-16 mb-6 mx-4 `}
+            } flex flex-row text-2xl md:text-4xl text-yellow-400 font-medium content-center md:mt-16 md:mb-8 md:mx-16 mt-16 mb-6 mx-4 `}
           >
             <svg
               onClick={clearSearch}
@@ -373,9 +384,9 @@ function Companies() {
                     onClick={() =>
                       window.open(`/companies/${company._id}`, "_blank")
                     }
-                    className={`bg-primary-color h-44 w-full rounded-xl p-5 flex flex-row gap-4 items-center justify-start`}
+                    className={`bg-primary-color h-44 w-full rounded-xl flex flex-row gap-4 items-center justify-start`}
                   >
-                    <div className="bg-light-color h-[90px] w-2/12 md:h-[120px] p-2 flex items-center justify-center">
+                    <div className="bg-light-color h-[90px] w-2/12 md:h-[120px]  flex items-center justify-center">
                       <img
                         className="h-full w-full object-contain"
                         src={company.image}
@@ -411,7 +422,7 @@ function Companies() {
       <div className="flex flex-row justify-center items-center mb-5">
         <ul className="flex flex-row gap-2 ">
           <svg
-            className="w-6 h-6 cursor-pointer m-auto text-primary-color"
+            className="w-6 h-6 cursor-pointer m-auto text-yellow-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -432,7 +443,7 @@ function Companies() {
               className={` h-[50px] w-[50px] border-solid border-2  cursor-pointer flex flex-row items-center justify-center  rounded-lg 
                         ${
                           currentPage === number
-                            ? "border-primary-light  font-bold text-primary-color"
+                            ? "border-primary-light  font-bold text-yellow-400"
                             : "bg-primary-light text-light-color font-semibold"
                         }`}
             >
@@ -442,7 +453,7 @@ function Companies() {
             </li>
           ))}
           <svg
-            className="w-6 h-6 cursor-pointer m-auto text-primary-color"
+            className="w-6 h-6 cursor-pointer m-auto text-yellow-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -459,7 +470,7 @@ function Companies() {
           <div className="h-[50px] w-[70px] flex flex-row items-center justify-center  rounded-lg">
             <h1
               className="
-                        text-primary-color text-lg font-semibold
+                        text-yellow-400 text-lg font-semibold
                         "
             >
               {currentPage} of {pagesCount}
