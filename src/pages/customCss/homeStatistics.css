@@ -1,10 +1,11 @@
 .diamond-container {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+  margin-top: 110px;
 }
 
 .top-diamonds,
@@ -12,14 +13,14 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 4rem;
+  gap: 6rem;
   margin-top: -1.5rem;
 }
 
 .diamond {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 190px;
+  height: 190px;
   background-color: #ffcc00;
   margin: 0 10px;
 }
@@ -31,6 +32,10 @@
   transform: translate(-50%, -50%) rotate(-45deg);
   text-align: center;
 }
+.diamond-header,
+.diamond-value {
+  text-shadow: 2px 0px 3px black;
+}
 
 .diamond-header {
   font-size: 1.2rem;
@@ -39,10 +44,11 @@
 }
 
 .diamond-value {
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #fff;
 }
+
 @media screen and (max-width: 768px) {
   .diamond-container {
     width: 90%;
@@ -50,8 +56,8 @@
   }
 
   .top-diamonds {
-    gap: 2rem; /* Adjust the gap as needed */
-    margin-top: 0; /* Remove negative margin-top */
+    gap: 2rem;
+    margin-top: 0;
   }
 
   .bottom-diamonds {
@@ -70,5 +76,33 @@
 
   .diamond-value {
     font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 1040px) {
+  .diamond-container {
+    width: 100%;
+    margin-top: 4rem;
+  }
+
+  .diamond {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem; /* Adjust as needed */
+    margin-right: 1rem; /* Adjust as needed */
+  }
+
+  .diamond:nth-child(3),
+  .diamond:nth-child(6) {
+    margin-right: 0; /* Remove right margin for the last diamond in the row */
+  }
+
+  .diamond:nth-child(n + 7) {
+    width: 120px;
+    height: 120px;
+    margin-right: 1rem; /* Adjust as needed */
+  }
+
+  .diamond:nth-child(7) {
+    margin-right: 0; /* Remove right margin for the last diamond */
   }
 }

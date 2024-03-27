@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DotLoader } from "react-spinners";
 import desk from "../static/images/desk.jpg";
+import company from "../static/images/testimages/How to Apply (4).png";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -192,20 +193,21 @@ function Companies() {
   return (
     <div className="md:mt-20 mt-[65px] flex flex-col relative h-full w-full">
       <div
-        style={{
-          backgroundImage: `linear-gradient(0deg, rgba(15, 37, 80, 0.7), rgba(15, 37, 80, 0.7)), url(${desk})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        // style={{
+        //   backgroundImage: `linear-gradient(0deg, rgba(15, 37, 80, 0.7), rgba(15, 37, 80, 0.7)), url(${desk})`,
+        //   backgroundSize: "cover",
+        //   backgroundPosition: "center",
+        // }}
         className={`${
           !loading ? `opacity-100` : `opacity-50`
-        } overflow-visible flex flex-col bg-primary-color  mx-0 h-80 w-full`}
+        } overflow-hidden flex flex-col bg-primary-new  mx-0 h-80 w-full`}
       >
+        <img src={company} alt="Process" />
         <div className="h-80 z-1">
           <div className="flex items-center justify-center w-full h-full">
-            <h1 className="md:text-5xl font-bold text-4xl text-light-color md:font-medium text-center">
+            {/* <h1 className="md:text-5xl font-bold text-4xl text-light-color md:font-medium text-center">
               Find your favourite company!
-            </h1>
+            </h1> */}
           </div>
         </div>
         <div className="w-full justify-center items-center flex ">

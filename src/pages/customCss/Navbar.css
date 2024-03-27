@@ -1,0 +1,47 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 4rem;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  cursor: pointer;
+  /* position: absolute; */
+  left: 0;
+}
+
+.logo-img {
+  height: 3rem;
+}
+
+.navbar-tabs-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-tabs {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-tabs-show {
+  display: flex;
+}
+
+.navbar-tabs-hide {
+  display: none;
+}
+
+.login-button {
+  cursor: pointer;
+  /* position: absolute; */
+  right: 10px;
+}

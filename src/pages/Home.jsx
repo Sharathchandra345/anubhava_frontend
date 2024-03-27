@@ -126,8 +126,8 @@ function Home() {
         // colleges={"1000+"}
         states={"25+"}
         job_profiles={"100+"}
-        highest_stipend={"INR 80K"}
-        average_stipend={"INR 12K"}
+        highest_stipend={"₹80K"}
+        average_stipend={"₹12K"}
       />
       {/* <HomeTimer /> */}
 

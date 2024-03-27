@@ -1,248 +1,89 @@
-import React, { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import college from "../static/logos/logo_college.png";
-import ignite from "../static/logos/logo_ignite.png";
-function Footer() {
+import React from "react";
+import collegeLogo from "../static/logos/logo_college.png";
+import igniteLogo from "../static/logos/logowhite.jpg";
+
+const Footer = () => {
   const date = new Date();
   const year = date.getFullYear();
-  const navigate = useNavigate();
-  const handleHome = useCallback(() => {
-    navigate("/");
-  }, [navigate]);
-  const handleAbout = useCallback(() => {
-    navigate("/about");
-  }, [navigate]);
-  const handleCompanies = useCallback(() => {
-    navigate("/companies");
-  }, [navigate]);
-  const handleHowToApply = useCallback(() => {
-    navigate("/how-to-apply");
-  }, [navigate]);
-  const handleResources = useCallback(() => {
-    navigate("/resources");
-  }, [navigate]);
-  const handleContact = useCallback(() => {
-    navigate("/contact-us");
-  }, [navigate]);
 
   return (
-    // h-[330px]
-    <div className="bg-black h-fit absolute w-full ">
-      <div className="md:mx-20 ">
-        <div className="hidden md:flex flex-row justify-between pt-10 pb-2  gap-24">
-          <div className="flex flex-col gap-4">
-            <div>
-              <h1 className="text-light-color text-2xl font-medium">
-                Ignite -The Placement Cell
-              </h1>
-            </div>
-            <div>
-              <h1 className="text-light-color text-xl">
-                Sri Guru Tegh Bahadur Khalsa College
-              </h1>
-            </div>
-            <div>
-              <h1 className="text-light-color text-lg">University of Delhi</h1>
-            </div>
-            <div>
-              <h1 className="text-light-color text-lg font-medium"></h1>
-            </div>
-            <div>
-              <h1 className="text-light-color text-lg font-medium"></h1>
-            </div>
-            <div className="flex flex-col gap-2 justify-between w-full">
-              <div className="flex flex-row">
-                <i
-                  className="fab fa-linkedin-in text-light-color ml-0 text-lg cursor-pointer"
-                  onClick={() =>
-                    window.open(
-                      "https://www.linkedin.com/school/the-placement-cell-sgtb-khalsa-college/"
-                    )
-                  }
-                ></i>
-                <i
-                  className="fab fa-instagram text-light-color ml-2 text-lg cursor-pointer"
-                  onClick={() =>
-                    window.open(
-                      "https://www.instagram.com/placementcell.sgtbkhalsa/?igshid=YmMyMTA2M2Y%3D"
-                    )
-                  }
-                ></i>
-                <i
-                  className="fa fa-at text-light-color ml-2 text-lg cursor-pointer"
-                  onClick={() => {
-                    window.open("mailto:" + "ignitepcinfo@gmail.com");
-                  }}
-                ></i>
-                <i
-                  className="fab fa-whatsapp text-light-color ml-2 text-lg cursor-pointer"
-                  onClick={() =>
-                    window.open(
-                      "https://api.whatsapp.com/send?phone=917807417341"
-                    )
-                  }
-                ></i>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-4">
-            <div>
-              <h1 className="text-light-color text-xl font-medium text-start">
-                Important Links.
-              </h1>
-            </div>
-            <div className="flex flex-row gap-4">
-              <div className="flex flex-col gap-4">
-                <div>
-                  <h1
-                    className="text-light-color text-md hover:underline cursor-pointer"
-                    onClick={handleHome}
-                  >
-                    ● Home
-                  </h1>
-                </div>
-                <div>
-                  <h1
-                    className="text-light-color text-md hover:underline cursor-pointer"
-                    onClick={handleAbout}
-                  >
-                    ● About
-                  </h1>
-                </div>
-                <div>
-                  <h1
-                    className="text-light-color text-md hover:underline cursor-pointer"
-                    onClick={handleCompanies}
-                  >
-                    ● Companies
-                  </h1>
-                </div>
-                <div>
-                  <h1
-                    className="text-light-color text-md hover:underline cursor-pointer"
-                    onClick={handleHowToApply}
-                  >
-                    ● How to Apply
-                  </h1>
-                </div>
-              </div>
-              <div className="flex flex-col gap-4">
-                <div>
-                  <h1
-                    className="text-light-color text-md hover:underline cursor-pointer"
-                    onClick={handleResources}
-                  >
-                    ● Resouces
-                  </h1>
-                </div>
-                <div>
-                  <h1
-                    className="text-light-color text-md hover:underline cursor-pointer"
-                    onClick={handleContact}
-                  >
-                    ● Contact Us.
-                  </h1>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex basis-1/5 justify-center items-center">
-            <div className="flex flex-row gap-0 rounded-full h-44 w-44 bg-primary-light justify-center items-center">
-              <div className="flex justify-center items-center">
-                <img src={college} alt="logo" className="h-20" />
-              </div>
-              <div className="flex justify-center items-center pt-3">
-                <img src={ignite} alt="logo" className="h-20" />
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <div className=" hidden md:flex flex-row gap-5 items-center justify-center mt-[-35px] mb-5">
-                    <h1 className="text-light-color text-md hover:underline cursor-pointer" onClick={handleHome}>Home</h1>
-                    <h1 className="text-light-color text-md hover:underline cursor-pointer" onClick={handleAbout} >About</h1>
-                    <h1 className="text-light-color text-md hover:underline cursor-pointer" onClick={handleCompanies}>Companies</h1>
-                    <h1 className="text-light-color text-md hover:underline cursor-pointer" onClick={handleHowToApply}>How to Apply</h1>
-                    <h1 className="text-light-color text-md hover:underline cursor-pointer" onClick={handleResources}>Resouces</h1>
-                    <h1 className="text-light-color text-md hover:underline cursor-pointer" onClick={handleContact}>Contact Us.</h1>
-                </div> */}
-
-        <hr className="hidden md:block w-full border-2 border-primary-color" />
-        <div className="md:hidden bg-primary-dark w-full">
-          <div className="flex flex-col gap-4 items-center">
-            <div className="mt-10">
-              <img src={college} alt="logo" className="h-25" />
-            </div>
-            <div className="mt-2 text-center">
-              <h1 className="text-light-color font-bold text-xl">
-                {" "}
-                The Placement Cell, SGTB Khalsa College.
-              </h1>
-              <h1 className="text-light-color font-semibold text-sm mt-2">
-                {" "}
-                Need help? Reach out to us!
-              </h1>
-            </div>
-
-            <div className="flex flex-row gap-2">
-              <i
-                className="fab fa-linkedin-in text-light-color ml-0 text-lg cursor-pointer"
-                onClick={() =>
-                  window.open(
-                    "https://www.linkedin.com/school/the-placement-cell-sgtb-khalsa-college/"
-                  )
-                }
-              ></i>
-              <i
-                className="fab fa-instagram text-light-color ml-2 text-lg cursor-pointer"
-                onClick={() =>
-                  window.open(
-                    "https://www.instagram.com/placementcell.sgtbkhalsa/?igshid=YmMyMTA2M2Y%3D"
-                  )
-                }
-              ></i>
-              <i
-                className="fa fa-at text-light-color ml-2 text-lg cursor-pointer"
-                onClick={() => {
-                  window.open("mailto:" + "ignitepcinfo@gmail.com");
-                }}
-              ></i>
-              <i
-                className="fab fa-whatsapp text-light-color ml-2 text-lg cursor-pointer"
-                onClick={() =>
-                  window.open(
-                    "https://api.whatsapp.com/send?phone=917807417341"
-                  )
-                }
-              ></i>
-            </div>
-          </div>
-        </div>
-        <div className="pt-5 mx-5">
-          <h1 className="text-light-color text-center text-md">
-            Copyright © {year} The Placement Cell, SGTB Khalsa College. All
-            rights reserved.
-            {/* | <span className="hover:underline cursor-pointer">Privacy Policy</span>  */}
-          </h1>
-          <h1 className="text-light-color text-center text-md">
-            Website made by{" "}
-            <span
-              className="cursor-pointer hover:underline"
-              onClick={() => {
-                window.open(
-                  "https://www.linkedin.com/in/akarshan-m-75577122a/",
-                  "_blank"
-                );
-              }}
-            >
-              Akarshan Mishra.
-            </span>
-          </h1>
+    <footer className="bg-black text-white py-10 px-6 md:px-20 flex flex-wrap items-start justify-between">
+      {/* Ignite Logo and Placement Cell Information */}
+      <div className="flex flex-col items-start">
+        <img src={igniteLogo} alt="Ignite Logo" className="h-24 mb-4" />
+        <div>
+          <p>The Placement Cell</p>
+          <p>SGTB Khalsa College</p>
+          <p>University of Delhi</p>
         </div>
       </div>
-      <div className="m-2"></div>
-    </div>
+
+      {/* Quick Links */}
+      <div className="text-yellow-400">
+        <h1 className="text-2xl font-semibold mb-4">Quick Links</h1>
+        <div className="flex flex-col md:flex-row">
+          <div className="flex flex-col text-white py-2 px-3">
+            <a href="/" className="text-lg hover:underline mb-2 pl-2 md:pl-0">
+              Home
+            </a>
+            <a
+              href="/about"
+              className="text-lg hover:underline mb-2 pl-2 md:pl-0"
+            >
+              About
+            </a>
+            <a
+              href="/companies"
+              className="text-lg hover:underline mb-2 pl-2 md:pl-0"
+            >
+              Companies
+            </a>
+          </div>
+          <div className="flex flex-col ml-8 md:ml-0 py-2 px-3 text-white">
+            <a
+              href="/how-to-apply"
+              className="text-lg hover:underline mb-2 pl-2 md:pl-0"
+            >
+              How to Apply
+            </a>
+            <a
+              href="/resources"
+              className="text-lg hover:underline mb-2 pl-2 md:pl-0"
+            >
+              Resources
+            </a>
+            <a
+              href="/contact-us"
+              className="text-lg hover:underline mb-2 pl-2 md:pl-0"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Us Section */}
+      <div>
+        <h1 className="text-2xl font-semibold text-yellow-400 mb-4">
+          Contact Us
+        </h1>
+        <div className="flex gap-4 mb-4">
+          {/* Add your logos here */}
+          {/* Example: */}
+          {/* <img src={logo} alt="Logo" className="h-8 cursor-pointer" /> */}
+        </div>
+        <p className="text-lg">ignitepcinfo@gmail.com</p>
+      </div>
+
+      {/* Copyright */}
+      <div className="text-center mt-8 w-full">
+        <p className="text-md">
+          Copyright © {year} The Placement Cell, SGTB Khalsa College. All rights
+          reserved.
+        </p>
+      </div>
+    </footer>
   );
-}
+};
 
 export default Footer;

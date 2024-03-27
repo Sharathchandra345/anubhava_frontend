@@ -1,15 +1,16 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import college from "../static/logos/logo_college.png";
+import ignite from "../static/logos/logo_ignite.png";
 import anubhava from "../static/logos/anubhavalogo.png";
 import NavBarTabs from "./NavBarTabs";
 import { motion } from "framer-motion";
 import { UserAuth } from "../context/AuthContext";
-
 function Button({ text, bg }) {
   return (
     <div>
       <div
-        className={`cursor-pointer text-yellow-400 border-2 border-yellow-400 px-4 py-4 rounded-md 
+        className={`cursor-pointer text-yellow-400 border-2 border-yellow-400 px-4 py-4 ml-12 rounded-md 
           bg-black
         }`}
       >
@@ -22,18 +23,19 @@ function Button({ text, bg }) {
 function Navbar() {
   const [width, setWidth] = useState(window.innerWidth);
   const { user } = UserAuth();
+  // This is the hook that we will use to get the current location (URL parameters)
+  // To highlight the current page in the navbar
   const location = useLocation();
   const [menu, setMenu] = useState(false);
-  const navigate = useNavigate();
 
+  // This is to manually invoke a link
+  const navigate = useNavigate();
   const handleClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
-
   const handleLogin = useCallback(() => {
     navigate("/login");
   }, [navigate]);
-
   const handleAccount = useCallback(() => {
     navigate("/account");
   }, [navigate]);
@@ -43,7 +45,6 @@ function Navbar() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
   useEffect(() => {
     if (width > 800) {
       setMenu(true);
@@ -51,12 +52,12 @@ function Navbar() {
       setMenu(false);
     }
   }, [width]);
-
   return (
     <div className="z-50 fixed px-4 left-0 right-0 top-0 h-auto shadow-md  bg-black">
-      <nav className="md:flex md:items-center mx-auto h-full md:justify-between">
-        <div className="flex items-center">
+      <nav className="md:flex md:items-center mx-auto h-full md:justify-around">
+        <div className="flex justify-around items-center">
           <span onClick={handleClick} className="cursor-pointer">
+            {/* <img src={college} alt="logo" className="h-16 inline pr-5" /> */}
             <div className="flex justify-start">
               <img
                 src={anubhava}
@@ -66,7 +67,7 @@ function Navbar() {
             </div>
           </span>
 
-          <span className="text-3xl md:hidden block cursor-pointer mx-2">
+          <span className="text-4xl md:hidden block cursor-pointer mx-2">
             <i
               onClick={() => {
                 window.scrollTo(0, 0);
@@ -86,11 +87,11 @@ function Navbar() {
               width < 700 ? setMenu(false) : "";
             }}
             className={`
-            md:flex md:items-center md:z-auto md:static md:w-auto md:py-0 md:opacity-100 md:pl-0 pr-5 md:pr-0
-            ${
-              !menu ? "opacity-0" : "opacity-100"
-            } items-center absolute space-x-2 mr-10 bg-black
-            pl-5  rounded-b-lg pb-4 w-full left-0 transition-all ease-in duration-500`}
+          md:flex md:items-center md:z-auto md:static md:w-auto md:py-0 md:opacity-100 md:pl-0 pr-5 md:pr-0
+          ${
+            !menu ? "opacity-0" : "opacity-100"
+          } items-center absolute space-x-2 mr-10 bg-black
+          pl-5  rounded-b-lg pb-4 w-full left-0 transition-all ease-in duration-500`}
           >
             <NavBarTabs
               disable={menu}
@@ -152,22 +153,22 @@ function Navbar() {
                   : "bg-black text-white"
               }
             />
+
+            <li>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                className="flex justify-center items-center w-full"
+                whileTap={{ scale: 0.9 }}
+                onClick={user?.email ? handleAccount : handleLogin}
+              >
+                <Button
+                  text={user?.email ? "My Account" : "Login / Signup"}
+                  bg="bg-black text-white"
+                />
+              </motion.button>
+            </li>
           </ul>
         )}
-
-        <div className="flex-grow"></div>
-
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          className="flex justify-center items-center"
-          whileTap={{ scale: 0.9 }}
-          onClick={user?.email ? handleAccount : handleLogin}
-        >
-          <Button
-            text={user?.email ? "My Account" : "Login / Signup"}
-            bg="bg-black text-white"
-          />
-        </motion.button>
       </nav>
     </div>
   );
