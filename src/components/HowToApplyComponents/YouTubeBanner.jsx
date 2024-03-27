@@ -2,7 +2,7 @@ import React from "react";
 
 export default function YouTubeBanner() {
   return (
-    <div className="flex flex-col items-center justify-center px-3 md:p-20 bg-new">
+    <div className="flex flex-col items-center justify-center px-3 md:p-20 bg-new sansfont">
       <div className="text-center text-white py-8">
         <h2 className="font-semibold text-2xl md:text-3xl">
           Check out these videos for a better understanding:

@@ -3,6 +3,8 @@ import person from "../static/images/person.jpg";
 import logo1 from "../static/logos/about_page_logo.png";
 import logow from "../static/logos/logowhite.jpg";
 import logo2 from "..//static/logos/about_page_logo2.png";
+import logo3 from "../static/logos/anubhavalogo2.png";
+import logo4 from "../static/logos/ignitelogo2.png";
 
 import campusPic from "../static/images/testimages/college_campus.jpg";
 import principal1 from "../static/images/principal1.jpg";
@@ -179,7 +181,7 @@ function About() {
         <PageBanner image={person} bannerText={"About Us"} />
         {/* CONTENT */}
         <div className="flex flex-col">
-          <AboutTopCards logo1={logow} logo2={logo2} />
+          <AboutTopCards logo1={logo4} logo2={logo3} />
 
           <AboutPrincipalMessage
             campusPic={campusPic}
