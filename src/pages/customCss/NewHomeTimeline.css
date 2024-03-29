@@ -1,7 +1,7 @@
 .timeline-connector {
   background-color: white;
-  height: 2px;
-  width: 67.5%;
+  height: 4px;
+  width: 46.5%;
   position: absolute;
   top: 50%;
   z-index: 2;
@@ -14,7 +14,9 @@
 .left-connector {
   left: 100%;
 }
-
+.timeline-item {
+  width: 400px;
+}
 @media (max-width: 650px) {
   .timeline-line {
     display: none;

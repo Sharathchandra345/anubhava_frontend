@@ -1,6 +1,13 @@
 import React from "react";
 import collegeLogo from "../static/logos/logo_college.png";
 import igniteLogo from "../static/logos/logowhite.jpg";
+import {
+  InstagramOutlined,
+  LinkedinOutlined,
+  XOutlined,
+  WhatsAppOutlined,
+  YoutubeOutlined,
+} from "@ant-design/icons";
 
 const Footer = () => {
   const date = new Date();
@@ -10,7 +17,9 @@ const Footer = () => {
     <footer className="bg-black text-white py-10 px-6 md:px-20 flex flex-wrap items-start justify-between">
       {/* Ignite Logo and Placement Cell Information */}
       <div className="flex flex-col items-start">
-        <img src={igniteLogo} alt="Ignite Logo" className="h-24 mb-4" />
+        <a href="/">
+          <img src={igniteLogo} alt="Ignite Logo" className="h-24 mb-4" />
+        </a>
         <div>
           <p>The Placement Cell</p>
           <p>SGTB Khalsa College</p>
@@ -68,11 +77,22 @@ const Footer = () => {
           Contact Us
         </h1>
         <div className="flex gap-4 mb-4">
-          {/* Add your logos here */}
-          {/* Example: */}
-          {/* <img src={logo} alt="Logo" className="h-8 cursor-pointer" /> */}
+          <a href="https://www.instagram.com/placementcell.sgtbkhalsa?igsh=MThrMjNjZW9yMGZ4">
+            <InstagramOutlined style={{ fontSize: "32px" }} />
+          </a>
+          <a href="https://www.linkedin.com/school/the-placement-cell-sgtb-khalsa-college/">
+            <LinkedinOutlined style={{ fontSize: "32px" }} />
+          </a>
+          <a href="#">
+            <XOutlined style={{ fontSize: "32px" }} />
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=917807417341">
+            <WhatsAppOutlined style={{ fontSize: "32px" }} />
+          </a>
+          <a href="https://www.youtube.com">
+            <YoutubeOutlined style={{ fontSize: "32px" }} />
+          </a>
         </div>
-        <p className="text-lg">ignitepcinfo@gmail.com</p>
       </div>
 
       {/* Copyright */}

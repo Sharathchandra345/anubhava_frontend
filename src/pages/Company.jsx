@@ -94,6 +94,7 @@ function Company() {
         });
       }
     }
+   
   }
   const checkResume = async () => {
     try {
@@ -170,6 +171,29 @@ function Company() {
           setLoading(false);
           return;
         }
+
+        // Assuming getDb is your Firestore instance
+        const companiesCollectionRef = collection(getDb, "companies");
+        const companyId = id;
+        const companyDocRef = doc(companiesCollectionRef, companyId);
+        const docSnap2 = await getDoc(companyDocRef);
+        console.log(docSnap2);
+        const getCompanyDoc = async () => {
+          console.log("Getting company document...");
+          try {
+            const docSnap = await getDoc(companyDocRef);
+            if (docSnap.exists()) {
+              console.log("Document data:", docSnap.data());
+              const batch = writeBatch(getDb);
+              batch.update(companyDocRef, { count: docSnap.data().count + 1});        
+            } else {
+              await setDoc(companyDocRef, { count: 1, companyName: data.name});
+            }
+          } catch (error) {
+            console.error("Error getting document:", error);
+          }
+        };
+        
         // If userCache applied is empty then write the elements of keys to firestore WRITE * KEYS
         if (userCache.applied.length == 0) {
           const collectonRef = collection(getDb, "users");
@@ -177,11 +201,13 @@ function Company() {
           const batch = writeBatch(getDb);
           batch.update(docRef, { applied: arrayUnion(...keys) });
           // Commit the batch
+          // console.log(collectonRef, docRef, batch, keys);
           await batch.commit();
           // Update the cache
           userCache.applied = [...userCache.applied, ...keys];
           // Update the localStorage
           localStorage.setItem(user.uid, JSON.stringify(userCache));
+          
           // check if the user has already applied for the job in cache
         } else {
           for (const key of keys) {
@@ -204,7 +230,9 @@ function Company() {
             userCache.applied = [...userCache.applied, ...keys];
             // Update the localStorage
             localStorage.setItem(user.uid, JSON.stringify(userCache));
+            getCompanyDoc();
           }
+      
         }
       } else {
         // If user is not logged in
@@ -291,7 +319,7 @@ function Company() {
     document.body.removeChild(link);
   };
   let resetTimeout;
-
+  console.log(data.website);
   return (
     <div>
       <div className="relative overflow-x-hidden md:mt-20 mt-[65px] flex flex-col md:gap-8 gap-4">
