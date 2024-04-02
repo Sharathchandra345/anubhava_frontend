@@ -19,7 +19,7 @@ module.exports = {
         // "primary-dark": "#0D1B2A", // Can be changed    1
         // "primary-lighter": "#E0E1DD", // Can be changed 1 // BLACK
 
-        "primary-color": "#FFC815", // Can be changed   1
+        "primary-color": "#56B2BB", // Can be changed   1
         "primary-light": "#9db7ed", // Hover Color      1
         "primary-dark": "#fffff", // Can be changed    1
         "primary-dark2": "#131424", // Can be changed    1

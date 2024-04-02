@@ -30,7 +30,6 @@ import { RWebShare } from "react-web-share";
 
 function Company() {
   const date = new Date("2024-04-30T00:00:00+05:30") > new Date();
-  // scroll to top
   window.scrollTo(0, 0);
   const carouselRef = useRef(null);
 
@@ -42,7 +41,7 @@ function Company() {
   ];
   const MySwal = withReactContent(Swal);
   const [data, setData] = useState({});
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0); // State variable for count
   const [loading, setLoading] = useState(true);
   const [applyText, setApplyText] = useState("");
 
@@ -55,8 +54,6 @@ function Company() {
     navigate("/companies");
   }, [navigate]);
 
-  // USE THIS HOOK and HANDLER TO GET DATA BACK FROM CHILD
-
   const handleNameChange = (newKey) => {
     setKeys(newKey);
   };
@@ -64,53 +61,58 @@ function Company() {
   const { user, logOut } = UserAuth();
 
   async function fetchData() {
-    const response = await fetch(
-      "https://anubhava-backend.vercel.app/companies/" + id
-    );
-    const data = await response.json();
-    if (data != null) {
-      setLoading(false);
-    }
-    setData(data);
-    // set page title to company name
-    document.title = `${data.name} | Anubhava`;
-    // Check if user is logged in
-    if (user != null && user != undefined && user.uid) {
-      // Check if the localStorage has user data
-      const userCache = JSON.parse(localStorage.getItem(user.uid));
-      // If it does not then logout the user
-      if (userCache == null) {
-        // navigate to account page
-        MySwal.fire({
-          icon: "error",
-          title: "Error!",
-          html:
-            "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'>" +
-            "Please fill your details." +
-            "</div>",
-          confirmButtonColor: "#36528b", // primary-color
-          confirmButtonText: "Ok",
-        }).then(() => {
-          navigate("/account");
-        });
+    try {
+      const companyRef = doc(collection(getDb(), "companies"), id);
+      const companySnap = await getDoc(companyRef);
+      if (companySnap.exists()) {
+        const companyData = companySnap.data();
+        setData(companyData);
+        setCount(companyData.count || 0);
+        setLoading(false);
+        document.title = `${companyData.name} | Anubhava`;
+        if (user && user.uid) {
+          const userCache = JSON.parse(localStorage.getItem(user.uid));
+          if (!userCache) {
+            MySwal.fire({
+              icon: "error",
+              title: "Error!",
+              html:
+                "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'>" +
+                "Please fill your details." +
+                "</div>",
+              confirmButtonColor: "#36528b",
+              confirmButtonText: "Ok",
+            }).then(() => {
+              navigate("/account");
+            });
+          }
+        }
       }
+    } catch (error) {
+      console.error("Error fetching company data:", error);
     }
   }
+
+  useEffect(() => {
+    setApplyText("");
+    checkResume();
+    fetchData();
+  }, [user]);
+
   const checkResume = async () => {
     try {
-      if (user.uid != undefined) {
+      if (user && user.uid) {
         const userCache = JSON.parse(localStorage.getItem(user.uid));
-        if (userCache != null) {
-          if (userCache.resume != undefined) {
+        if (userCache) {
+          if (userCache.resume) {
             setHasResume(userCache.resume);
           }
         } else {
-          // if there is no cache then get the data from firestore READ_ONLY
-          const collectonRef2 = collection(getDb, "users");
+          const collectonRef2 = collection(getDb(), "users");
           const docRef = doc(collectonRef2, user.uid);
           const docSnap = await getDoc(docRef);
           const resume = docSnap.data().resume;
-          if (resume != undefined) {
+          if (resume) {
             setHasResume(resume);
           }
         }
@@ -120,24 +122,16 @@ function Company() {
       console.log(error);
     }
   };
-  // This useEffect is used to fetch data from the backend
-  useEffect(() => {
-    setApplyText("");
-    checkResume();
-    fetchData();
-  }, [user]);
 
   const handleApply = async () => {
-    // Check if the date is after 21st April 2023
-    if (date == true) {
+    if (date) {
       let alreadyApplied = false;
       let applyTextUpdated = "";
       setLoading(true);
 
-      if (user != null && user != undefined && user.uid != undefined) {
+      if (user && user.uid) {
         const userCache = JSON.parse(localStorage.getItem(user.uid));
-        if (userCache == null || userCache.applied == undefined) {
-          // If there is no cache then send the user back to account page and ask him to fill the details
+        if (!userCache || userCache.applied === undefined) {
           MySwal.fire({
             icon: "error",
             title: "Error!",
@@ -145,7 +139,7 @@ function Company() {
               "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'>" +
               "Please fill your details." +
               "</div>",
-            confirmButtonColor: "#36528b", // primary-color
+            confirmButtonColor: "#36528b",
             confirmButtonText: "Ok",
           }).then(() => {
             navigate("/account");
@@ -153,10 +147,9 @@ function Company() {
           setLoading(false);
           return;
         }
-        // Check if the localStorage applied array length is more than 20
         if (
           keys.length > 20 ||
-          (userCache.applied != undefined && userCache.applied.length > 20)
+          (userCache.applied && userCache.applied.length > 20)
         ) {
           MySwal.fire({
             icon: "error",
@@ -165,27 +158,25 @@ function Company() {
               "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'>" +
               "Maximum 20 jobs can be applied at a time." +
               "</div>",
-            confirmButtonColor: "#36528b", // primary-color
+            confirmButtonColor: "#36528b",
             confirmButtonText: "Ok",
           });
           setLoading(false);
           return;
         }
 
-        // Assuming getDb is your Firestore instance
-        const companiesCollectionRef = collection(getDb, "companies");
+        const companiesCollectionRef = collection(getDb(), "companies");
         const companyId = id;
         const companyDocRef = doc(companiesCollectionRef, companyId);
         const docSnap2 = await getDoc(companyDocRef);
-        console.log(docSnap2);
+
         const getCompanyDoc = async () => {
-          console.log("Getting company document...");
           try {
             const docSnap = await getDoc(companyDocRef);
             if (docSnap.exists()) {
-              console.log("Document data:", docSnap.data());
-              const batch = writeBatch(getDb);
+              const batch = writeBatch(getDb());
               batch.update(companyDocRef, { count: docSnap.data().count + 1 });
+              await batch.commit();
             } else {
               await setDoc(companyDocRef, { count: 1, companyName: data.name });
             }
@@ -194,21 +185,14 @@ function Company() {
           }
         };
 
-        // If userCache applied is empty then write the elements of keys to firestore WRITE * KEYS
-        if (userCache.applied.length == 0) {
-          const collectonRef = collection(getDb, "users");
+        if (userCache.applied.length === 0) {
+          const collectonRef = collection(getDb(), "users");
           const docRef = doc(collectonRef, user.uid);
-          const batch = writeBatch(getDb);
+          const batch = writeBatch(getDb());
           batch.update(docRef, { applied: arrayUnion(...keys) });
-          // Commit the batch
-          // console.log(collectonRef, docRef, batch, keys);
           await batch.commit();
-          // Update the cache
           userCache.applied = [...userCache.applied, ...keys];
-          // Update the localStorage
           localStorage.setItem(user.uid, JSON.stringify(userCache));
-
-          // check if the user has already applied for the job in cache
         } else {
           for (const key of keys) {
             if (userCache.applied.includes(key)) {
@@ -217,24 +201,18 @@ function Company() {
                 data.job_profile_description[key][0][0] + ", ";
             }
           }
-          if (alreadyApplied) {
-            // Do not write to firestore
-          } else {
-            const collectonRef = collection(getDb, "users");
+          if (!alreadyApplied) {
+            const collectonRef = collection(getDb(), "users");
             const docRef = doc(collectonRef, user.uid);
-            const batch = writeBatch(getDb);
+            const batch = writeBatch(getDb());
             batch.update(docRef, { applied: arrayUnion(...keys) });
-            // Commit the batch
             await batch.commit();
-            // Update the cache
             userCache.applied = [...userCache.applied, ...keys];
-            // Update the localStorage
             localStorage.setItem(user.uid, JSON.stringify(userCache));
             getCompanyDoc();
           }
         }
       } else {
-        // If user is not logged in
         MySwal.fire({
           icon: "error",
           title: "Error!",
@@ -242,35 +220,34 @@ function Company() {
             "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'>" +
             "Please fill details on Accounts page!" +
             "</div>",
-          confirmButtonColor: "#36528b", // primary-color
+          confirmButtonColor: "#36528b",
           confirmButtonText: "Ok",
         }).then(() => {
           navigate("/account");
         });
       }
       setLoading(false);
-      // Handle error messages
       if (
-        user == undefined ||
-        alreadyApplied == true ||
-        applyTextUpdated != "" ||
-        keys.length == 0 ||
-        hasResume == ""
+        !user ||
+        alreadyApplied ||
+        applyTextUpdated ||
+        keys.length === 0 ||
+        !hasResume
       ) {
         let errorString = "";
-        if (user == undefined) {
+        if (!user) {
           errorString += "<h1> ● Please Login!";
         }
-        if (keys.length == 0) {
+        if (keys.length === 0) {
           errorString += "<h1> ● Please select a Job!";
         }
-        if (applyText == true) {
+        if (applyText) {
           errorString += "<h1> ● Already applied!";
         }
-        if (hasResume == "") {
+        if (!hasResume) {
           errorString += "<h1> ● Missing resume!";
         }
-        if (applyTextUpdated != "") {
+        if (applyTextUpdated) {
           errorString += "<h1> ● Already applied for " + applyTextUpdated;
         }
         MySwal.fire({
@@ -280,18 +257,16 @@ function Company() {
             "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'>" +
             errorString +
             "</div>",
-          confirmButtonColor: "#36528b", // primary-color
+          confirmButtonColor: "#36528b",
           confirmButtonText: "Ok",
         }).then(() => {
           setApplyText("");
           return;
         });
       } else {
-        // if there are no errors, go
         backToCompanies();
       }
     } else {
-      // This error depends on the date, change the < or > accordingly to display error for before / after different dates
       MySwal.fire({
         icon: "error",
         title: "Error!",
@@ -299,7 +274,7 @@ function Company() {
           "<div class='text-xl text-red-500 font-bold'>" +
           " ● We don't accept applications after 24th April 2023." +
           "</div>",
-        confirmButtonColor: "#36528b", // primary-color
+        confirmButtonColor: "#36528b",
         confirmButtonText: "Ok",
       }).then(() => {
         return;
@@ -344,11 +319,14 @@ function Company() {
                 {data.name}{" "}
               </h1>
               <div className="w-[150px] h-[150px] mt-4 bg-light-color rounded-md items-center justify-center flex overflow-hidden">
-                {/* <img className='object-contain h-full w-full' src={data.image}></img> */}
                 <img
                   className="object-contain h-full w-full"
-                  src="https://th.bing.com/th/id/R.ea54db5822a3b2fdbd590b49c57d8033?rik=h7e4LIz%2bY8DMwg&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fyio%2f69M%2fyio69MBoT.jpg&ehk=XuNU9Y%2fhF72ZA3cHcWcAlucA5DA0wl1zzkrLCOAL8%2bs%3d&risl=&pid=ImgRaw&r=0"
+                  src={data.image}
                 ></img>
+                {/* <img
+                  className="object-contain h-full w-full"
+                  src="https://th.bing.com/th/id/R.ea54db5822a3b2fdbd590b49c57d8033?rik=h7e4LIz%2bY8DMwg&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fyio%2f69M%2fyio69MBoT.jpg&ehk=XuNU9Y%2fhF72ZA3cHcWcAlucA5DA0wl1zzkrLCOAL8%2bs%3d&risl=&pid=ImgRaw&r=0"
+                ></img> */}
               </div>
             </div>
           </div>
@@ -458,6 +436,7 @@ function Company() {
             icon={"fa fa-building"}
             body={work_location}
           ></CompanyCard>
+          {/* Display the count here */}
           <CompanyCard
             title={"Count"}
             icon={"fa fa-building"}
