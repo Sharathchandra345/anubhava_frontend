@@ -37,16 +37,16 @@ export default function Dropdown({ body, onNameChange }) {
   }
 
   return (
-    <div className="relative z-10">
+    <div className="relative z-10 ">
       <motion.button
         whileTap={{ scale: 0.9 }}
         onClick={() => setShowDropdown(!showDropdown)}
-        className="bg-light-color text-dark-color font-medium rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline "
+        className="bg-primary-newdarkblue text-dark-color font-medium rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline "
       >
-        <div className="flex flex-col w-[350px] h-20 bg-light-color rounded-lg shadow-lg p-4 bg-primary-newdarkblue">
+        <div className="flex flex-col w-[350px] h-20  rounded-lg shadow-lg p-4 bg-primary-newdarkblue">
           <div className="flex flex-row gap-4">
             <div className="flex flex-col items-center">
-              <i className="fa fa-suitcase font-bold text-3xl mt-2 text-primary-color"></i>
+              <i className="fa fa-suitcase font-bold text-3xl mt-2 text-primary-color "></i>
             </div>
             <div className="flex flex-col items-start justify-around">
               <h1 className="text-primary-color text-lg font-bold">

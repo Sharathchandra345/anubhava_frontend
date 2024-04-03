@@ -376,47 +376,56 @@ function Company() {
         <div
           className={`flex flex-col md:my-16 md:mx-16 mx-4 my-8 gap-4 md:gap-10`}
         >
-          <div className="flex flex-col md:flex-row items-center md:gap-0 gap-2 md:justify-between">
-            <div className="basis-6/12 w-30">
-              <h1 className="text-dark-color md:text-4xl text-start md:mb-0 mb-3 text-3xl font-bold">
-                {" "}
-                ABOUT THE<span className="text-primary-newblue">
+          <div className="relative overflow-x-hidden md:mt-20 mt-[65px] flex flex-col md:gap-8 gap-4">
+            {/* ABOUT THE COMPANY SECTION */}
+            <div className="md:flex justify-between items-center md:mx-16 mx-4 my-8 gap-4 md:gap-10">
+              {/* ABOUT THE COMPANY TEXT (50% width) */}
+              <div className="md:w-1/2">
+                <h1 className="text-4xl md:text-4xl text-center md:text-left text-dark-color font-bold">
                   {" "}
-                  COMPANY
-                </span>{" "}
-              </h1>
-            </div>
-            <div className="flex flex-row w-full md:basis-6/12 auto md:w-64 justify-between">
-              <div className="flex flex-col w-full gap-4 mr-4">
+                  ABOUT THE
+                  <span className="text-primary-newblue"> COMPANY</span>{" "}
+                </h1>
+                <div className="text-lg mt-4">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Quisquam nobis repellendus ipsa enim amet perspiciatis, eum
+                    officiis asperiores incidunt placeat autem harum laborum
+                    dicta minus odio repellat, quam possimus eius. Lorem ipsum,
+                    dolor sit amet consectetur adipisicing elit. Quas nobis
+                    maiores quisquam, perferendis modi eos facere sint iste
+                    omnis numquam odio voluptates quos obcaecati iusto tenetur
+                    nihil unde dignissimos perspiciatis.
+                  </p>
+                </div>
+              </div>
+
+              {/* APPLY NOW, DOWNLOAD, AND SHARE BUTTONS (50% width) */}
+              <div className="md:w-1/2 flex flex-col md:gap-4 gap-2">
+                {/* Apply Now Button */}
                 <button
                   id="apply_button"
-                  // disable this button till 12 April 2023 IST
                   disabled={loading}
                   onClick={() => handleApply()}
-                  className={`
-                            flex flex-col h-12 w-full items-center px-4 py-2 shadow-lg bg-primary-color text-light-color hover:bg-primary-light
-                          mr-10 font-semibold rounded-lg text-sm`}
+                  className={`flex h-12 w-full items-center px-4 py-2 text-black font-semibold hover:bg-primary-light rounded-lg text-sm`}
                 >
-                  <i className="fa fa-check text-light-color mx-2 "></i> APPLY
-                  NOW!
+                  <i className="fa fa-check text-black mx-2 "></i> APPLY NOW!
                 </button>
-                <h1 className="text-red-500 font-semibold text-base ">
-                  *Applicants can apply to maximum 20 companies!
-                </h1>
-              </div>
-              {/* TO EDIT SHARE BUTTON AND DOWNLOAD BUTTON */}
-              <div className="flex flex-col w-full gap-4">
+                <div className="w-full h-0.5 bg-[#0A0F22]"></div>
+                {/* Download Job Description Button */}
                 <button
                   onClick={handleDownload}
-                  className="flex flex-col h-12 w-full items-center px-4 py-2 shadow-lg  bg-light-color text-white font-semibold hover:bg-gray-300 rounded-lg text-sm"
+                  className="flex h-12 w-full items-center px-4 py-2 text-black font-semibold hover:bg-gray-300 rounded-lg text-sm"
                 >
-                  <i className="fa fa-download text-white mx-2"></i>{" "}
-                  <span className="hidden md:block">
+                  <i className="fa fa-download text-black mx-2"></i>{" "}
+                  <span className="hidden md:block font-semibold">
                     {" "}
                     Download Job Description{" "}
                   </span>
                   <span className="block md:hidden">Description </span>
                 </button>
+                <div className="w-full h-0.5 bg-[#0A0F22]"></div>
+                {/* Share Button */}
                 <RWebShare
                   data={{
                     text: "Hey! Check out this internship opportunity at Anubhava- the internship fair!",
@@ -425,8 +434,8 @@ function Company() {
                   }}
                   onClick={() => console.log(window.location.href)}
                 >
-                  <button className="flex flex-col h-12 w-full items-center px-4 py-2 shadow-lg  bg-light-color text-white font-semibold hover:bg-gray-300 rounded-lg text-sm">
-                    <i className="fa fa-share text-white mx-2"></i>{" "}
+                  <button className="flex h-12 w-full items-center px-4 py-2 text-black font-semibold hover:bg-gray-300 rounded-lg text-sm">
+                    <i className="fa fa-share text-black mx-2"></i>{" "}
                     <span className="hidden md:block"> Share </span>
                     <span className="block md:hidden">Share </span>
                   </button>
@@ -464,6 +473,11 @@ function Company() {
             icon={"fa fa-building"}
             body={work_location}
           ></CompanyCard>
+          <CompanyCard
+            title={"Eligibility"}
+            icon={"fa fa-users-gear"}
+            body={data.eligibility}
+          ></CompanyCard>
           {/* <CompanyCard
             title={"Count"}
             icon={"fa fa-building"}
@@ -484,10 +498,10 @@ function Company() {
       <div
         className={`${
           !loading ? "opacity-100" : "opacity-50"
-        } flex flex-col md:mx-16 md:my-16 mx-3 my-8 md:gap-10 gap-0 text-center`}
+        } flex flex-col md:mx-16 md:my-16 mx-3 my-8 md:gap-10 gap-0 text-center p-8 border-black border-4`}
       >
-        <h1 className="font-bold md:text-4xl text-3xl text-white">
-          Job Profiles <span className="text-white">and their description</span>
+        <h1 className="font-bold md:text-4xl text-3xl text-black">
+          Job Profiles <span className="text-black">and their description</span>
         </h1>
         <ReactElasticCarousel
           easing="cubic-bezier(1,.15,.55,1.54)"
