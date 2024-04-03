@@ -344,11 +344,14 @@ function Company() {
                 {data.name}{" "}
               </h1>
               <div className="w-[150px] h-[150px] mt-4 bg-light-color rounded-md items-center justify-center flex overflow-hidden">
-                {/* <img className='object-contain h-full w-full' src={data.image}></img> */}
                 <img
                   className="object-contain h-full w-full"
-                  src="https://th.bing.com/th/id/R.ea54db5822a3b2fdbd590b49c57d8033?rik=h7e4LIz%2bY8DMwg&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fyio%2f69M%2fyio69MBoT.jpg&ehk=XuNU9Y%2fhF72ZA3cHcWcAlucA5DA0wl1zzkrLCOAL8%2bs%3d&risl=&pid=ImgRaw&r=0"
+                  src={data.image}
                 ></img>
+                {/* <img
+                  className="object-contain h-full w-full"
+                  src="https://th.bing.com/th/id/R.ea54db5822a3b2fdbd590b49c57d8033?rik=h7e4LIz%2bY8DMwg&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fyio%2f69M%2fyio69MBoT.jpg&ehk=XuNU9Y%2fhF72ZA3cHcWcAlucA5DA0wl1zzkrLCOAL8%2bs%3d&risl=&pid=ImgRaw&r=0"
+                ></img> */}
               </div>
             </div>
           </div>
@@ -377,7 +380,10 @@ function Company() {
             <div className="basis-6/12 w-30">
               <h1 className="text-dark-color md:text-4xl text-start md:mb-0 mb-3 text-3xl font-bold">
                 {" "}
-                About the<span className="text-white"> Company</span>{" "}
+                ABOUT THE<span className="text-primary-newblue">
+                  {" "}
+                  COMPANY
+                </span>{" "}
               </h1>
             </div>
             <div className="flex flex-row w-full md:basis-6/12 auto md:w-64 justify-between">
@@ -391,8 +397,8 @@ function Company() {
                             flex flex-col h-12 w-full items-center px-4 py-2 shadow-lg bg-primary-color text-light-color hover:bg-primary-light
                           mr-10 font-semibold rounded-lg text-sm`}
                 >
-                  <i className="fa fa-check text-light-color mx-2 "></i> Apply
-                  now!
+                  <i className="fa fa-check text-light-color mx-2 "></i> APPLY
+                  NOW!
                 </button>
                 <h1 className="text-red-500 font-semibold text-base ">
                   *Applicants can apply to maximum 20 companies!
@@ -458,11 +464,11 @@ function Company() {
             icon={"fa fa-building"}
             body={work_location}
           ></CompanyCard>
-          <CompanyCard
+          {/* <CompanyCard
             title={"Count"}
             icon={"fa fa-building"}
             body={count}
-          ></CompanyCard>
+          ></CompanyCard> */}
 
           {/* {NEED TO COMPLETE THE ONE BELOW} */}
           {data.job_profile_description ? (

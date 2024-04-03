@@ -28,6 +28,8 @@ module.exports = {
         "primary-gray": "#737373", // Can be changed 1
         "primary-gray2": "#475363", // Can be changed 1
         "primary-third": "#212234", // Can be changed 1
+        "primary-newblue": "#56B2BB", // Can be changed 1
+        "primary-newdarkblue": "#1D2233", // Can be changed 1
       },
     },
   },
