@@ -330,8 +330,11 @@ export default function AccountPage() {
     // trigger the click event
     input.click();
   };
+  const handleViewResume = () => {
+    alert("View Resume Failed");
+  };
   return (
-    <div className="md:mt-20 mt-[65px] flex flex-col items-center justify-center">
+    <div className="md:mt-20 mt-[65px] flex flex-col items-center justify-center ">
       <DotLoader
         cssOverride={{
           display: "block",
@@ -349,21 +352,99 @@ export default function AccountPage() {
         loading={loading}
       />
 
-      <PageBanner image={person} bannerText=" My Profile" />
+      <PageBanner image={person} bannerText={`Welcome ${user.displayName}`} />
 
       <div
         className={`${
           !loading ? "opacity-100 " : "opacity-50"
         } flex flex-col gap-4 md:gap-8 md:px-10 px-4 items-center justify-center`}
       >
-        <div>
-          <motion.button
+        <div className="border border-gray-300 p-4 w-96 md:w-[860px]">
+          <h1 className="text-primary-color text-lg font-semibold mb-2">
+            Profile
+          </h1>
+          <div className="flex flex-col text-black">
+            <h1 className="text-lg font-semibold">Your Email</h1>
+            <h1 className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color">
+              {user ? user.email : "No applications yet"}
+            </h1>
+          </div>
+
+          <div className="flex flex-col text-black">
+            <h1 className="text-lg font-semibold">Number of applications</h1>
+            <h1 className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color">
+              {applied}
+            </h1>
+          </div>
+
+          <div className="flex flex-col text-black">
+            <h1 className="text-lg font-semibold">
+              Contact Number <span className="text-red-500">*</span>
+            </h1>
+            <input
+              disabled={loading}
+              value={contactNumber}
+              onChange={(e) => handleContactNumberChange(e.target.value)}
+              id="contact_number"
+              type="number"
+              placeholder="Enter your contact number"
+              className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color"
+            />
+          </div>
+
+          <div className="flex flex-col text-black">
+            <h1 className="text-lg font-semibold">
+              College <span className="text-red-500">*</span>
+            </h1>
+            <input
+              disabled={loading}
+              value={college}
+              onChange={(e) => handleCollegeChange(e.target.value)}
+              id="course"
+              type="text"
+              placeholder="Enter your College name"
+              className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color"
+            />
+          </div>
+
+          <div className="flex flex-col text-black">
+            <h1 className="text-lg font-semibold">
+              Course <span className="text-red-500">*</span>
+            </h1>
+            <input
+              disabled={loading}
+              value={course}
+              onChange={(e) => handleCourseChange(e.target.value)}
+              id="course"
+              type="text"
+              placeholder="Enter your course name"
+              className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color"
+            />
+          </div>
+
+          <div className="flex flex-col text-black">
+            <h1 className="text-lg font-semibold">
+              Year of Study <span className="text-red-500">*</span>
+            </h1>
+            <input
+              disabled={loading}
+              value={yearOfStudy}
+              onChange={(e) => handleYearOfStudyChange(e.target.value)}
+              id="year_of_study"
+              type="number"
+              placeholder="Enter your current year of study"
+              className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color"
+            />
+          </div>
+        </div>
+
+        {/* <motion.button
             disabled={loading}
             whileTap={{ scale: 0.9 }}
             onClick={handleUploadClick}
             className={`${
               loading ? "" : "hover:bg-primary-light"
-            } cursor-pointer md:w-[860px] md:h-[72px] bg-white text-primary-new font-bold py-2 px-4 rounded-lg mt-10 flex items-center justify-center flex-row gap-2 `}
+            } cursor-pointer w-96 md:w-[860px] h-12 bg-white text-primary-new font-bold py-2 px-4 rounded-lg mt-10 flex items-center justify-center flex-row gap-2 `}
           >
             <svg
               width="17"
@@ -378,93 +459,36 @@ export default function AccountPage() {
               />
             </svg>
             Upload your Resume
-          </motion.button>
+          </motion.button> */}
+
+        <div className="flex flex-col w-full md:w-[860px] mb-4">
+          <h1 className="text-primary-color text-3xl font-semibold mb-2">
+            Resume
+          </h1>
+          <div className="flex flex-row gap-4">
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={handleViewResume}
+              className={`${
+                loading ? "" : "hover:bg-primary-light"
+              } cursor-pointer w-38 md:w-[158px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
+            >
+              <i className="fa fa-eye text-white mr-2"></i>View Resume
+            </motion.button>
+            <motion.button
+              disabled={loading}
+              whileTap={{ scale: 0.9 }}
+              onClick={handleUploadClick}
+              className={`${
+                loading ? "" : "hover:bg-primary-light"
+              } cursor-pointer w-38 md:w-[180px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
+            >
+              <i className="fa fa-upload text-white mr-2"></i>Upload Resume
+            </motion.button>
+          </div>
           <div className="w-full flex flex-row items-end justify-end text-red-500">
             max file size: 1MB
           </div>
-        </div>
-
-        <div className="flex flex-col text-white">
-          <h1 className="text-red-500 text-base font-semibold mb-5">
-            *Profile can be updated every 10 mins
-          </h1>
-
-          <h1 className="text-lg font-semibold">Your Email</h1>
-          <h1
-            id="number_of_applications"
-            className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color w-72 md:w-[860px]"
-          >
-            {user ? user.email : "No applications yet"}
-          </h1>
-        </div>
-        <div className="flex flex-col text-white">
-          <h1 className="text-lg font-semibold">Number of applications</h1>
-          <h1
-            id="number_of_applications"
-            className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color w-72 md:w-[860px]"
-          >
-            {applied}
-          </h1>
-        </div>
-
-        <div className="flex flex-col text-white">
-          <h1 className="text-lg font-semibold">
-            Contact Number <span className="text-red-500">*</span>
-          </h1>
-          <input
-            disabled={loading}
-            value={contactNumber}
-            onChange={(e) => handleContactNumberChange(e.target.value)}
-            id="contact_number"
-            type="number"
-            placeholder="Enter your contact number"
-            className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color w-72 md:w-[860px]"
-          />
-        </div>
-
-        <div className="flex flex-col text-white">
-          <h1 className="text-lg font-semibold">
-            College <span className="text-red-500">*</span>
-          </h1>
-          <input
-            disabled={loading}
-            value={college}
-            onChange={(e) => handleCollegeChange(e.target.value)}
-            id="course"
-            type="text"
-            placeholder="Enter your College name"
-            className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color w-72 md:w-[860px]"
-          />
-        </div>
-
-        <div className="flex flex-col text-white">
-          <h1 className="text-lg font-semibold">
-            Course <span className="text-red-500">*</span>
-          </h1>
-          <input
-            disabled={loading}
-            value={course}
-            onChange={(e) => handleCourseChange(e.target.value)}
-            id="course"
-            type="text"
-            placeholder="Enter your course name"
-            className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color w-72 md:w-[860px]"
-          />
-        </div>
-
-        <div className="flex flex-col text-white">
-          <h1 className="text-lg font-semibold">
-            Year of Study <span className="text-red-500">*</span>
-          </h1>
-          <input
-            disabled={loading}
-            value={yearOfStudy}
-            onChange={(e) => handleYearOfStudyChange(e.target.value)}
-            id="year_of_study"
-            type="number"
-            placeholder="Enter your current year of study"
-            className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color w-72 md:w-[860px]"
-          />
         </div>
       </div>
       {Error && (
@@ -477,7 +501,7 @@ export default function AccountPage() {
         onClick={handleSubmit}
         className={`${
           !loading ? "opacity-100 hover:bg-primary-light" : "opacity-50"
-        } md:w-[420px] w-36 cursor-pointer md:h-[46px] rounded-lg bg-white text-primary-new  font-bold py-2 px-4 mt-10 flex items-center justify-center flex-row `}
+        } md:w-[420px] w-36 cursor-pointer h-12 rounded-lg bg-blue-800 text-white font-bold py-2 px-4 mt-10 flex items-center justify-center flex-row `}
       >
         Submit
       </motion.button>
@@ -485,10 +509,14 @@ export default function AccountPage() {
         onClick={handleLogOut}
         className={`${
           !loading ? "opacity-100 hover:bg-red-300" : "opacity-50"
-        } md:mb-20 mb-10 md:w-[420px] w-36 cursor-pointer md:h-[46px] rounded-lg bg-red-500 text-light-color font-bold py-2 px-4 mt-5 flex items-center justify-center flex-row `}
+        } md:mb-20 mb-10 md:w-[420px] w-36 cursor-pointer h-12 rounded-lg bg-red-500 text-light-color font-bold py-2 px-4 mt-5 flex items-center justify-center flex-row `}
       >
         Log Out
       </motion.button>
+      <h1 className="md:mb-20 mb-10 mt-5 text-black text-sm">
+        <span className="text-primary-color">Note:</span> Profile can only be
+        updated once every 10 minutes
+      </h1>
     </div>
   );
 }
