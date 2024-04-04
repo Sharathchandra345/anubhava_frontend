@@ -1,26 +1,22 @@
 .rec.rec-arrow {
-  /* @apply bg-primary-color; */
-  @apply text-light-color;
+  background-color: transparent !important;
+  border: none !important;
+  color: #000 !important;
+  transition: border 0.3s ease;
 }
-/* round buttons on hover */
 
 .rec.rec-arrow:hover {
-  /* @apply bg-primary-light !important; */
-  @apply text-light-color !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: 1px solid #000;
+  color: #000 !important;
 }
 
-.rec-dot {
-  @apply bg-primary-new;
-}
-
-.rec .rec-dot_active {
-  @apply bg-primary-color;
-  @apply border-primary-new;
+.rec-dot_active {
+  background-color: #36528b;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 1px 2px;
 }
 
-.dkEaAU:hover:enabled,
-.dkEaAU:focus:enabled {
-  /* @apply bg-primary-light !important; */
-  @apply text-light-color !important;
+.rec-dot {
+  background-color: #2b6cb0;
 }

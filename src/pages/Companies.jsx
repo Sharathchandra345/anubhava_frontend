@@ -287,7 +287,7 @@ function Companies() {
       />
       {!usersearched ? (
         <div className={`${!usersearched ? `visible` : `hidden`}`}>
-          <h1 className="text-2xl md:text-4xl text-yellow-400 font-medium content-center md:mt-16 md:mb-8 md:mx-16 mt-16 mb-6 mx-4">
+          <h1 className="text-2xl md:text-4xl text-primary-color font-medium content-center md:mt-16 md:mb-8 md:mx-16 mt-16 mb-6 mx-4">
             Our top recruiters!
           </h1>
           <div
