@@ -352,14 +352,20 @@ export default function AccountPage() {
         loading={loading}
       />
 
-      <PageBanner image={person} bannerText={`Welcome ${user.displayName}`} />
-
+      {/* <PageBanner image={person} bannerText={`Welcome ${user.displayName}`} /> */}
+      <div className="w-full flex justify-start">
+        <div className="m-10 h-20 w-1 bg-primary-color"></div>
+        <h1 className="text-4xl mt-10 pt-5 text-black font-semibold ">
+          Welcome,{" "}
+          <span className="text-primary-color">{user.displayName}</span>
+        </h1>
+      </div>
       <div
         className={`${
-          !loading ? "opacity-100 " : "opacity-50"
+          !loading ? "opacity-100 border-4 border-black " : "opacity-50"
         } flex flex-col gap-4 md:gap-8 md:px-10 px-4 items-center justify-center`}
       >
-        <div className="border border-gray-300 p-4 w-96 md:w-[860px]">
+        <div className="p-4 w-96 md:w-[860px]">
           <h1 className="text-primary-color text-lg font-semibold mb-2">
             Profile
           </h1>
@@ -460,35 +466,52 @@ export default function AccountPage() {
             </svg>
             Upload your Resume
           </motion.button> */}
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={handleSubmit}
+          className={`${
+            !loading ? "opacity-100 hover:bg-primary-light" : "opacity-50"
+          } md:w-[420px] w-36 cursor-pointer h-12 rounded-lg bg-blue-800 text-white font-bold py-2 px-4 mt-3 flex items-center justify-center flex-row `}
+        >
+          Submit
+        </motion.button>
 
         <div className="flex flex-col w-full md:w-[860px] mb-4">
           <h1 className="text-primary-color text-3xl font-semibold mb-2">
             Resume
           </h1>
-          <div className="flex flex-row gap-4">
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={handleViewResume}
-              className={`${
-                loading ? "" : "hover:bg-primary-light"
-              } cursor-pointer w-38 md:w-[158px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
-            >
-              <i className="fa fa-eye text-white mr-2"></i>View Resume
-            </motion.button>
-            <motion.button
-              disabled={loading}
-              whileTap={{ scale: 0.9 }}
-              onClick={handleUploadClick}
-              className={`${
-                loading ? "" : "hover:bg-primary-light"
-              } cursor-pointer w-38 md:w-[180px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
-            >
-              <i className="fa fa-upload text-white mr-2"></i>Upload Resume
-            </motion.button>
+          <div className="flex justify-around w-full">
+            <div className="flex flex-row space-x-4">
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={handleViewResume}
+                className={`${
+                  loading ? "" : "hover:bg-primary-light"
+                } cursor-pointer w-38 md:w-[158px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
+              >
+                <i className="fa fa-eye text-white mr-2"></i>View Resume
+              </motion.button>
+
+              <motion.button
+                disabled={loading}
+                whileTap={{ scale: 0.9 }}
+                onClick={handleUploadClick}
+                className={`${
+                  loading ? "" : "hover:bg-primary-light"
+                } cursor-pointer w-38 md:w-[180px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
+              >
+                <i className="fa fa-upload text-white mr-2"></i>Upload Resume
+              </motion.button>
+            </div>
           </div>
+
           <div className="w-full flex flex-row items-end justify-end text-red-500">
             max file size: 1MB
           </div>
+          <h1 className=" mt-5 text-black text-lg">
+            <span className="text-primary-color">Note:</span> Profile can only
+            be updated once every 10 minutes
+          </h1>
         </div>
       </div>
       {Error && (
@@ -497,26 +520,13 @@ export default function AccountPage() {
         </h1>
       )}
       <motion.button
-        whileTap={{ scale: 0.9 }}
-        onClick={handleSubmit}
-        className={`${
-          !loading ? "opacity-100 hover:bg-primary-light" : "opacity-50"
-        } md:w-[420px] w-36 cursor-pointer h-12 rounded-lg bg-blue-800 text-white font-bold py-2 px-4 mt-10 flex items-center justify-center flex-row `}
-      >
-        Submit
-      </motion.button>
-      <motion.button
         onClick={handleLogOut}
         className={`${
           !loading ? "opacity-100 hover:bg-red-300" : "opacity-50"
-        } md:mb-20 mb-10 md:w-[420px] w-36 cursor-pointer h-12 rounded-lg bg-red-500 text-light-color font-bold py-2 px-4 mt-5 flex items-center justify-center flex-row `}
+        } md:mb-10 mb-5 md:w-[420px] w-36 cursor-pointer h-12 rounded-lg bg-red-500 text-light-color font-bold py-2 px-4 mt-5 flex items-center justify-center flex-row `}
       >
         Log Out
       </motion.button>
-      <h1 className="md:mb-20 mb-10 mt-5 text-black text-sm">
-        <span className="text-primary-color">Note:</span> Profile can only be
-        updated once every 10 minutes
-      </h1>
     </div>
   );
 }
