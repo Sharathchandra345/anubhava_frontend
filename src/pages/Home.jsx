@@ -137,36 +137,36 @@ function Home() {
         </h1>
       </div>
 
-      {/* <HomeTimeline
+      <HomeTimeline
         timelineArray={[
           {
-            date: "12 April 2023",
+            date: "12th April",
             heading: "Registration",
             subheading: "Registration Opens!",
             body: "Visit our website to register for the fair. Once registered, you will receive more information about the fair and participating companies.",
           },
           {
-            date: "18 April 2023",
+            date: "18th April",
             heading: "Companies",
             subheading: "Companies shortlisted!",
             body: "Research each company and their unique internship profiles that cater to various interests and skill sets.",
           },
           {
-            date: "21 April 2023",
+            date: "21st April",
             heading: "Applications OUT",
             subheading: "Start applying!",
             body: "Registered students can now apply for internships in multiple companies for various profiles.",
           },
           {
-            date: "23 April 2023",
+            date: "23rd April",
             heading: "Final Selection",
             subheading: "Final Selection and offer letters!",
             body: "The hiring criteria of every organization is different and will be disclosed to the students as the procedure follows.",
           },
         ]}
-      /> */}
+      />
 
-      <NewHomeTimeline />
+      {/* <NewHomeTimeline /> */}
     </div>
   );
 }

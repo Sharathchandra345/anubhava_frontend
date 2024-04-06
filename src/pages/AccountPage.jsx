@@ -406,8 +406,26 @@ export default function AccountPage() {
     input.click();
   };
   const handleViewResume = () => {
-    alert("View Resume Failed");
+    // Retrieve the resume URL from local storage
+    const userData = JSON.parse(localStorage.getItem(user.uid));
+    const resumeURL = userData && userData.resume;
+
+    // Check if the resumeURL exists
+    if (resumeURL) {
+      // Open the resume in a new tab
+      window.open(resumeURL, "_blank");
+    } else {
+      // If resumeURL doesn't exist, show an error message
+      MySwal.fire({
+        title: "Error",
+        text: "Resume not found",
+        icon: "error",
+        confirmButtonColor: "#36528b", // primary-color
+        confirmButtonText: "Ok",
+      });
+    }
   };
+
   return (
     <div className="md:mt-20 mt-[65px] flex flex-col items-center justify-center ">
       <DotLoader
@@ -550,6 +568,51 @@ export default function AccountPage() {
               </div>
             </div>
           </div>
+        </div>
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={handleSubmit}
+          className={`${
+            !loading ? "opacity-100 hover:bg-primary-light" : "opacity-50"
+          } md:w-[200px] w-26 cursor-pointer h-12 rounded-lg bg-blue-800 text-white font-bold py-2 px-4 flex items-center justify-center flex-row `}
+        >
+          Submit
+        </motion.button>
+        <div className="flex flex-col w-full md:w-[860px] mb-4">
+          <h1 className="text-primary-color text-3xl font-semibold mb-2">
+            Resume
+          </h1>
+          <div className="flex justify-around w-full">
+            <div className="flex flex-row space-x-4">
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={handleViewResume}
+                className={`${
+                  loading ? "" : "hover:bg-primary-light"
+                } cursor-pointer w-38 md:w-[158px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
+              >
+                <i className="fa fa-eye text-white mr-2"></i>View Resume
+              </motion.button>
+
+              <motion.button
+                disabled={loading}
+                whileTap={{ scale: 0.9 }}
+                onClick={handleUploadClick}
+                className={`${
+                  loading ? "" : "hover:bg-primary-light"
+                } cursor-pointer w-38 md:w-[180px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
+              >
+                <i className="fa fa-upload text-white mr-2"></i>Upload Resume
+              </motion.button>
+            </div>
+          </div>
+          <div className="w-full flex flex-row items-end justify-end text-red-500">
+            max file size: 1MB
+          </div>
+          <h1 className=" mt-5 text-black text-lg">
+            <span className="text-primary-color">Note:</span> Profile can only
+            be updated once every 10 minutes
+          </h1>
         </div>
       </div>
 
