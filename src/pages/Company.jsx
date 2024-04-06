@@ -341,7 +341,7 @@ function Company() {
                 {" "}
                 {data.name}{" "}
               </h1>
-              <div className="w-[150px] h-[150px] mt-4 bg-light-color rounded-md items-center justify-center flex overflow-hidden">
+              <div className="w-[150px] h-[150px] mt-4 bg-light-color -md items-center justify-center flex overflow-hidden">
                 <img
                   className="object-contain h-full w-full"
                   src={data.image}
@@ -382,13 +382,13 @@ function Company() {
                 </div>
               </div>
               {/* APPLY NOW, DOWNLOAD, AND SHARE BUTTONS (50% width) */}
-              <div className="md:w-1/2 flex flex-col md:gap-4 gap-4">
+              <div className="md:w-1/2 flex flex-col md:gap-4 gap-4 ">
                 {/* Apply Now Button */}
                 <button
                   id="apply_button"
                   disabled={loading}
                   onClick={() => handleApply()}
-                  className={`flex h-12 w-full items-center px-4 py-4 text-black font-semibold hover:bg-gray-300 rounded-lg text-lg`}
+                  className={`flex h-12 w-full items-center px-4 py-4 text-black font-bold hover:bg-gray-300  text-lg`}
                 >
                   APPLY&nbsp;
                   <span className="text-primary-color"> NOW!</span>
@@ -400,9 +400,9 @@ function Company() {
                 {/* Download Job Description Button */}
                 <button
                   onClick={handleDownload}
-                  className="flex h-12 w-full items-center px-4 py-4 text-black font-semibold hover:bg-gray-300 rounded-lg text-lg"
+                  className="flex h-12 w-full items-center px-4 py-4 text-black font-bold hover:bg-gray-300  text-lg"
                 >
-                  <span className="hidden md:block font-semibold">
+                  <span className="hidden md:block font-bold">
                     DOWNLOAD JOB{" "}
                     <span className="text-primary-color">DESCRIPTION</span>
                   </span>
@@ -421,7 +421,7 @@ function Company() {
                   }}
                   onClick={() => console.log(window.location.href)}
                 >
-                  <button className="flex h-12 w-full items-center px-4 py-2 text-primary-color font-semibold hover:bg-gray-300 rounded-lg text-lg">
+                  <button className="flex h-12 w-full items-center px-4 py-2 text-primary-color font-bold hover:bg-gray-300  text-lg">
                     <span className="hidden md:block">SHARE</span>
                     <span className="block md:hidden">SHARE</span>
                     <span className="ml-auto">

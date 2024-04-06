@@ -41,15 +41,15 @@ export default function Dropdown({ body, onNameChange }) {
       <motion.button
         whileTap={{ scale: 0.9 }}
         onClick={() => setShowDropdown(!showDropdown)}
-        className="bg-primary-newdarkblue text-dark-color font-medium rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline "
+        className="bg-primary-newdarkblue text-dark-color font-medium hover:bg-gray-100 focus:outline-none focus:shadow-outline "
       >
-        <div className="flex flex-col w-[350px] h-20  rounded-lg shadow-lg p-4 bg-primary-newdarkblue">
+        <div className="flex flex-col w-[250px] h-20 shadow-lg p-4 bg-primary-newdarkblue">
           <div className="flex flex-row gap-4">
             <div className="flex flex-col items-center">
-              <i className="fa fa-suitcase font-bold text-3xl mt-2 text-primary-color "></i>
+              <i className="fa fa-suitcase font-bold text-3xl mt-2 text-white "></i>
             </div>
             <div className="flex flex-col items-start justify-around">
-              <h1 className="text-primary-color text-lg font-bold">
+              <h1 className="text-white text-lg font-bold">
                 Profile(s) included
               </h1>
               <h1 className="text-white font-bold text-md">

@@ -28,7 +28,7 @@ const Footer = () => {
       </div>
 
       {/* Quick Links */}
-      <div className="text-yellow-400">
+      <div className="text-primary-color">
         <h1 className="text-2xl font-semibold mb-4">Quick Links</h1>
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-col text-white py-2 px-3">
@@ -73,7 +73,7 @@ const Footer = () => {
 
       {/* Contact Us Section */}
       <div>
-        <h1 className="text-2xl font-semibold text-yellow-400 mb-4">
+        <h1 className="text-2xl font-semibold text-primary-color mb-4">
           Contact Us
         </h1>
         <div className="flex gap-4 mb-4">

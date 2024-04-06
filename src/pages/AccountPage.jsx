@@ -14,9 +14,11 @@ export default function AccountPage() {
   const date = new Date("2024-04-30T00:00:00+05:30") > new Date();
   document.title = "Account";
   const [contactNumber, setContactNumber] = useState("");
+  const [age, setAge] = useState("");
   const [course, setCourse] = useState("");
   const [yearOfStudy, setYearOfStudy] = useState("");
   const [college, setCollege] = useState("");
+  const [city, setCity] = useState("");
   const [loading, setLoading] = useState(true);
   const [applied, setApplied] = useState(0);
   const { logOut, user } = UserAuth();
@@ -24,6 +26,14 @@ export default function AccountPage() {
   const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
 
+  const [screenSize, setScreenSize] = useState(window.innerWidth);
+  useEffect(() => {
+    function handleResize() {
+      setScreenSize(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [screenSize]);
   useEffect(() => {
     if (user.uid !== null && user.uid !== undefined) {
       // check if a key with the user's uid exists in the local storage
@@ -36,6 +46,9 @@ export default function AccountPage() {
             JSON.parse(localStorage.getItem(user.uid)).contactNumber
           );
         }
+        if (JSON.parse(localStorage.getItem(user.uid)).age) {
+          setAge(JSON.parse(localStorage.getItem(user.uid)).age);
+        }
         if (JSON.parse(localStorage.getItem(user.uid)).course) {
           setCourse(JSON.parse(localStorage.getItem(user.uid)).course);
         }
@@ -46,6 +59,9 @@ export default function AccountPage() {
         }
         if (JSON.parse(localStorage.getItem(user.uid)).college) {
           setCollege(JSON.parse(localStorage.getItem(user.uid)).college);
+        }
+        if (JSON.parse(localStorage.getItem(user.uid)).city) {
+          setCity(JSON.parse(localStorage.getItem(user.uid)).city);
         }
         if (JSON.parse(localStorage.getItem(user.uid)).applied) {
           setApplied(JSON.parse(localStorage.getItem(user.uid)).applied.length);
@@ -63,6 +79,9 @@ export default function AccountPage() {
             if (doc.data().contactNumber) {
               setContactNumber(doc.data().contactNumber);
             }
+            if (doc.data().age) {
+              setAge(doc.data().age);
+            }
             if (doc.data().course) {
               setCourse(doc.data().course);
             }
@@ -71,6 +90,9 @@ export default function AccountPage() {
             }
             if (doc.data().college) {
               setCollege(doc.data().college);
+            }
+            if (doc.data().city) {
+              setCity(doc.data().city);
             }
             // applied is an array of strings which contains the id of the job the user has applied to
             if (doc.data().applied) {
@@ -207,7 +229,11 @@ export default function AccountPage() {
       course === "" ||
       yearOfStudy === "" ||
       college === 0 ||
-      college === ""
+      college === "" ||
+      age === 0 ||
+      age === "" ||
+      city === 0 ||
+      city === ""
     ) {
       MySwal.fire({
         title: "Error",
@@ -240,10 +266,12 @@ export default function AccountPage() {
         name: user.displayName,
         email: user.email,
         contactNumber: contactNumber,
+        age: age,
         course: course,
         yearOfStudy: yearOfStudy,
         college: college,
-        // check if key exists in loca storage if it does then check if the user has applied or not if not then 0 else number of applications
+        city: city,
+        // check if key exists in local storage if it does then check if the user has applied or not if not then 0 else number of applications
         applied: temp_arr,
       },
       { merge: true }
@@ -259,9 +287,11 @@ export default function AccountPage() {
             email: user.email,
             resume: JSON.parse(localStorage.getItem(user.uid)).resume || "",
             contactNumber: contactNumber,
+            age: age,
             course: course,
             yearOfStudy: yearOfStudy,
             college: college,
+            city: city,
             applied: temp_arr,
           })
         );
@@ -270,7 +300,7 @@ export default function AccountPage() {
           title: "Success!",
           text: "Changes have been saved, Please proceed to apply for the internship",
           icon: "success",
-          confirmButtonColor: "#36528b", // primary-color
+          confirmButtonColor: "#36528b",
           confirmButtonText: "Ok",
         }).then(() => {
           localStorage.setItem("timeOut", JSON.stringify(new Date()));
@@ -286,9 +316,51 @@ export default function AccountPage() {
     }
   };
 
+  const renderItems = () => {
+    const [companiesData, setCompaniesData] = useState([]);
+    async function fetchData() {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          "https://anubhava-backend.vercel.app/companies"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        setCompaniesData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    }
+
+    useEffect(() => {
+      fetchData();
+    }, []);
+
+    const desiredCompanyIds = [
+      "660c67b19bf977f2f9b28724",
+      "660d6220ebae1b9a81fda064",
+      "660d644260ce725d5b3fba33",
+      "660d869749e45047833d5d2e",
+    ];
+
+    // Filter companies based on desiredCompanyIds
+    const filteredCompanies = companiesData.filter((company) =>
+      desiredCompanyIds.includes(company._id)
+    );
+
+    return filteredCompanies;
+  };
+
   // Function to change the value of the contact number if the user changes it
   const handleContactNumberChange = (val) => {
     setContactNumber(val);
+  };
+  const handleAgeChange = (val) => {
+    setAge(val);
   };
   // Function to change the value of the course if the user changes it
   const handleCourseChange = (val) => {
@@ -300,6 +372,9 @@ export default function AccountPage() {
   };
   const handleCollegeChange = (val) => {
     setCollege(val);
+  };
+  const handleCityChange = (val) => {
+    setCity(val);
   };
 
   const clickHandler = () => {
@@ -366,159 +441,173 @@ export default function AccountPage() {
         } flex flex-col gap-4 md:gap-8 md:px-10 px-4 items-center justify-center`}
       >
         <div className="p-4 w-96 md:w-[860px]">
-          <h1 className="text-primary-color text-lg font-semibold mb-2">
+          <h1 className="text-primary-color text-3xl font-semibold mb-4">
             Profile
           </h1>
-          <div className="flex flex-col text-black">
-            <h1 className="text-lg font-semibold">Your Email</h1>
-            <h1 className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color">
-              {user ? user.email : "No applications yet"}
-            </h1>
-          </div>
-
-          <div className="flex flex-col text-black">
-            <h1 className="text-lg font-semibold">Number of applications</h1>
-            <h1 className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color">
+          <div className="flex flex-row justify-start text-black mb-4">
+            <h1 className="text-lg font-semibold">Number of applications: </h1>
+            <h1 className="bg-transparent focus:outline-none focus:border-primary-color text-lg ml-1">
               {applied}
             </h1>
           </div>
+          <div className="flex flex-row">
+            {/* Left Column */}
+            <div className="d1 flex justify-center items-center h-full">
+              <h2 className="text-black text-xl font-semibold mt-8 mb-2">
+                Basic Info
+              </h2>
+            </div>
 
-          <div className="flex flex-col text-black">
-            <h1 className="text-lg font-semibold">
-              Contact Number <span className="text-red-500">*</span>
-            </h1>
-            <input
-              disabled={loading}
-              value={contactNumber}
-              onChange={(e) => handleContactNumberChange(e.target.value)}
-              id="contact_number"
-              type="number"
-              placeholder="Enter your contact number"
-              className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color"
-            />
-          </div>
-
-          <div className="flex flex-col text-black">
-            <h1 className="text-lg font-semibold">
-              College <span className="text-red-500">*</span>
-            </h1>
-            <input
-              disabled={loading}
-              value={college}
-              onChange={(e) => handleCollegeChange(e.target.value)}
-              id="course"
-              type="text"
-              placeholder="Enter your College name"
-              className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color"
-            />
-          </div>
-
-          <div className="flex flex-col text-black">
-            <h1 className="text-lg font-semibold">
-              Course <span className="text-red-500">*</span>
-            </h1>
-            <input
-              disabled={loading}
-              value={course}
-              onChange={(e) => handleCourseChange(e.target.value)}
-              id="course"
-              type="text"
-              placeholder="Enter your course name"
-              className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color"
-            />
-          </div>
-
-          <div className="flex flex-col text-black">
-            <h1 className="text-lg font-semibold">
-              Year of Study <span className="text-red-500">*</span>
-            </h1>
-            <input
-              disabled={loading}
-              value={yearOfStudy}
-              onChange={(e) => handleYearOfStudyChange(e.target.value)}
-              id="year_of_study"
-              type="number"
-              placeholder="Enter your current year of study"
-              className="bg-transparent border-b-2 border-gray-500 focus:outline-none focus:border-primary-color"
-            />
-          </div>
-        </div>
-
-        {/* <motion.button
-            disabled={loading}
-            whileTap={{ scale: 0.9 }}
-            onClick={handleUploadClick}
-            className={`${
-              loading ? "" : "hover:bg-primary-light"
-            } cursor-pointer w-96 md:w-[860px] h-12 bg-white text-primary-new font-bold py-2 px-4 rounded-lg mt-10 flex items-center justify-center flex-row gap-2 `}
-          >
-            <svg
-              width="17"
-              height="20"
-              viewBox="0 0 17 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.5 0H2.5C1.4 0 0.51 0.9 0.51 2L0.5 18C0.5 19.1 1.39 20 2.49 20H14.5C15.6 20 16.5 19.1 16.5 18V6L10.5 0ZM14.5 18H2.5V2H9.5V7H14.5V18ZM4.5 13.01L5.91 14.42L7.5 12.84V17H9.5V12.84L11.09 14.43L12.5 13.01L8.51 9L4.5 13.01Z"
-                fill="#FEFEFE"
-              />
-            </svg>
-            Upload your Resume
-          </motion.button> */}
-        <motion.button
-          whileTap={{ scale: 0.9 }}
-          onClick={handleSubmit}
-          className={`${
-            !loading ? "opacity-100 hover:bg-primary-light" : "opacity-50"
-          } md:w-[420px] w-36 cursor-pointer h-12 rounded-lg bg-blue-800 text-white font-bold py-2 px-4 mt-3 flex items-center justify-center flex-row `}
-        >
-          Submit
-        </motion.button>
-
-        <div className="flex flex-col w-full md:w-[860px] mb-4">
-          <h1 className="text-primary-color text-3xl font-semibold mb-2">
-            Resume
-          </h1>
-          <div className="flex justify-around w-full">
-            <div className="flex flex-row space-x-4">
-              <motion.button
-                whileTap={{ scale: 0.9 }}
-                onClick={handleViewResume}
-                className={`${
-                  loading ? "" : "hover:bg-primary-light"
-                } cursor-pointer w-38 md:w-[158px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
-              >
-                <i className="fa fa-eye text-white mr-2"></i>View Resume
-              </motion.button>
-
-              <motion.button
-                disabled={loading}
-                whileTap={{ scale: 0.9 }}
-                onClick={handleUploadClick}
-                className={`${
-                  loading ? "" : "hover:bg-primary-light"
-                } cursor-pointer w-38 md:w-[180px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
-              >
-                <i className="fa fa-upload text-white mr-2"></i>Upload Resume
-              </motion.button>
+            {/* Right Column */}
+            <div className="d2 flex flex-col ml-11">
+              <div className="flex flex-col text-black pl-4">
+                {/* Age Input */}
+                <input
+                  disabled={loading}
+                  value={age}
+                  onChange={(e) => handleAgeChange(e.target.value)}
+                  id="age"
+                  type="number"
+                  inputMode="numeric"
+                  placeholder="Enter your Age"
+                  className="bg-transparent focus:outline-none focus:border-primary-color"
+                />
+              </div>
+              <div className="flex flex-col text-black pl-4">
+                {/* User Email */}
+                <h1 className="bg-transparent focus:outline-none focus:border-primary-color">
+                  {user ? user.email : "No applications yet"}
+                </h1>
+              </div>
+              <div className="flex flex-col text-black pl-4">
+                {/* Contact Number Input */}
+                <input
+                  disabled={loading}
+                  value={contactNumber}
+                  onChange={(e) => handleContactNumberChange(e.target.value)}
+                  id="contact_number"
+                  type="text"
+                  placeholder="Enter your contact number"
+                  className="bg-transparent focus:outline-none focus:border-primary-color"
+                />
+              </div>
+              <div className="flex flex-col text-black pl-4">
+                {/* City Input */}
+                <input
+                  disabled={loading}
+                  value={city}
+                  onChange={(e) => handleCityChange(e.target.value)}
+                  id="city"
+                  type="text"
+                  placeholder="Enter your City name"
+                  className="bg-transparent focus:outline-none focus:border-primary-color mb-5"
+                />
+              </div>
             </div>
           </div>
-
-          <div className="w-full flex flex-row items-end justify-end text-red-500">
-            max file size: 1MB
+          <div className="flex flex-row">
+            <div className="d1 flex justify-center items-center h-full">
+              <h2 className="text-black text-xl font-semibold mb-2">
+                College Info
+              </h2>
+            </div>
+            <div className="d2 flex flex-col ml-6">
+              <div className="flex flex-col text-black pl-4">
+                {/* <h1 className="text-lg font-semibold">College:</h1> */}
+                <input
+                  disabled={loading}
+                  value={college}
+                  onChange={(e) => handleCollegeChange(e.target.value)}
+                  id="course"
+                  type="text"
+                  placeholder="Enter your College name"
+                  className="bg-transparent focus:outline-none focus:border-primary-color"
+                />
+              </div>
+              <div className="flex flex-col text-black pl-4">
+                {/* <h1 className="text-lg font-semibold">Course:</h1> */}
+                <input
+                  disabled={loading}
+                  value={course}
+                  onChange={(e) => handleCourseChange(e.target.value)}
+                  id="course"
+                  type="text"
+                  placeholder="Enter your course name"
+                  className="bg-transparent focus:outline-none focus:border-primary-color"
+                />
+              </div>
+              <div className="flex flex-col text-black pl-4">
+                {/* <h1 className="text-lg font-semibold">Year of Study:</h1> */}
+                <input
+                  disabled={loading}
+                  value={yearOfStudy}
+                  onChange={(e) => handleYearOfStudyChange(e.target.value)}
+                  id="year_of_study"
+                  type="number"
+                  placeholder="Enter your current year of study"
+                  className="bg-transparent focus:outline-none focus:border-primary-color"
+                />
+              </div>
+            </div>
           </div>
-          <h1 className=" mt-5 text-black text-lg">
-            <span className="text-primary-color">Note:</span> Profile can only
-            be updated once every 10 minutes
-          </h1>
         </div>
       </div>
+
       {Error && (
         <h1 className="mt-10 text-red-500 text-xl font-semibold">
           No Data found! Please fill the form!{" "}
         </h1>
       )}
+      <div className="flex justify-start">
+        <h1 className="text-3xl mt-10 pt-5 text-black font-semibold mb-10 ">
+          TOP <span className="text-primary-color">COMPANIES</span>
+        </h1>
+      </div>
+      {/* Displaying Company Cards */}
+      <div
+        className={`${
+          !loading ? `opacity-100` : `opacity-50`
+        } grid grid-cols-2 md:grid-cols-4 md:gap-4 gap-2 md:px-16 px-4 mb-10`}
+      >
+        {/* Render company cards here */}
+        {/* Assuming renderItems() returns an array of company data */}
+        {renderItems().map((company) => (
+          <motion.button key={company._id}>
+            <div
+              onClick={() => window.open(`/companies/${company._id}`, "_blank")}
+              className="max-h-50 w-full flex flex-col overflow-hidden companycard"
+              style={{ backgroundColor: "#0B0F1B" }}
+            >
+              <div className="w-full h-40 bg-light-color overflow-hidden flex items-center justify-center">
+                {company.image ? (
+                  <img
+                    className="object-cover h-full w-auto"
+                    src={company.image}
+                    alt={company.name}
+                  />
+                ) : (
+                  <img
+                    className="object-cover h-full w-auto"
+                    src="https://th.bing.com/th/id/R.ea54db5822a3b2fdbd590b49c57d8033?rik=h7e4LIz%2bY8DMwg&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fyio%2f69M%2fyio69MBoT.jpg&ehk=XuNU9Y%2fhF72ZA3cHcWcAlucA5DA0wl1zzkrLCOAL8%2bs%3d&risl=&pid=ImgRaw&r=0"
+                    alt="No Image Available"
+                  />
+                )}
+              </div>
+              <div className="w-full h-1/5 flex items-center justify-center companyName">
+                <h1 className="text-xl text-light-color font-medium text-center cnamediv">
+                  {screenSize < 768
+                    ? company.name.length > 10
+                      ? company.name.substring(0, 10) + "..."
+                      : company.name
+                    : company.name}
+                </h1>
+              </div>
+            </div>
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Logout Button */}
       <motion.button
         onClick={handleLogOut}
         className={`${

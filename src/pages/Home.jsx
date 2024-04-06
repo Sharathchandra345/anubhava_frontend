@@ -41,17 +41,17 @@ function Home() {
       </p>
       <div className="flex items-center justify-center">
         <h1 className="text-3xl md:my-5 my-3 md:text-4xl font-bold">
-          <span className="text-white">OUR</span>{" "}
-          <span className="text-yellow-400">PROMINENT</span>{" "}
-          <span className="text-white">RECRUITERS</span>
+          <span className="text-black">OUR</span>{" "}
+          <span className="text-primary-color">PROMINENT</span>{" "}
+          <span className="text-black">RECRUITERS</span>
         </h1>
       </div>
       <HomeImageContinueScroll />
 
       <div className="flex items-center justify-center">
         <h1 className="text-3xl md:my-5 my-3 md:text-4xl font-bold">
-          <span className="text-yellow-400">MEDIA</span>{" "}
-          <span className="text-white">SPONSORS</span>
+          <span className="text-primary-color">MEDIA</span>{" "}
+          <span className="text-black">SPONSORS</span>
         </h1>
       </div>
       <div className="hidden md:flex fixed right-0 top-1/2 transform -translate-y-1/2 flex flex-col gap-4 z-50 bg-gray-600 p-4 rounded-lg">
@@ -114,8 +114,8 @@ function Home() {
 
       <div className="flex items-center justify-center">
         <h1 className="text-3xl md:my-5 my-3 md:text-4xl font-bold">
-          <span className="text-yellow-400">PAST</span>{" "}
-          <span className="text-white">STATISTICS</span>
+          <span className="text-primary-color">PAST</span>{" "}
+          <span className="text-black">STATISTICS</span>
         </h1>
       </div>
 
@@ -133,7 +133,7 @@ function Home() {
 
       <div className="flex items-center justify-center">
         <h1 className="text-3xl md:my-5 my-3 md:text-4xl font-bold">
-          <span className="text-yellow-400">TIMELINE</span>
+          <span className="text-primary-color">TIMELINE</span>
         </h1>
       </div>
 

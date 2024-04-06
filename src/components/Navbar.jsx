@@ -10,7 +10,7 @@ function Button({ text, bg }) {
   return (
     <div>
       <div
-        className={`cursor-pointer text-yellow-400 border-2 border-yellow-400 px-4 py-4 ml-12 rounded-md 
+        className={`cursor-pointer text-primary-color border-2 border-primary-color px-4 py-4 ml-12 rounded-md 
           bg-black
         }`}
       >
@@ -99,7 +99,7 @@ function Navbar() {
               link="/"
               bg={
                 location.pathname === "/"
-                  ? "bg-black text-yellow-400 font-bold"
+                  ? "bg-black text-primary-color font-bold"
                   : " bg-black text-white"
               }
             />
@@ -109,7 +109,7 @@ function Navbar() {
               link="/about"
               bg={
                 location.pathname == "/about"
-                  ? "bg-black text-yellow-400 font-bold"
+                  ? "bg-black text-primary-color font-bold"
                   : "bg-black text-white"
               }
             />
@@ -119,7 +119,7 @@ function Navbar() {
               link="/companies"
               bg={
                 location.pathname.includes("compan")
-                  ? "bg-black text-yellow-400 font-bold"
+                  ? "bg-black text-primary-color font-bold"
                   : "bg-black text-white"
               }
             />
@@ -129,7 +129,7 @@ function Navbar() {
               link="/how-to-apply"
               bg={
                 location.pathname == "/how-to-apply"
-                  ? "bg-black text-yellow-400 font-bold"
+                  ? "bg-black text-primary-color font-bold"
                   : "bg-black text-white"
               }
             />
@@ -139,7 +139,7 @@ function Navbar() {
               link="/resources"
               bg={
                 location.pathname == "/resources"
-                  ? "bg-black text-yellow-400 font-bold"
+                  ? "bg-black text-primary-color font-bold"
                   : "bg-black text-white"
               }
             />
@@ -149,7 +149,7 @@ function Navbar() {
               link="/contact-us"
               bg={
                 location.pathname == "/contact-us"
-                  ? "bg-black text-yellow-400 font-bold"
+                  ? "bg-black text-primary-color font-bold"
                   : "bg-black text-white"
               }
             />
