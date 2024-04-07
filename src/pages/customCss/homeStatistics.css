@@ -65,3 +65,8 @@
 .right-Hexagon {
   margin-left: auto; /* Align to the right */
 }
+.Hexagon-svg {
+  width: 100px; /* Adjust size as needed */
+  height: auto; /* Adjust size as needed */
+  fill: blue; /* Adjust color as needed */
+}

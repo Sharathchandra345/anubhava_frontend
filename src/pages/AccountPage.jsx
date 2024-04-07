@@ -589,7 +589,7 @@ export default function AccountPage() {
                 onClick={handleViewResume}
                 className={`${
                   loading ? "" : "hover:bg-primary-light"
-                } cursor-pointer w-38 md:w-[158px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
+                } cursor-pointer w-full md:w-[158px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center flex-row`}
               >
                 <i className="fa fa-eye text-white mr-2"></i>View Resume
               </motion.button>
@@ -600,16 +600,16 @@ export default function AccountPage() {
                 onClick={handleUploadClick}
                 className={`${
                   loading ? "" : "hover:bg-primary-light"
-                } cursor-pointer w-38 md:w-[180px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center flex-row`}
+                } cursor-pointer w-full md:w-[180px] h-12 bg-primary-color text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center flex-row`}
               >
                 <i className="fa fa-upload text-white mr-2"></i>Upload Resume
               </motion.button>
             </div>
           </div>
-          <div className="w-full flex flex-row items-end justify-end text-red-500">
+          <div className="w-full flex flex-row items-end justify-end text-red-500 mt-4">
             max file size: 1MB
           </div>
-          <h1 className=" mt-5 text-black text-lg">
+          <h1 className=" mt-5 text-black text-lg sm:text-sm">
             <span className="text-primary-color">Note:</span> Profile can only
             be updated once every 10 minutes
           </h1>

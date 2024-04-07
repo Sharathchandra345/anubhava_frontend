@@ -26,7 +26,7 @@ export default function AboutBoardOfAdvisors({ images, text, special }) {
       <div className="fixed top-0 left-0 w-screen h-screen bg-dark-color bg-opacity-80 flex items-center justify-center z-50">
         <div className="p-8">
           <button
-            className="absolute top-10 right-10 text-light-color"
+            className="absolute top-10 right-10 text-primary-color"
             onClick={() => setIsModalOpen(false)}
           >
             <svg

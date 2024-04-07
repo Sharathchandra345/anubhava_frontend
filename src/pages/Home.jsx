@@ -165,7 +165,6 @@ function Home() {
           },
         ]}
       />
-
       {/* <NewHomeTimeline /> */}
     </div>
   );

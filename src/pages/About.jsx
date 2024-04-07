@@ -15,41 +15,30 @@ import AboutTopCards from "../components/AboutComponents/AboutTopCards";
 import PageBanner from "../components/PageBanner";
 import AboutBoardOfAdvisors from "../components/AboutComponents/AboutBoardOfAdvisors";
 import AboutCoreCommittee from "../components/AboutComponents/AboutCoreCommittee";
-import BOD1 from "../static/images/aboutpage/BOD_Dhruvi_Tyagi.png";
+import AboutCoreCommitteeBOD from "../components/AboutComponents/AboutCoreCommitteeBOD";
 
-import BOD2 from "../static/images/aboutpage/BOD_Hitesh_Ahuja.png";
-import BOD3 from "../static/images/aboutpage/BOD_Khushi_Jain.png";
-import BOD4 from "../static/images/aboutpage/BOD_Parth_Bhatia.png";
-import BOD5 from "../static/images/aboutpage/BOD_Shivansh_Sharma.png";
-import BOD6 from "../static/images/aboutpage/BOD_Uttam_Singh.png";
-const images = [
-  { img: BOD1, first: "Dhruvi", last: "Tyagi" },
-  { img: BOD2, first: "Hitesh", last: "Ahuja" },
-  { img: BOD3, first: "Khushi", last: "Jain" },
-  { img: BOD4, first: "Parth", last: "Bhatia" },
-  { img: BOD5, first: "Shivansh", last: "Sharma" },
-  { img: BOD6, first: "Uttam", last: "Singh" },
-];
-import img1 from "../static/images/aboutpage/Aashman_Rawat.jpg";
-import img2 from "../static/images/aboutpage/Achint_Kaur.png";
-import img3 from "../static/images/aboutpage/Amandeep_Singh.png";
-import img4 from "../static/images/aboutpage/Arnav_Arora.png";
-import img5 from "../static/images/aboutpage/Arpit_Gupta.png";
-import img6 from "../static/images/aboutpage/Dhruv_Sachdeva.png";
-import img7 from "../static/images/aboutpage/Divneet_Kaur.png";
-import img8 from "../static/images/aboutpage/Jasnoor_Kaur.png";
-import img9 from "../static/images/aboutpage/Khushi_Grover.png";
-import img10 from "../static/images/aboutpage/Parv_Arora.png";
-import img11 from "../static/images/aboutpage/Prabhjot_Singh.png";
-import img12 from "../static/images/aboutpage/Sachleen_Kaur.png";
-import img13 from "../static/images/aboutpage/Sameeksha_Srivastava.png";
-import img14 from "../static/images/aboutpage/Sanskaar_Kulshreshtha.png";
-import img15 from "../static/images/aboutpage/Shourya_Raheja.png";
+import img1 from "../static/images/executivesphotos/Agampreet Singh.png";
+import img2 from "../static/images/executivesphotos/Akshat Badhwar.png";
+import img3 from "../static/images/executivesphotos/Angad Singh.png";
+import img4 from "../static/images/executivesphotos/Daksh Maheshwari.png";
+import img5 from "../static/images/executivesphotos/Devanshi Wadhwa.png";
+import img6 from "../static/images/executivesphotos/Dhruv Singhal.png";
+import img7 from "../static/images/executivesphotos/Drshika Gautam.png";
+import img8 from "../static/images/executivesphotos/Dushleen Kaur.png";
+import img9 from "../static/images/executivesphotos/Ekam Singh.png";
+import img10 from "../static/images/executivesphotos/Guneet Kaur.png";
+import img11 from "../static/images/executivesphotos/Harnoor Kaur.png";
+import img12 from "../static/images/executivesphotos/Jasmeet Kaur.png";
+import img13 from "../static/images/executivesphotos/Kushagra.png";
+import img14 from "../static/images/executivesphotos/Lakshay.png";
+import img15 from "../static/images/executivesphotos/Paladh Kukreja.png";
+import img16 from "../static/images/executivesphotos/Rochit Handa.png";
+import img17 from "../static/images/executivesphotos/Tavleen Kaur Sachdev.png";
+import img18 from "../static/images/executivesphotos/Tavleen Kaur.png";
 
 import akars from "../static/images/aboutpage/akars.jpg";
 import sharath from "../static/images/aboutpage/sharath.jpg";
 import UI_ux from "../static/images/aboutpage/Suvra Shaw.jpg";
-
 const dev = [
   {
     img: sharath,
@@ -76,78 +65,93 @@ const dev = [
 const images2 = [
   {
     img: img1,
-    first: "Aashman",
-    last: "Rawat",
+    first: "Agampreet",
+    last: "Singh",
   },
   {
     img: img2,
-    first: "Achint",
-    last: "Kaur",
+    first: "Akshat",
+    last: "Badhwar",
   },
   {
     img: img3,
-    first: "Amandeep",
+    first: "Angad",
     last: "Singh",
   },
   {
     img: img4,
-    first: "Arnav",
-    last: "Arora",
+    first: "Daksh",
+    last: "Maheshwari",
   },
   {
     img: img5,
-    first: "Arpit",
-    last: "Gupta",
+    first: "Devanshi",
+    last: "Wadhwa",
   },
   {
     img: img6,
     first: "Dhruv",
-    last: "Sachdeva",
+    last: "Singhal",
   },
   {
     img: img7,
-    first: "Divneet",
-    last: "Kaur",
+    first: "Drshika",
+    last: "Gautam",
   },
   {
     img: img8,
-    first: "Jasnoor",
+    first: "Dushleen",
     last: "Kaur",
   },
   {
     img: img9,
-    first: "Khushi",
-    last: "Grover",
-  },
-  {
-    img: img10,
-    first: "Parv",
-    last: "Arora",
-  },
-  {
-    img: img11,
-    first: "Prabhjot",
+    first: "Ekam",
     last: "Singh",
   },
   {
+    img: img10,
+    first: "Guneet",
+    last: "Kaur",
+  },
+  {
+    img: img11,
+    first: "Harnoor",
+    last: "Kaur",
+  },
+  {
     img: img12,
-    first: "Sachleen",
+    first: "Jasmeet",
     last: "Kaur",
   },
   {
     img: img13,
-    first: "Sameeksha",
-    last: "Srivastava",
+    first: "Kushagra",
+    last: "",
   },
   {
     img: img14,
-    first: "Sanskaar",
-    last: "Kulshrestha",
+    first: "Lakshay",
+    last: "",
   },
   {
     img: img15,
-    first: "Shourya",
-    last: "Raheja",
+    first: "Paladh",
+    last: "Kukreja",
+  },
+  {
+    img: img16,
+    first: "Rochit",
+    last: "Handa",
+  },
+  {
+    img: img17,
+    first: "Tavleen",
+    last: "Kaur Sachdev",
+  },
+  {
+    img: img18,
+    first: "Tavleen",
+    last: "Kaur",
   },
 ];
 
@@ -197,11 +201,8 @@ function About() {
 
           <div className="about_parallax">
             <div className="about_parallax_overlay"></div>
-            <div className="h-full w-full my-10 text-white sansfont ">
-              <AboutBoardOfAdvisors
-                text="The Board of Directors"
-                images={images}
-              />
+            <div className="h-full w-full my-10 text-primary-color sansfont ">
+              <AboutCoreCommitteeBOD />
               <AboutCoreCommittee />
 
               <AboutBoardOfAdvisors text="Executive Members" images={images2} />

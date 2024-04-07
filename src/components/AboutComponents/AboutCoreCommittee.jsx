@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactElasticCarousel from "react-elastic-carousel";
-import CC_1 from "../../static/images/aboutpage/CC_1.png";
-import CC_2 from "../../static/images/aboutpage/CC_2.png";
-import CC_3 from "../../static/images/aboutpage/CC_3.png";
-import CC_4 from "../../static/images/aboutpage/CC_4.png";
-import CC_5 from "../../static/images/aboutpage/CC_5.png";
-import CC_6 from "../../static/images/aboutpage/CC_6.png";
-import CC_7 from "../../static/images/aboutpage/CC_7.png";
-import CC_8 from "../../static/images/aboutpage/CC_8.png";
-import CC_9 from "../../static/images/aboutpage/CC_9.png";
+import CC_1 from "../../static/images/aboutpage24/Aashman Rawat_CORE.png";
+import CC_2 from "../../static/images/aboutpage24/Achint Kaur_CORE.png";
+import CC_3 from "../../static/images/aboutpage24/Amandeeo Singh Chadha_CORE.png";
+import CC_4 from "../../static/images/aboutpage24/Dhruv Sachdeva_CORE.png";
+import CC_5 from "../../static/images/aboutpage24/Divneet Kaur_CORE.png";
+import CC_6 from "../../static/images/aboutpage24/Parv Arora_CORE.png";
+import CC_7 from "../../static/images/aboutpage24/Sachleen Kaur Batra_CORE.png";
+import CC_8 from "../../static/images/aboutpage24/Sameeksha Srivastava_CORE.png";
+import CC_9 from "../../static/images/aboutpage24/Sanskaar Kulshreshtha_CORE.png";
+import CC_10 from "../../static/images/aboutpage24/Shourya Raheja_CORE.png";
+
 import "../../static/css/parallax.css";
 import { motion } from "framer-motion";
 
@@ -35,7 +37,7 @@ export default function AboutCoreCommittee() {
       <div className="fixed top-0 left-0 w-screen h-screen bg-dark-color bg-opacity-80 flex items-center justify-center z-50 sansfont">
         <div className="p-8 rounded-lg">
           <button
-            className="absolute top-10 right-10 text-light-color"
+            className="absolute top-10 right-10 text-primary-color"
             onClick={() => setIsModalOpen(false)}
           >
             <svg
@@ -59,13 +61,14 @@ export default function AboutCoreCommittee() {
             alt="Selected"
             className="mx-auto w-[740px] h-auto"
           />
-          <p className="text-center text-2xl mt-4 text-light-color">
+          <p className="text-center text-2xl mt-4 text-primary-color">
             {selectedImage && `${imageText}`}
           </p>
         </div>
       </div>
     );
   };
+
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 1 },
@@ -74,10 +77,24 @@ export default function AboutCoreCommittee() {
   ];
   const carouselRef = useRef(null);
   let resetTimeout;
+
+  const coreCommitteeMembers = [
+    { image: CC_1, name: "Aashman Rawat" },
+    { image: CC_2, name: "Achint Kaur" },
+    { image: CC_3, name: "Amandeep Singh Chadha" },
+    { image: CC_4, name: "Dhruv Sachdeva" },
+    { image: CC_5, name: "Divneet Kaur" },
+    { image: CC_6, name: "Parv Arora" },
+    { image: CC_7, name: "Sachleen Kaur Batra" },
+    { image: CC_8, name: "Sameeksha Srivastava" },
+    { image: CC_9, name: "Sanskaar Kulshreshtha" },
+    { image: CC_10, name: "Shourya Raheja" },
+  ];
+
   return (
     <div className="flex flex-col mt-10">
       <div className="relative flex items-center md:mx-28 mx-12 mb-5">
-        <h1 className="md:text-4xl text-3xl text-white font-[500] z-10">
+        <h1 className="md:text-4xl text-3xl text-primary-color font-[500] z-10">
           The Core Committee
         </h1>
       </div>
@@ -114,149 +131,24 @@ export default function AboutCoreCommittee() {
           enableSwipe
           ref={carouselRef}
         >
-          <motion.button
-            whileHover={{ scale: 0.9 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              setSelectedImage(CC_1);
-              setIsModalOpen(true);
-              setImageText("Drishti Khurana");
-            }}
-          >
-            <img
-              src={CC_1}
-              alt="BOD1"
-              className="h-[190px] w-[320px] z-10 rounded-lg"
-            />
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 0.9 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              setSelectedImage(CC_2);
-              setIsModalOpen(true);
-              setImageText("Kunal Assudani");
-            }}
-          >
-            <img
-              src={CC_2}
-              alt="BOD1"
-              className="h-[190px] w-[320px] z-10 rounded-lg"
-            />
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 0.9 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              setSelectedImage(CC_3);
-              setIsModalOpen(true);
-              setImageText("Rishabh Khanna");
-            }}
-          >
-            <img
-              src={CC_3}
-              alt="BOD1"
-              className="h-[190px]  w-[320px] z-10 rounded-lg"
-            />
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 0.9 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              setSelectedImage(CC_4);
-              setIsModalOpen(true);
-              setImageText("Avleen Kaur");
-            }}
-          >
-            <img
-              src={CC_4}
-              alt="BOD1"
-              className="h-[190px]  w-[320px] z-10 rounded-lg"
-            />
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 0.9 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              setSelectedImage(CC_5);
-              setIsModalOpen(true);
-              setImageText("Garima Sachar");
-            }}
-          >
-            <img
-              src={CC_5}
-              alt="BOD1"
-              className="h-[190px]  w-[320px] z-10 rounded-lg"
-            />
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 0.9 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              setSelectedImage(CC_6);
-              setIsModalOpen(true);
-              setImageText("Mankaran Singh");
-            }}
-          >
-            <img
-              src={CC_6}
-              alt="BOD1"
-              className="h-[190px]  w-[320px] z-10 rounded-lg"
-            />
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 0.9 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              setSelectedImage(CC_7);
-              setIsModalOpen(true);
-              setImageText("Rishima Katyal");
-            }}
-          >
-            <img
-              src={CC_7}
-              alt="BOD1"
-              className="h-[190px]  w-[320px] z-10 rounded-lg"
-            />
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 0.9 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              setSelectedImage(CC_8);
-              setIsModalOpen(true);
-              setImageText("Supreet Kaur");
-            }}
-          >
-            <img
-              src={CC_8}
-              alt="BOD1"
-              className="h-[190px]  w-[320px] z-10 rounded-lg"
-            />
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 0.9 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              setSelectedImage(CC_9);
-              setIsModalOpen(true);
-              setImageText("Vanshita Yalreja");
-            }}
-          >
-            <img
-              src={CC_9}
-              alt="BOD1"
-              className="h-[190px]  w-[320px] z-10 rounded-lg"
-            />
-          </motion.button>
+          {coreCommitteeMembers.map((member, index) => (
+            <motion.button
+              key={index}
+              whileHover={{ scale: 0.9 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => {
+                setSelectedImage(member.image);
+                setIsModalOpen(true);
+                setImageText(member.name);
+              }}
+            >
+              <img
+                src={member.image}
+                alt={`CC_${index + 1}`}
+                className="h-[190px] w-[320px] z-10 rounded-lg"
+              />
+            </motion.button>
+          ))}
         </ReactElasticCarousel>
         {isModalOpen && <Modal />}
       </div>

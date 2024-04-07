@@ -1,0 +1,42 @@
+.vertical-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 70%;
+  background-color: transparent;
+  border-left: 2px dashed #000;
+  z-index: 1;
+  margin-top: 10%;
+}
+
+.vertical-timeline-element--work .vertical-timeline-element-content .date {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.vertical-timeline-element--work .vertical-timeline-element-content .date.left {
+  left: 0;
+}
+
+.vertical-timeline-element--work
+  .vertical-timeline-element-content
+  .date.right {
+  right: 0;
+}
+
+@media (max-width: 1180px) {
+  .vertical-line {
+    display: none;
+  }
+}
+.horizontal-line {
+  position: relative;
+  top: 50%;
+  left: 100%; /* Adjust based on your design */
+  width: 100%; /* Adjust based on your design */
+  height: 10px; /* Adjust thickness as needed */
+  background-color: red; /* Adjust color as needed */
+  z-index: 1;
+}
