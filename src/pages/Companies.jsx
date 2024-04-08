@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { DotLoader } from "react-spinners";
-import desk from "../static/images/desk.jpg";
+import React, { useState, useEffect, useRef } from "react";
+// import { DotLoader } from "react-spinn
 import company from "../static/images/testimages/How to Apply (4).png";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "./customCss/company.css";
+import Loader from "../components/Loader/Loader";
 
 function Companies() {
   window.scrollTo(0, 0);
@@ -26,59 +26,34 @@ function Companies() {
   const [loading, setLoading] = useState(false);
   const [searchString, setSearchString] = useState("");
   const [usersearched, setUserSearched] = useState(false);
+  const [page, setPage] = useState(1);
+  const [showMoreButton, setShowMoreButton] = useState(true);
 
-  const [currentPage, setCurrentPage] = useState(
-    parseInt(localStorage.getItem("companiesPaginationIndex")) || 1
-  );
-  const itemsPerPage = 12;
-  let pagination = [];
-
-  const pagesCount = Math.ceil(companies.length / itemsPerPage);
-
-  if (pagesCount <= 3) {
-    pagination = Array.from({ length: pagesCount }, (_, i) => i + 1);
-  } else if (currentPage === 1 || currentPage === 2) {
-    pagination = [1, 2, 3];
-  } else if (currentPage === pagesCount || currentPage === pagesCount - 1) {
-    pagination = [pagesCount - 2, pagesCount - 1, pagesCount];
-  } else {
-    pagination = [currentPage - 1, currentPage, currentPage + 1];
-  }
-
-  const handleClick = (e, index) => {
-    e.preventDefault();
-    if (index !== currentPage && index > 0 && index <= pagesCount) {
-      setCurrentPage(index);
-      localStorage.setItem("companiesPaginationIndex", index);
-    }
-  };
-
-  const renderItems = () => {
-    const start = (currentPage - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    if (currentPage === pagesCount) {
-      return companies.slice(start);
-    } else {
-      return companies.slice(start, end);
-    }
-  };
-
-  async function fetchData() {
+  const fetchData = async (reset = false) => {
     setLoading(true);
+    if (reset) {
+      setPage(1);
+      setCompanies([]);
+    }
 
     const response = await fetch(
-      "https://anubhava-backend.vercel.app/companies"
+      `https://anubhava-backend.vercel.app/companies?page=${page}`
     );
     const data = await response.json();
-    setCompanies(data);
+    setCompanies((prevCompanies) => [...prevCompanies, ...data]);
     setLoading(false);
-  }
+
+    if (data.length === 0) {
+      setShowMoreButton(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(true);
+  }, []);
 
   const handleFilter = (e) => {
     e.preventDefault();
-    localStorage.setItem("companiesPaginationIndex", 1);
-    setCurrentPage(1);
-    pagination = [];
     MySwal.fire({
       icon: "info",
       title: "Filter by Profile Type",
@@ -121,25 +96,7 @@ function Companies() {
   };
 
   const handleSearch = (val) => {
-    localStorage.setItem("companiesPaginationIndex", 1);
-    setCurrentPage(1);
-    setCompanies([]);
-    let search;
-    if (val == "") {
-      search = document.getElementById("searchbox").value;
-      if (search == "") {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Please enter a search term!",
-          confirmButtonColor: "#36528b",
-        });
-        return;
-      }
-    } else {
-      search = val;
-    }
-    setSearchString(search);
+    setSearchString(val);
     setUserSearched(true);
     setLoading(true);
     let requestOptions = {
@@ -147,12 +104,12 @@ function Companies() {
       redirect: "follow",
     };
     fetch(
-      "https://anubhava-backend.vercel.app/companies/search/" + search,
+      `https://anubhava-backend.vercel.app/companies/search/${val}`,
       requestOptions
     )
       .then((response) => response.text())
       .then((result) => {
-        if (result == "[]") {
+        if (result === "[]") {
           Swal.fire({
             icon: "error",
             title: "Oops...",
@@ -166,38 +123,23 @@ function Companies() {
         setLoading(false);
       })
       .catch((error) => console.log("error", error));
-    search = "";
   };
 
   const clearSearch = () => {
     setSearchString("");
-    document.getElementById("searchbox").value = "";
-    fetchData();
+    fetchData(true);
     setUserSearched(false);
+    setShowMoreButton(true);
   };
 
-  const override = {
-    display: "block",
-    margin: "0 auto",
-    padding: "0",
-    opacity: 1,
-  };
-
-  useEffect(() => {
+  const handleShowMore = () => {
+    setPage((prevPage) => prevPage + 1);
     fetchData();
-    if (localStorage.getItem("companiesPaginationIndex") === null) {
-      localStorage.setItem("companiesPaginationIndex", 0);
-    }
-  }, []);
+  };
 
   return (
     <div className="md:mt-20 mt-[65px] flex flex-col relative h-full w-full">
       <div
-        // style={{
-        //   backgroundImage: `linear-gradient(0deg, rgba(15, 37, 80, 0.7), rgba(15, 37, 80, 0.7)), url(${desk})`,
-        //   backgroundSize: "cover",
-        //   backgroundPosition: "center",
-        // }}
         className={`${
           !loading ? `opacity-100` : `opacity-50`
         } overflow-hidden flex flex-col bg-primary-new  mx-0 h-80 w-full`}
@@ -278,123 +220,57 @@ function Companies() {
           </div>
         </div>
       </div>
-      <DotLoader
-        cssOverride={override}
+      {/* <DotLoader
         size={150}
-        className="text-yellow-400"
+        css={{ display: "block", margin: "0 auto", padding: "0", opacity: 1 }}
         color="#36528b"
         loading={loading}
-      />
-      {!usersearched ? (
-        <div className={`${!usersearched ? `visible` : `hidden`}`}>
-          <h1 className="text-2xl md:text-4xl text-primary-color font-medium content-center md:mt-16 md:mb-8 md:mx-16 mt-16 mb-6 mx-4">
-            Our top recruiters!
-          </h1>
-          <div
-            className={`${
-              !loading ? `opacity-100` : `opacity-50`
-            } grid grid-cols-2 md:grid-cols-4 md:gap-4 gap-2 md:px-16 px-4 mb-10`}
-          >
-            {renderItems().map((company) => (
-              <motion.button key={company._id}>
-                <div
-                  onClick={() =>
-                    window.open(`/companies/${company._id}`, "_blank")
-                  }
-                  className="max-h-50 w-full flex flex-col overflow-hidden companycard"
-                  style={{ backgroundColor: "#0B0F1B" }}
-                >
-                  <div className="w-full h-40 bg-light-color overflow-hidden flex items-center justify-center">
-                    {company.image ? (
-                      <img
-                        className="object-cover h-full w-auto"
-                        src={company.image}
-                        alt={company.name}
-                      />
-                    ) : (
-                      <img
-                        className="object-cover h-full w-auto"
-                        src="https://th.bing.com/th/id/R.ea54db5822a3b2fdbd590b49c57d8033?rik=h7e4LIz%2bY8DMwg&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fyio%2f69M%2fyio69MBoT.jpg&ehk=XuNU9Y%2fhF72ZA3cHcWcAlucA5DA0wl1zzkrLCOAL8%2bs%3d&risl=&pid=ImgRaw&r=0"
-                        alt="No Image Available"
-                      />
-                    )}
-                  </div>
-                  <div className="w-full h-1/5 flex items-center justify-center companyName">
-                    <h1 className="text-xl text-light-color font-medium text-center cnamediv">
-                      {screenSize < 768
-                        ? company.name.length > 10
-                          ? company.name.substring(0, 10) + "..."
-                          : company.name
-                        : company.name}
-                    </h1>
-                  </div>
-                </div>
-              </motion.button>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div
-          className={`${
-            !usersearched ? `visible` : `hidden`
-          } grid grid-cols-2 md:grid-cols-4 md:gap-4 gap-2 md:px-16 px-4 mb-10`}
-        >
-          {renderItems().map((company) => (
-            <motion.button key={company._id}>
-              <div className="max-h-50 w-full flex flex-col overflow-hidden companycard">
-                <div
-                  onClick={() =>
-                    window.open(`/companies/${company._id}`, "_blank")
-                  }
-                  className="w-full h-40 bg-light-color overflow-hidden flex items-center justify-center company-image-container"
-                >
-                  <img
-                    className="object-cover h-full w-auto"
-                    src={company.image}
-                    alt={company.name}
-                  />
-                  {/* Show paragraph on hover */}
-                  <div className="company-description">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum.
-                    </p>
-                  </div>
-                </div>
-                <div className="w-full h-1/5 flex items-center justify-center companyName">
-                  <h1 className="text-xl text-light-color font-medium text-center cnamediv">
-                    {screenSize < 768
-                      ? company.name.length > 10
-                        ? company.name.substring(0, 10) + "..."
-                        : company.name
-                      : company.name}
-                  </h1>
-                </div>
+      /> */}
+      <Loader isLoading={loading} />
+      <div
+        className={`${
+          !usersearched ? `visible` : `hidden`
+        } grid grid-cols-2 md:grid-cols-4 mt-20 md:gap-4 gap-2 md:px-16 px-4 mb-10`}
+      >
+        {companies.map((company) => (
+          <motion.button key={company._id}>
+            <div className="max-h-50 w-full flex flex-col overflow-hidden companycard">
+              <div
+                onClick={() =>
+                  window.open(`/companies/${company._id}`, "_blank")
+                }
+                className="w-full h-40 bg-light-color overflow-hidden flex items-center justify-center company-image-container"
+              >
+                <img
+                  className="object-cover h-full w-auto"
+                  src={company.image}
+                  alt={company.name}
+                />
               </div>
-            </motion.button>
-          ))}
-        </div>
-      )}
-      <div className="w-full justify-center items-center flex my-10">
-        <div className="flex flex-row items-center justify-center">
-          {pagination.map((page, index) => (
-            <button
-              key={index}
-              onClick={(e) => handleClick(e, page)}
-              className={`${
-                page === currentPage ? "bg-primary-color text-light-color" : ""
-              } hover:bg-primary-color hover:text-light-color text-primary-color font-bold py-1 px-4 mx-1 border border-primary-color rounded`}
-            >
-              {page}
-            </button>
-          ))}
-        </div>
+              <div className="w-full h-1/5 flex items-center justify-center companyName">
+                <h1 className="text-xl text-light-color font-medium text-center cnamediv">
+                  {screenSize < 768
+                    ? company.name.length > 10
+                      ? company.name.substring(0, 10) + "..."
+                      : company.name
+                    : company.name}
+                </h1>
+              </div>
+            </div>
+          </motion.button>
+        ))}
+        {showMoreButton && (
+          <div className="flex justify-center w-full my-8">
+            <div className="w-full max-w-screen-xl mx-auto">
+              <button
+                onClick={handleShowMore}
+                className="bg-primary-color text-light-color px-4 py-2 rounded-lg text-center hover:bg-primary-color text-sm"
+              >
+                Show More
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

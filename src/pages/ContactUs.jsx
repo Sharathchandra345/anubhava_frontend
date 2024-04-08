@@ -7,33 +7,25 @@ import Accordion from "../components/HowToApplyComponents/AccordionComponent";
 function ContactUs() {
   document.title = "Contact Us";
 
-  // scroll to top
   window.scrollTo(0, 0);
   return (
     <div className="md:mt-20 mt-[65px] flex flex-col">
       <PageBanner bannerText={"Contact Us"} image={banner} />
 
-      <div className="flex flex-col justify-center items-center md:px-12 px-2 mt-10 mb-12 ">
-        <h1 className="font-semibold text-3xl md:text-4xl">
+      <div className="flex flex-col justify-center items-center mt-10 mb-12">
+        <div className="flex flex-col gap-4 my-10 mx-2 md:flex-row md:justify-between">
           {" "}
-          <span className="text-primary-color">Help Desk</span>
-        </h1>
-        <div className="flex flex-col md:flex-row gap-2 my-10">
           <div
-            className="cursor-pointer rounded-lg text-white flex-row flex gap-2 py-4 px-2 w-full md:w-[400px] bg-primary-gray2"
+            className="cursor-pointer rounded-lg text-white flex-row flex gap-2 py-4 px-8 md:w-[480px] overflow-hidden"
             onClick={() => {
               window.open("mailto:" + "ignitepcinfo@gmail.com");
             }}
-            style={{
-              boxShadow:
-                "0px 1px 2px rgba(7, 32, 51, 0.4), 0px 2px 6px 2px rgba(7, 32, 51, 0.2)",
-            }}
           >
-            <div className="bg-primary-color rounded-full h-[36px] w-[36px] flex-row flex items-center justify-center ">
+            <div className=" rounded-full w-[36px] flex-row flex items-center justify-center ">
               <svg
-                className="fill-light-color"
-                width="18"
-                height="14"
+                className="fill-black"
+                width="32"
+                height="32"
                 viewBox="0 0 18 14"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -42,22 +34,24 @@ function ContactUs() {
               </svg>
             </div>
 
-            <h1 className="font-semibold text-xl">E-mail : </h1>
-            <h1 className="font-semibold text-xl"> ignitepcinfo@gmail.com</h1>
+            <div className="flex flex-row items-center">
+              {" "}
+              <h1 className="font-semibold text-xl md:text-2xl text-primary-color">
+                {" "}
+                E-mail :
+              </h1>
+              <h1 className="font-semibold text-xl md:text-2xl text-black">
+                {" "}
+                ignitepcinfo@gmail.com
+              </h1>
+            </div>
           </div>
-
-          <div
-            className="rounded-lg text-white flex-row flex gap-2 py-4 px-2 w-full md:w-[400px] bg-primary-gray2"
-            style={{
-              boxShadow:
-                "0px 1px 2px rgba(7, 32, 51, 0.4), 0px 2px 6px 2px rgba(7, 32, 51, 0.2)",
-            }}
-          >
-            <div className="bg-primary-color rounded-full h-[36px] w-[36px] flex-row flex items-center justify-center">
+          <div className="rounded-lg text-white flex-row flex gap-2 py-4 px-2 md:w-[480px] overflow-hidden">
+            <div className="rounded-full h-[36px] w-[36px] flex-row flex items-center justify-center">
               <svg
-                className="fill-light-color"
-                width="18"
-                height="18"
+                className="fill-black"
+                width="32"
+                height="32"
                 viewBox="0 0 18 18"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,12 +60,20 @@ function ContactUs() {
               </svg>
             </div>
 
-            <h1 className="font-semibold text-xl">Phone : </h1>
-            <h1 className="font-semibold text-xl">(+91) 7807417341</h1>
+            <div className="flex flex-row">
+              <h1 className="font-semibold text-xl md:text-2xl text-primary-color">
+                {" "}
+                Phone :
+              </h1>
+              <h1 className="font-semibold text-xl md:text-2xl text-black">
+                {" "}
+                (+91) 7807417341
+              </h1>
+            </div>
           </div>
         </div>
       </div>
-
+      {/* 
       <div className="flex flex-col gap-1 h-[450px] bg-primary-gray">
         <h1 className="text-3xl md:text-4xl mx-14 my-10 font-semibold text-prim text-primary-color">
           {" "}
@@ -107,6 +109,55 @@ function ContactUs() {
             },
           ]}
         />
+      </div> */}
+
+      <div className="flex flex-col gap-4  bg-primary-dark2-color p-10  bg-dark-color">
+        <h1 className="text-3xl md:text-4xl font-semibold text-center text-white">
+          For further queries,{" "}
+          <span className="text-primary-color">contact</span>
+        </h1>
+        {/* Contact Cards */}
+        <div className="flex justify-center gap-4">
+          {/* Contact 1 */}
+          <div className="rounded-md p-4 flex flex-col gap-2 ">
+            <h1 className="font-semibold text-lg text-primary-color text-center">
+              Jasnoor
+            </h1>
+            <h1 className="text-base text-white">+91 9650198803</h1>
+          </div>
+
+          {/* Contact 2 */}
+          <div className="rounded-md p-4 flex flex-col gap-2 ">
+            <h1 className="font-semibold text-lg text-primary-color text-center">
+              Arpit
+            </h1>
+            <h1 className="text-base text-white">+91 9540497325</h1>
+          </div>
+
+          {/* Contact 3 */}
+          <div className="rounded-md p-4 flex flex-col gap-2 ">
+            <h1 className="font-semibold text-lg text-primary-color text-center">
+              Aashman
+            </h1>
+            <h1 className="text-base text-white">+91 9205833905</h1>
+          </div>
+
+          {/* Contact 4 */}
+          <div className="rounded-md p-4 flex flex-col gap-2 ">
+            <h1 className="font-semibold text-lg text-primary-color text-center">
+              Sameeksha
+            </h1>
+            <h1 className="text-base text-white">+91 9958331336</h1>
+          </div>
+
+          {/* Contact 5 */}
+          <div className="rounded-md p-4 flex flex-col gap-2 ">
+            <h1 className="font-semibold text-lg text-primary-color text-center">
+              Prabhjot
+            </h1>
+            <h1 className="text-base text-white">+91 8929168629</h1>
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-col gap-5 md:px-10 px-5 my-5 md:my-10">
@@ -121,8 +172,8 @@ function ContactUs() {
           >
             <path d="M4 8.375H0V36.375C0 38.575 1.8 40.375 4 40.375H32V36.375H4V8.375ZM36 0.375H12C9.8 0.375 8 2.175 8 4.375V28.375C8 30.575 9.8 32.375 12 32.375H36C38.2 32.375 40 30.575 40 28.375V4.375C40 2.175 38.2 0.375 36 0.375ZM36 28.375H12V4.375H36V28.375ZM23.02 16.695C23.84 15.235 25.38 14.375 26.28 13.095C27.24 11.735 26.7 9.215 24 9.215C22.24 9.215 21.36 10.555 21 11.675L18.26 10.535C19.02 8.295 21.04 6.375 23.98 6.375C26.44 6.375 28.14 7.495 29 8.895C29.74 10.095 30.16 12.355 29.02 14.035C27.76 15.895 26.56 16.455 25.9 17.655C25.64 18.135 25.54 18.455 25.54 20.015H22.5C22.52 19.195 22.38 17.855 23.02 16.695ZM21.9 24.275C21.9 23.095 22.84 22.195 24 22.195C25.18 22.195 26.08 23.095 26.08 24.275C26.08 25.435 25.2 26.375 24 26.375C22.84 26.375 21.9 25.435 21.9 24.275Z" />
           </svg>
-          <h1 className="text-3xl text-yellow-400 md:text-4xl font-semibold">
-            Frequently Asked Questions
+          <h1 className="text-3xl text-primary-color md:text-4xl font-bold">
+            FREQUENTLY <span className="text-black">ASKED QUESTIONS</span>
             {/* (<span className='text-dark-color'>FAQs</span>) */}
           </h1>
         </div>
@@ -157,6 +208,7 @@ function ContactUs() {
                     consulting, HR, fashion, marketing and many others.
                     `}
         />
+        <div className="dropfaq border-b-2 border-primary-gray2"></div>
       </div>
     </div>
   );

@@ -4,12 +4,12 @@ const Accordion = ({ title, children }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="">
+    <div className="border-t-2 border-primary-gray2">
       <div
-        className={`flex items-center justify-between px-4 py-6 cursor-pointer select-none bg-primary-gray`}
+        className={`flex items-center justify-between px-4 py-6 cursor-pointer select-none bg-white`}
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <h2 className="md:text-lg w-11/12 text-base font-medium text-light-color">
+        <h2 className="md:text-lg w-11/12 text-base font-medium text-primary-dark2">
           {title}
         </h2>
         <svg
@@ -20,11 +20,11 @@ const Accordion = ({ title, children }) => {
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <path d="M19 9l-7 7-7-7" stroke="#fff" fill="none" />
+          <path d="M19 9l-7 7-7-7" stroke="#000" fill="none" />
         </svg>
       </div>
       {isExpanded && (
-        <div className="px-4 py-4 bg-primary-lighter rounded-b-xl text-dark-color font-bold">
+        <div className="px-4 py-4 bg-white rounded-b-xl text-primary-color font-bold">
           {children}
         </div>
       )}

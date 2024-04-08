@@ -2,7 +2,7 @@ import React from "react";
 
 export default function JobCard({ title, duration, roles, requirements }) {
   return (
-    <div className="bg-white  p-4 md:p-10 w-full md:w-[740px] h-auto md:h-[880px] flex flex-col md:gap-4 gap-3 items-start justify-start border-2 border-black">
+    <div className="bg-white p-4 md:p-10 w-full md:w-[740px] max-h-[880px] overflow-y-auto flex flex-col md:gap-4 gap-3 items-start justify-start border-2 border-black">
       <h1 className="font-bold text-3xl md:text-4xl text-black w-full">
         Job Description
       </h1>

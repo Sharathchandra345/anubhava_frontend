@@ -95,7 +95,7 @@ export default function AboutCoreCommittee() {
     <div className="flex flex-col mt-10">
       <div className="relative flex items-center md:mx-28 mx-12 mb-5">
         <h1 className="md:text-4xl text-3xl text-primary-color font-[500] z-10">
-          The Core Committee
+          The Core
         </h1>
       </div>
       <div className="relative flex items-center md:mx-10 mx-4"></div>

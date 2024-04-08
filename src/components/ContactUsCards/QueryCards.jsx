@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import Carousel from "react-elastic-carousel";
 
-function QueryCards({ dataArray }) {
+function  QueryCards({ dataArray }) {
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2 },

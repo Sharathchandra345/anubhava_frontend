@@ -13,7 +13,7 @@ export default function PageBanner({ image, bannerText }) {
       >
         <div className="h-80 z-1">
           <div className="flex items-center justify-center w-full h-full">
-            <h1 className="md:text-5xl font-bold text-4xl text-white md:font-medium text-center">
+            <h1 className="md:text-5xl font-bold text-4xl text-white md:font-semibold text-center">
               {bannerText}
             </h1>
           </div>
