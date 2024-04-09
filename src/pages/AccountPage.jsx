@@ -9,6 +9,7 @@ import { doc, getDoc, collection, setDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { DotLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader/Loader";
 
 export default function AccountPage() {
   const date = new Date("2024-04-30T00:00:00+05:30") > new Date();
@@ -428,7 +429,7 @@ export default function AccountPage() {
 
   return (
     <div className="md:mt-20 mt-[65px] flex flex-col items-center justify-center ">
-      <DotLoader
+      {/* <DotLoader
         cssOverride={{
           display: "block",
           margin: "auto",
@@ -443,7 +444,9 @@ export default function AccountPage() {
         color="#36528b"
         className="text-primary-color"
         loading={loading}
-      />
+      /> */}
+
+      <Loader isLoading={loading} />
 
       {/* <PageBanner image={person} bannerText={`Welcome ${user.displayName}`} /> */}
       <div className="w-full flex justify-start">
@@ -621,19 +624,17 @@ export default function AccountPage() {
           No Data found! Please fill the form!{" "}
         </h1>
       )}
-      <div className="flex justify-start">
+      {/* <div className="flex justify-start">
         <h1 className="text-3xl mt-10 pt-5 text-black font-semibold mb-10 ">
           TOP <span className="text-primary-color">COMPANIES</span>
         </h1>
-      </div>
+      </div> */}
       {/* Displaying Company Cards */}
-      <div
+      {/* <div
         className={`${
           !loading ? `opacity-100` : `opacity-50`
         } grid grid-cols-2 md:grid-cols-4 md:gap-4 gap-2 md:px-16 px-4 mb-10`}
       >
-        {/* Render company cards here */}
-        {/* Assuming renderItems() returns an array of company data */}
         {renderItems().map((company) => (
           <motion.button key={company._id}>
             <div
@@ -668,7 +669,7 @@ export default function AccountPage() {
             </div>
           </motion.button>
         ))}
-      </div>
+      </div> */}
 
       {/* Logout Button */}
       <motion.button

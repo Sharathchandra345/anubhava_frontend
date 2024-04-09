@@ -81,12 +81,13 @@ function Home() {
         </a>
         <hr className="border-t border-white w-full my-2" />
         <a
-          href="Ignitepc.info@gmail.com"
+          href="mailto:Ignitepc.info@gmail.com"
           target="_blank"
           className="flex items-center justify-center gap-2"
         >
           <img src={email} alt="Email" className="w-6 h-6 object-contain" />
         </a>
+
         <hr className="border-t border-white w-full my-2" />
         <a
           href="https://www.instagram.com/placementcell.sgtbkhalsa?igsh=MThrMjNjZW9yMGZ4"
