@@ -119,16 +119,7 @@ function Home() {
         </h1>
       </div>
 
-      <HomeStatistics
-        Companies={"150+"}
-        applications={"17k+"}
-        registrations={"3.5k+"}
-        // colleges={"1000+"}
-        states={"25+"}
-        job_profiles={"100+"}
-        highest_stipend={"₹80K"}
-        average_stipend={"₹12K"}
-      />
+      <HomeStatistics />
       {/* <HomeTimer /> */}
 
       <div className="flex items-center justify-center">

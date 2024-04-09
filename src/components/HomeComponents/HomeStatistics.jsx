@@ -1,68 +1,52 @@
-import "../../pages/customCss/homeStatistics.css";
 import React from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import HexagonWithContent from "./HexagonWithContent";
 
-const HexagonVariants = {
-  visible: {
-    opacity: 1,
-    // rotate: 45, // Remove this line to disable rotation
-    transition: { ease: "easeInOut", duration: 0.5 },
-  },
-  hidden: {
-    opacity: 0,
-    // rotate: 45, // Remove this line to disable rotation
-    transition: { ease: "easeInOut", duration: 0.5 },
-  },
-};
-
-const Hexagon = ({ label, value }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.5,
-    triggerOnce: true,
-  });
+const HomeStatistics = () => {
+  // Hardcoded positions for each HexagonWithContent component
+  const hexagonPositions = [
+    { top: "100px", left: "-380px" },
+    { top: "-435px", left: "-180px" },
+    { top: "-1310px", left: "-180px" },
+    { top: "-1850px", left: "20px" },
+    { top: "-2610px", left: "220px" },
+    { top: "-3035px", left: "220px" },
+    { top: "-3800px", left: "420px" },
+  ];
 
   return (
-    <motion.div
-      ref={ref}
-      animate={inView ? "visible" : "hidden"}
-      variants={HexagonVariants}
-      className="Hexagon"
-    >
-      <div className="Hexagon-content">
-        <div className="Hexagon-value">{value}</div>
-        <div className="Hexagon-header">{label}</div>
-      </div>
-    </motion.div>
-  );
-};
-
-const HomeStatistics = ({
-  applications,
-  registrations,
-  Companies,
-  job_profiles,
-  highest_stipend,
-  average_stipend,
-  states,
-}) => {
-  return (
-    <div className="center">
-      <div className="Hexagon-container">
-        <div className="top-Hexagons">
-          <Hexagon label="Applications" value={applications} />
-          <Hexagon label="Registrations" value={registrations} />
-          <Hexagon label="Companies" value={Companies} />
-        </div>
-        <div className="bottom-Hexagons">
-          <Hexagon label="Job Profiles" value={job_profiles} />
-          <Hexagon label="Highest Stipend" value={highest_stipend} />
-          <Hexagon label="Average Stipend" value={average_stipend} />
-          <Hexagon label="States" value={states} />
-        </div>
-      </div>
+    <div style={{ position: "relative" }} className="-mt-3 -mb-4096">
+      {hexagonPositions.map((position, index) => (
+        <HexagonWithContent
+          key={index}
+          content={getContentByIndex(index)}
+          size="650px"
+          position={position} // Pass position prop
+        />
+      ))}
     </div>
   );
+};
+
+// Function to get content based on index
+const getContentByIndex = (index) => {
+  switch (index) {
+    case 0:
+      return "Companies\n150+";
+    case 1:
+      return "Applications\n17k+";
+    case 2:
+      return "Registrations\n3.5k+";
+    case 3:
+      return "States: 25+";
+    case 4:
+      return "Job Profiles\n 100+";
+    case 5:
+      return "Highest Stipend\n₹80K";
+    case 6:
+      return "Average Stipend\n₹12K";
+    default:
+      return "";
+  }
 };
 
 export default HomeStatistics;
