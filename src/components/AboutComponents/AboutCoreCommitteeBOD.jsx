@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactElasticCarousel from "react-elastic-carousel";
-import BOD1 from "../../static/images/aboutpage24/Avleen Kaur_BOD.png";
-import BOD2 from "../../static/images/aboutpage24/Drishti Khurana_BOD.png";
-import BOD3 from "../../static/images/aboutpage24/Garima Sachar_BOD.png";
-import BOD4 from "../../static/images/aboutpage24/Kunal Assudani_BOD.png";
-import BOD5 from "../../static/images/aboutpage24/Mankaran Singh_BOD.png";
-import BOD6 from "../../static/images/aboutpage24/Rishabh Khanna_BOD.png";
-import BOD7 from "../../static/images/aboutpage24/Rishima Katyal_BOD.png";
-import BOD8 from "../../static/images/aboutpage24/Supreet Kaur_BOD.png";
+import BOD1 from "../../static/images/aboutpage24/Avleen Kaur.png";
+import BOD2 from "../../static/images/aboutpage24/Drishti Khurana.png";
+import BOD3 from "../../static/images/aboutpage24/Garima Sachar.png";
+import BOD4 from "../../static/images/aboutpage24/Kunal Assudani.png";
+import BOD5 from "../../static/images/aboutpage24/Mankaran Singh.png";
+import BOD6 from "../../static/images/aboutpage24/Rishabh Khanna.png";
+import BOD7 from "../../static/images/aboutpage24/Rishima Katyal.png";
+import BOD8 from "../../static/images/aboutpage24/Supreet Kaur.png";
 // import BOD9 from "../../static/images/aboutpage24/Vanshita Talreja_BOD.png";
 import "../../static/css/parallax.css";
 import { motion } from "framer-motion";
@@ -79,7 +79,7 @@ export default function AboutCoreCommittee() {
     <div className="flex flex-col mt-10">
       <div className="relative flex items-center md:mx-28 mx-12 mb-5">
         <h1 className="md:text-4xl text-3xl text-primary-color font-[500] z-10">
-          The Board of Directors
+          Advisory Board
         </h1>
       </div>
       <div className="relative flex items-center md:mx-10 mx-4"></div>

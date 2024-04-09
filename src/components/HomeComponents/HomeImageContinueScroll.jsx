@@ -17,7 +17,7 @@ const HomeImageContinueScroll = () => {
 
   return (
     <Marquee
-      speed={isMobile ? 12 : 22}
+      speed={isMobile ? 12 : 12}
       gradient={isMobile ? false : true}
       pauseOnHover={true}
     >

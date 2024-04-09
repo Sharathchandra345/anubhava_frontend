@@ -1,7 +1,7 @@
 import React from "react";
 import QueryCards from "../components/ContactUsCards/QueryCards";
 import PageBanner from "../components/PageBanner";
-import banner from "../static/images/ContactUsBanner.jpg";
+import banner from "../static/images/contact_us.png";
 import Accordion from "../components/HowToApplyComponents/AccordionComponent";
 
 function ContactUs() {

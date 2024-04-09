@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactElasticCarousel from "react-elastic-carousel";
-import CC_1 from "../../static/images/aboutpage24/Aashman Rawat_CORE.png";
-import CC_2 from "../../static/images/aboutpage24/Achint Kaur_CORE.png";
-import CC_3 from "../../static/images/aboutpage24/Amandeeo Singh Chadha_CORE.png";
-import CC_4 from "../../static/images/aboutpage24/Dhruv Sachdeva_CORE.png";
-import CC_5 from "../../static/images/aboutpage24/Divneet Kaur_CORE.png";
-import CC_6 from "../../static/images/aboutpage24/Parv Arora_CORE.png";
-import CC_7 from "../../static/images/aboutpage24/Sachleen Kaur Batra_CORE.png";
-import CC_8 from "../../static/images/aboutpage24/Sameeksha Srivastava_CORE.png";
-import CC_9 from "../../static/images/aboutpage24/Sanskaar Kulshreshtha_CORE.png";
-import CC_10 from "../../static/images/aboutpage24/Shourya Raheja_CORE.png";
+import CC_1 from "../../static/images/aboutpage24/Aashman Rawat.png";
+import CC_2 from "../../static/images/aboutpage24/Achint Kaur.png";
+import CC_3 from "../../static/images/aboutpage24/Amandeep Singh Chadha.png";
+import CC_4 from "../../static/images/aboutpage24/Dhruv Sachdeva.png";
+import CC_5 from "../../static/images/aboutpage24/Divneet Kaur.png";
+import CC_6 from "../../static/images/aboutpage24/Parv Arora.png";
+import CC_7 from "../../static/images/aboutpage24/Sachleen Kaur Batra.png";
+import CC_8 from "../../static/images/aboutpage24/Sameeksha Srivastava.png";
+import CC_9 from "../../static/images/aboutpage24/Sanskaar Kulshreshtha.png";
+import CC_10 from "../../static/images/aboutpage24/Shourya Raheja.png";
 
 import "../../static/css/parallax.css";
 import { motion } from "framer-motion";

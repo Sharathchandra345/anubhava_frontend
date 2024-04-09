@@ -2,7 +2,7 @@ import React from "react";
 import Accordion from "../components/HowToApplyComponents/AccordionComponent";
 import YouTubeBanner from "../components/HowToApplyComponents/YouTubeBanner";
 import PageBanner from "../components/PageBanner";
-import banner from "../static/images/HowToApplyBanner.jpg";
+import banner from "../static/images/howtoapply.png";
 import youtube from "../static/images/HowToApplyYoutube.png";
 function HowToApply() {
   document.title = "How To Apply";

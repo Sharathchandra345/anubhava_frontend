@@ -18,6 +18,7 @@ import Protected from "./pages/Protected";
 import SignupPage from "./pages/SignupPage";
 import SliderTestPage from "./pages/SliderTestPage";
 import ComingSoon from "./components/ComingSoonPoster/ComingSoon";
+import TagDashboard from "./pages/TagDashboard";
 
 function App() {
   const location = useLocation();
@@ -34,12 +35,13 @@ function App() {
           <Routes key={location.pathname} location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/companies" element={<Companies />} />
+            <Route path="/secretcompanies" element={<Companies />} />
             <Route path="/companies/:id" element={<Company />} />
             <Route path="/how-to-apply" element={<HowToApply />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/tags" element={<TagDashboard />} />
             <Route
               path="/account"
               element={

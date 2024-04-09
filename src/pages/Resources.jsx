@@ -2,7 +2,7 @@ import React from "react";
 import PageBanner from "../components/PageBanner";
 import resource1 from "../static/images/resource_1.jpg";
 import resource2 from "../static/images/resource_interview.jpg";
-import banner from "../static/images/ResourcesBanner.jpg";
+import banner from "../static/images/resources.png";
 export default function Resources() {
   // scroll to top
   window.scrollTo(0, 0);

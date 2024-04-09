@@ -77,19 +77,28 @@ const Footer = () => {
           Contact Us
         </h1>
         <div className="flex gap-4 mb-4">
-          <a href="https://www.instagram.com/placementcell.sgtbkhalsa?igsh=MThrMjNjZW9yMGZ4">
+          <a
+            target="_blank"
+            href="https://www.instagram.com/placementcell.sgtbkhalsa?igsh=MThrMjNjZW9yMGZ4"
+          >
             <InstagramOutlined style={{ fontSize: "32px" }} />
           </a>
-          <a href="https://www.linkedin.com/school/the-placement-cell-sgtb-khalsa-college/">
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/school/the-placement-cell-sgtb-khalsa-college/"
+          >
             <LinkedinOutlined style={{ fontSize: "32px" }} />
           </a>
           {/* <a href="#">
             <XOutlined style={{ fontSize: "32px" }} />
           </a> */}
-          <a href="https://api.whatsapp.com/send?phone=917807417341">
+          <a
+            target="_blank"
+            href="https://api.whatsapp.com/send?phone=917807417341"
+          >
             <WhatsAppOutlined style={{ fontSize: "32px" }} />
           </a>
-          <a href="https://www.youtube.com/@ignite3081">
+          <a target="_blank" href="https://www.youtube.com/@ignite3081">
             <YoutubeOutlined style={{ fontSize: "32px" }} />
           </a>
         </div>
