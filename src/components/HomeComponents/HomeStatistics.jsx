@@ -1,9 +1,28 @@
 import React from "react";
 import HexagonImage from "../../static/images/Stats.svg";
+import HexagonImageMobile from "../../static/images/2.svg"; // Import the mobile image
+
 const HomeStatistics = () => {
+  const isMobile = window.innerWidth <= 768; // Check if the window width is less than or equal to 768px (considered as mobile view)
+
   return (
     <div>
-      <img className="h-250" src={HexagonImage} alt="" />
+      {isMobile ? (
+        <div>
+          <img
+            src={HexagonImageMobile}
+            alt=""
+            style={{ width: "150%", height: "auto" }}
+          />
+        </div>
+      ) : (
+        <img
+          className="h-450"
+          src={HexagonImage}
+          alt=""
+          style={{ width: "150vw", height: "auto" }}
+        />
+      )}
     </div>
   );
 };

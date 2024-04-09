@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-// import { DotLoader } from "react-spinn
 import company from "../static/images/testimages/How to Apply (4).png";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
@@ -12,6 +11,7 @@ function Companies() {
   document.title = "Companies";
 
   const MySwal = withReactContent(Swal);
+  const loaderRef = useRef(null);
 
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   useEffect(() => {
@@ -20,37 +20,35 @@ function Companies() {
     }
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [screenSize]);
+  }, []);
 
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchString, setSearchString] = useState("");
   const [usersearched, setUserSearched] = useState(false);
   const [page, setPage] = useState(1);
-  const [showMoreButton, setShowMoreButton] = useState(true);
 
-  const fetchData = async (reset = false) => {
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
     setLoading(true);
-    if (reset) {
-      setPage(1);
-      setCompanies([]);
-    }
 
     const response = await fetch(
       `https://anubhava-backend.vercel.app/companies?page=${page}`
     );
     const data = await response.json();
-    setCompanies((prevCompanies) => [...prevCompanies, ...data]);
-    setLoading(false);
 
     if (data.length === 0) {
-      setShowMoreButton(false);
+      // No more data available
+      setLoading(false);
+      return;
     }
-  };
 
-  useEffect(() => {
-    fetchData(true);
-  }, []);
+    setCompanies((prevCompanies) => [ ...data]);
+    setLoading(false);
+  };
 
   const handleFilter = (e) => {
     e.preventDefault();
@@ -118,9 +116,10 @@ function Companies() {
 
   const clearSearch = () => {
     setSearchString("");
-    fetchData(true);
+    setPage(1);
+    setCompanies([]);
     setUserSearched(false);
-    setShowMoreButton(true);
+    fetchData();
   };
 
   const handleShowMore = () => {
@@ -211,19 +210,9 @@ function Companies() {
           </div>
         </div>
       </div>
-      {/* <DotLoader
-        size={150}
-        css={{ display: "block", margin: "0 auto", padding: "0", opacity: 1 }}
-        color="#36528b"
-        loading={loading}
-      /> */}
       <Loader isLoading={loading} />
-      <div
-        className={`${
-          !usersearched ? `visible` : `hidden`
-        } grid grid-cols-2 md:grid-cols-4 mt-20 md:gap-4 gap-2 md:px-16 px-4 mb-10`}
-      >
-        {companies.map((company) => (
+      <div className="grid grid-cols-2 md:grid-cols-4 mt-20 md:gap-4 gap-2 md:px-16 px-4 mb-10">
+        {companies.map((company, index) => (
           <motion.button key={company._id}>
             <div className="max-h-50 w-full flex flex-col overflow-hidden companycard">
               <div
@@ -248,20 +237,18 @@ function Companies() {
                 </h1>
               </div>
             </div>
+            {index === companies.length - 1 && (
+              <div className="flex justify-center mt-5">
+                <button
+                  onClick={handleShowMore}
+                  className="px-4 py-2 bg-primary-color text-light-color hover:bg-primary-color rounded-lg text-sm"
+                >
+                  Show More
+                </button>
+              </div>
+            )}
           </motion.button>
         ))}
-        {showMoreButton && (
-          <div className="flex justify-center w-full my-8">
-            <div className="w-full max-w-screen-xl mx-auto">
-              <button
-                onClick={handleShowMore}
-                className="bg-primary-color text-light-color px-4 py-2 rounded-lg text-center hover:bg-primary-color text-sm"
-              >
-                Show More
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

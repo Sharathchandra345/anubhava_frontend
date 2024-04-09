@@ -83,13 +83,13 @@ const Footer = () => {
           <a href="https://www.linkedin.com/school/the-placement-cell-sgtb-khalsa-college/">
             <LinkedinOutlined style={{ fontSize: "32px" }} />
           </a>
-          <a href="#">
+          {/* <a href="#">
             <XOutlined style={{ fontSize: "32px" }} />
-          </a>
+          </a> */}
           <a href="https://api.whatsapp.com/send?phone=917807417341">
             <WhatsAppOutlined style={{ fontSize: "32px" }} />
           </a>
-          <a href="https://www.youtube.com">
+          <a href="https://www.youtube.com/@ignite3081">
             <YoutubeOutlined style={{ fontSize: "32px" }} />
           </a>
         </div>

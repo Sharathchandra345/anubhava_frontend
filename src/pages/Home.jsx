@@ -19,6 +19,7 @@ import instagram from "../static/logos/instagram.png";
 import email from "../static/logos/email.jpeg";
 import whatsapp from "../static/logos/whatsapp.png";
 import linkedin from "../static/logos/linkedin.png";
+import banner24 from "../static/images/banner24.png";
 
 function Home() {
   window.scrollTo(0, 0);
@@ -26,7 +27,7 @@ function Home() {
 
   return (
     <div className="md:mt-20 mt-[65px] flex flex-col md:gap-8 gap-4">
-      <HomeBanner imageArray={[banner2]} phoneImages={[banner2]} />
+      <HomeBanner imageArray={[banner24]} phoneImages={[banner24]} />
       <HomeLoginModal />
       <div className="center">
         <h1 className="main-heading">ANUBHAVA 6.0</h1>

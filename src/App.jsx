@@ -25,19 +25,16 @@ function App() {
     location.pathname === "/login" || location.pathname === "/signup";
 
   // Temporary to skip the navbar and footer
-  const shouldDisplayNavbarAndFooter = location.pathname !== "/";
+
   return (
     <AuthContextProvider>
       <div className="overflow-x-hidden">
-        {/* <Navbar /> Uncomment this later */}
-        {/* This down part is temporary*/}
-        {shouldDisplayNavbarAndFooter && <Navbar />}
+        <Navbar />
         <div className="flex flex-col">
           <Routes key={location.pathname} location={location}>
-            <Route path="/" element={<ComingSoon />} />
-            <Route path="/admintest" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/companies" element={<Companies />} />
+            <Route path="/secretcompanies" element={<Companies />} />
             <Route path="/companies/:id" element={<Company />} />
             <Route path="/how-to-apply" element={<HowToApply />} />
             <Route path="/resources" element={<Resources />} />
@@ -56,9 +53,7 @@ function App() {
             <Route path="/test" element={<SliderTestPage />} />
           </Routes>
         </div>
-        {/* {!isLocation && <Footer />} Uncomment this later on */}
-        {/* Temporary */}
-        {shouldDisplayNavbarAndFooter && !isLocation && <Footer />}
+        <Footer />
       </div>
     </AuthContextProvider>
   );

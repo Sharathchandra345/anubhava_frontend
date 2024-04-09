@@ -8,7 +8,7 @@ import BOD5 from "../../static/images/aboutpage24/Mankaran Singh_BOD.png";
 import BOD6 from "../../static/images/aboutpage24/Rishabh Khanna_BOD.png";
 import BOD7 from "../../static/images/aboutpage24/Rishima Katyal_BOD.png";
 import BOD8 from "../../static/images/aboutpage24/Supreet Kaur_BOD.png";
-import BOD9 from "../../static/images/aboutpage24/Vanshita Talreja_BOD.png";
+// import BOD9 from "../../static/images/aboutpage24/Vanshita Talreja_BOD.png";
 import "../../static/css/parallax.css";
 import { motion } from "framer-motion";
 
@@ -243,7 +243,7 @@ export default function AboutCoreCommittee() {
             />
           </motion.button>
 
-          <motion.button
+          {/* <motion.button
             whileHover={{ scale: 0.9 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => {
@@ -257,7 +257,7 @@ export default function AboutCoreCommittee() {
               alt="BOD9"
               className="h-[190px] w-[320px] z-10 rounded-lg"
             />
-          </motion.button>
+          </motion.button> */}
         </ReactElasticCarousel>
         {isModalOpen && <Modal />}
       </div>

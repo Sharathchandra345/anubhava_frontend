@@ -74,42 +74,42 @@ function ContactUs() {
         </div>
       </div>
       {/* 
-      <div className="flex flex-col gap-1 h-[450px] bg-primary-gray">
-        <h1 className="text-3xl md:text-4xl mx-14 my-10 font-semibold text-prim text-primary-color">
-          {" "}
-          <span className="text-white">For further queries, </span> contact
-        </h1>
+        <div className="flex flex-col gap-1 h-[450px] bg-primary-gray">
+          <h1 className="text-3xl md:text-4xl mx-14 my-10 font-semibold text-prim text-primary-color">
+            {" "}
+            <span className="text-white">For further queries, </span> contact
+          </h1>
 
-        <QueryCards
-          dataArray={[
-            {
-              name: "Jasnoor",
-              number: "+91 9650198803",
-              link: "http://wa.me/+919650198803",
-            },
-            {
-              name: "Arpit",
-              number: "+91 9540497325",
-              link: "http://wa.me/+919540497325",
-            },
-            {
-              name: "Aashman",
-              number: "+91 9205833905",
-              link: "http://wa.me/+919205833905",
-            },
-            {
-              name: "Sameeksha",
-              number: "+91 9958331336",
-              link: "http://wa.me/+919958331336",
-            },
-            {
-              name: "Prabhjot",
-              number: "+91 8929168629",
-              link: "http://wa.me/+918929168629",
-            },
-          ]}
-        />
-      </div> */}
+          <QueryCards
+            dataArray={[
+              {
+                name: "Jasnoor",
+                number: "+91 9650198803",
+                link: "http://wa.me/+919650198803",
+              },
+              {
+                name: "Arpit",
+                number: "+91 9540497325",
+                link: "http://wa.me/+919540497325",
+              },
+              {
+                name: "Aashman",
+                number: "+91 9205833905",
+                link: "http://wa.me/+919205833905",
+              },
+              {
+                name: "Sameeksha",
+                number: "+91 9958331336",
+                link: "http://wa.me/+919958331336",
+              },
+              {
+                name: "Prabhjot",
+                number: "+91 8929168629",
+                link: "http://wa.me/+918929168629",
+              },
+            ]}
+          />
+        </div> */}
 
       <div className="flex flex-col gap-4  bg-primary-dark2-color p-10  bg-dark-color">
         <h1 className="text-3xl md:text-4xl font-semibold text-center text-white">
@@ -121,41 +121,41 @@ function ContactUs() {
           {/* Contact 1 */}
           <div className="rounded-md p-4 flex flex-col gap-2 ">
             <h1 className="font-semibold text-lg text-primary-color text-center">
-              Jasnoor
+              Devanshi Wadhwa
             </h1>
-            <h1 className="text-base text-white">+91 9650198803</h1>
+            <h1 className="text-base text-white">+91 9050865102</h1>
           </div>
 
           {/* Contact 2 */}
           <div className="rounded-md p-4 flex flex-col gap-2 ">
             <h1 className="font-semibold text-lg text-primary-color text-center">
-              Arpit
+              Paladh Kukreja
             </h1>
-            <h1 className="text-base text-white">+91 9540497325</h1>
+            <h1 className="text-base text-white">+91 7267920107</h1>
           </div>
 
           {/* Contact 3 */}
           <div className="rounded-md p-4 flex flex-col gap-2 ">
             <h1 className="font-semibold text-lg text-primary-color text-center">
-              Aashman
+              Tavleen Kaur
             </h1>
-            <h1 className="text-base text-white">+91 9205833905</h1>
+            <h1 className="text-base text-white">+91 9372685856</h1>
           </div>
 
           {/* Contact 4 */}
           <div className="rounded-md p-4 flex flex-col gap-2 ">
             <h1 className="font-semibold text-lg text-primary-color text-center">
-              Sameeksha
+              Akshat Badhwar
             </h1>
-            <h1 className="text-base text-white">+91 9958331336</h1>
+            <h1 className="text-base text-white">+91 9372685856</h1>
           </div>
 
           {/* Contact 5 */}
           <div className="rounded-md p-4 flex flex-col gap-2 ">
             <h1 className="font-semibold text-lg text-primary-color text-center">
-              Prabhjot
+              Daksh Maheshwari
             </h1>
-            <h1 className="text-base text-white">+91 8929168629</h1>
+            <h1 className="text-base text-white">+91 87557739963</h1>
           </div>
         </div>
       </div>
@@ -183,9 +183,9 @@ function ContactUs() {
             "Can an applicant withdraw from the recruitment process of a particular company after applying ?"
           }
           children={`
-                    Once applied, a student can not withdraw from the recruitment process. Not showing
-                    up for further stages will lead to blacklisting from further drives.
-                    `}
+                      Once applied, a student can not withdraw from the recruitment process. Not showing
+                      up for further stages will lead to blacklisting from further drives.
+                      `}
         />
         <Accordion
           title={
@@ -204,9 +204,9 @@ function ContactUs() {
             "What sort of profiles can an applicant expect to see in the internship fair ?"
           }
           children={`
-                    A candidate can choose from a wide range of profiles in the fields of finance,
-                    consulting, HR, fashion, marketing and many others.
-                    `}
+                      A candidate can choose from a wide range of profiles in the fields of finance,
+                      consulting, HR, fashion, marketing and many others.
+                      `}
         />
         <div className="dropfaq border-b-2 border-primary-gray2"></div>
       </div>
