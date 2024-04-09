@@ -1,13 +1,37 @@
-.timeline-connector {
-  background-color: black;
-  /* height: 4px; */
-  width: 48%;
+.timeline-connector1 {
   position: absolute;
-  top: 50%;
-  z-index: 2;
-  border-top: 4px dashed black;
+  top: 0;
+  left: 51%;
+  width: 47.5%;
+  height: 70%;
+  background-color: transparent;
+  border-top: 2px dashed #000;
+  z-index: 1;
+  margin-top: 25%;
+}
+.timeline-connector2 {
+  position: absolute;
+  top: 0;
+  left: -49%;
+  width: 47.5%;
+  height: 70%;
+  background-color: transparent;
+  border-top: 2px dashed #000;
+  z-index: 1;
+  margin-top: 27%;
 }
 
+.vertical-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 72%;
+  background-color: transparent;
+  border-left: 2px dashed #000;
+  z-index: 1;
+  margin-top: 10%;
+}
 .right-connector {
   right: 100%;
 }
@@ -62,4 +86,98 @@
   height: 2px;
   background-color: #000;
   z-index: 1;
+}
+
+.circle1 {
+  margin-top: 4.5rem;
+  border: 3px solid #1d2233;
+}
+
+.circle2 {
+  margin-top: 19rem;
+  border: 3px solid #1d2233;
+}
+
+.circle3 {
+  margin-top: 32.5rem;
+  border: 3px solid #1d2233;
+}
+
+.circle4 {
+  margin-top: 47rem;
+  border: 3px solid #1d2233;
+}
+/* 
+@media (max-width: 1500px) {
+  .timeline-connector1,
+  .timeline-connector2 {
+    display: none;
+  }
+} */
+
+@media (max-width: 1200px) {
+  .timeline-connector1,
+  .timeline-connector2 {
+    max-width: 40.5%;
+  }
+}
+@media (max-width: 1180px) {
+  .horizontal-line {
+    display: none;
+  }
+
+  .circle1,
+  .circle2,
+  .circle3,
+  .circle4 {
+    position: static;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    border: 3px solid #1d2233;
+  }
+
+  .timeline-item {
+    width: 90%;
+    margin: 2rem auto;
+  }
+
+  .vertical-line {
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    width: 2px;
+    height: calc(100% - 3rem);
+    background-color: #000;
+    z-index: 1;
+    margin-top: 1.5rem;
+  }
+
+  .timeline-connector1,
+  .timeline-connector2 {
+    display: none;
+  }
+  .circle1 span,
+  .circle2 span,
+  .circle3 span,
+  .circle4 span {
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  .right-connector {
+    display: none;
+  }
+
+  .left-connector {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 70%;
+    background-color: transparent;
+    border-right: 2px dashed #000;
+    z-index: 1;
+    margin-top: 1.5rem;
+  }
 }

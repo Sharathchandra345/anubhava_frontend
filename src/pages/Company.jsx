@@ -29,7 +29,7 @@ import { DotLoader } from "react-spinners";
 import { RWebShare } from "react-web-share";
 
 function Company() {
-  const date = new Date("2024-04-08T00:00:00+05:30") > new Date();
+  const date = new Date("2024-04-28T00:00:00+05:30") > new Date();
   // scroll to top
   window.scrollTo(0, 0);
   const carouselRef = useRef(null);
@@ -287,6 +287,19 @@ function Company() {
           return;
         });
       } else {
+        // Success message
+        MySwal.fire({
+          icon: "success",
+          title: "Application Successful!",
+          text: "Your application has been submitted successfully.",
+          confirmButtonColor: "#36528b", // primary-color
+          confirmButtonText: "Ok",
+        }).then(() => {
+          // Optionally, you can perform any additional actions after the user acknowledges the success message.
+          // For example, navigate to another page.
+          // navigate('/another-page');
+        });
+
         // if there are no errors, go
         backToCompanies();
       }

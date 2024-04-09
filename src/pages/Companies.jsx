@@ -97,19 +97,11 @@ function Companies() {
 
   const handleSearch = (val) => {
     setSearchString(val);
-    setUserSearched(true);
-    setLoading(true);
-    let requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-    fetch(
-      `https://anubhava-backend.vercel.app/companies/search/${val}`,
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => {
-        if (result === "[]") {
+
+    fetch(`https://anubhava-backend.vercel.app/search/${val}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length === 0) {
           Swal.fire({
             icon: "error",
             title: "Oops...",
@@ -118,11 +110,10 @@ function Companies() {
           });
           setCompanies([]);
         } else {
-          setCompanies(JSON.parse(result));
+          setCompanies(data);
         }
-        setLoading(false);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.error("Error fetching data:", error));
   };
 
   const clearSearch = () => {

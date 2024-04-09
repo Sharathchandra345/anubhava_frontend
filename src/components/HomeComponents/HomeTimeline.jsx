@@ -35,7 +35,6 @@ export default function HomeTimeline({ timelineArray }) {
       </div>
     );
   };
-
   return (
     <div className={isMobile ? "" : "parallax"}>
       <div className={isMobile ? "" : "parallax-overlay"}>
@@ -93,6 +92,8 @@ export default function HomeTimeline({ timelineArray }) {
             </VerticalTimelineElement>
           ))}
         </VerticalTimeline>
+
+        {/* Border at the bottom */}
       </div>
     </div>
   );

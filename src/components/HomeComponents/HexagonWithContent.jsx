@@ -1,5 +1,5 @@
 import React from "react";
-import Hexagon1 from "../../static/images/hexagon1.svg";
+import Hexagon1 from "../../static/images/Stats.svg";
 
 const HexagonWithContent = ({ content, size, position }) => {
   const { top, left } = position;

@@ -128,7 +128,7 @@ function Home() {
         </h1>
       </div>
 
-      <HomeTimeline
+      {/* <HomeTimeline
         timelineArray={[
           {
             date: "12th April",
@@ -155,8 +155,8 @@ function Home() {
             body: "The hiring criteria of every organization is different and will be disclosed to the students as the procedure follows.",
           },
         ]}
-      />
-      {/* <NewHomeTimeline /> */}
+      /> */}
+      <NewHomeTimeline />
     </div>
   );
 }
