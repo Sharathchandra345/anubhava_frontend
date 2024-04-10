@@ -12,22 +12,22 @@ export default function YouTubeBanner() {
         <iframe
           width="100%"
           height="280px"
-          src="https://www.youtube.com/embed/t-zkR6x3axo?si=g3YiQErAW0OXNxuZ"
-          title="YouTube video 1"
-          frameBorder="0"
+          src="https://www.youtube.com/embed/plRRv3Xx4RM?si=JJaATi08DCZhONXM"
+          title="YouTube video player"
+          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
         ></iframe>
         <iframe
           width="100%"
           height="280px"
-          src="https://www.youtube.com/embed/toCq3rvec6E?si=d-3PvT8S9OuFiUSS"
-          title="YouTube video 2"
-          frameBorder="0"
+          src="https://www.youtube.com/embed/8JYeAQ43GdU?si=hZuc4FtCgjdC_Y5O"
+          title="YouTube video player"
+          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
         ></iframe>
       </div>
 
