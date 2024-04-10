@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import Marquee from "react-fast-marquee";
 import image from "../../static/images/Companies_Banner.png";
 
@@ -21,21 +22,28 @@ const HomeImageContinueScroll = () => {
       gradient={isMobile ? false : true}
       pauseOnHover={true}
     >
+      {/* Wrap each image inside an anchor tag */}
+      {/* <Link to="/companies"> */}
       <img
         src={image}
         className="h-[100px] md:h-[150px] object-cover mx-[28px]"
         alt="home_carousel_image"
       />
+      {/* </Link> */}
+      {/* <Link to="/companies"> */}
       <img
         src={image}
         className="h-[100px] md:h-[150px] object-cover mx-[28px]"
         alt="home_carousel_image"
       />
+      {/* </Link> */}
+      {/* <Link to="/companies"> */}
       <img
         src={image}
         className="h-[100px] md:h-[150px] object-cover mx-[28px]"
         alt="home_carousel_image"
       />
+      {/* </Link> */}
     </Marquee>
   );
 };

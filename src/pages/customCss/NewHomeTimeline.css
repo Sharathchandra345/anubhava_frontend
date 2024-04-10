@@ -64,6 +64,9 @@
   border-radius: 3rem;
   border: 4px solid #56b2bb;
 }
+.timeline-item-done {
+  background: #fff;
+}
 
 .timeline-item h2 {
   font-weight: bold;
@@ -251,4 +254,8 @@
     width: 130%;
     left: -120%;
   }
+}
+
+.circle-done {
+  border: none;
 }

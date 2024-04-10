@@ -8,8 +8,8 @@ const NewHomeTimeline = () => {
       <div className="vertical-line"></div>
       <div className="relative">
         {/* Circle 1*/}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 circle1 w-16 h-16 text-center border-2 border-black flex items-center justify-center bg-white rounded-full z-10">
-          <span className="text-black">
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 circle1 circle-done w-16 h-16 text-center border-2 bg-primary-color flex items-center justify-center  rounded-full z-10">
+          <span className="text-black ">
             10th
             <br />
             April
@@ -18,10 +18,10 @@ const NewHomeTimeline = () => {
 
         {/* First Item */}
 
-        <div className="timeline-item bg-1D2233 rounded-lg p-6 mb-10 relative border border-primary-color">
+        <div className="timeline-item timeline-item-done bg-1D2233 bg-white text-black rounded-lg p-6 mb-10 relative border border-primary-color">
           <div className="flex items-center justify-start items-center ">
             <h2
-              className="text-white font-bold text-2xl"
+              className="text-black font-bold text-2xl"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
             >
               Registrations Open!
@@ -31,7 +31,7 @@ const NewHomeTimeline = () => {
           {/* <div className="date-circle">01 Jan</div> */}
           <div className="justify-center items-center w-full">
             <p
-              className="text-white mt-6 text-md w-full"
+              className=" mt-6 text-md w-full"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
             >
               Visit our website to register for the fair. Once registered, you
