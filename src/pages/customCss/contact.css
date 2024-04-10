@@ -1,0 +1,5 @@
+@media (max-width: 680) {
+  .text-lg {
+    font-size: 0.75rem !important;
+  }
+}

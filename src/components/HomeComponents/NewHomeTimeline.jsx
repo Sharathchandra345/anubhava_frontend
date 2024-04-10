@@ -8,7 +8,7 @@ const NewHomeTimeline = () => {
       <div className="vertical-line"></div>
       <div className="relative">
         {/* Circle 1*/}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 circle1 circle-done w-16 h-16 text-center border-2 bg-primary-color flex items-center justify-center  rounded-full z-10">
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 circle1 circle-done w-16 h-16 text-center border-2 bg-primary-color flex items-center justify-center rounded-full z-10">
           <span className="text-black ">
             10th
             <br />
@@ -18,11 +18,11 @@ const NewHomeTimeline = () => {
 
         {/* First Item */}
 
-        <div className="timeline-item timeline-item-done bg-1D2233 bg-white text-black rounded-lg p-6 mb-10 relative border border-primary-color">
+        <div className="timeline-item timeline-item-done timeline-item-done bg-1D2233 bg-white text-black rounded-lg p-6 mb-10 relative border border-primary-color">
           <div className="flex items-center justify-start items-center ">
             <h2
               className="text-black font-bold text-2xl"
-              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+              style={{ textShadow: "2px 2px 4px rgba(255, 255, 255, 0.2)" }}
             >
               Registrations Open!
             </h2>

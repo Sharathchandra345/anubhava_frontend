@@ -76,6 +76,14 @@
 .timeline-item p {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+.timeline-item-done h2 {
+  font-weight: bold;
+  text-shadow: none;
+}
+
+.timeline-item-done p {
+  text-shadow: none;
+}
 
 .timeline-outer {
   font-weight: 500;
