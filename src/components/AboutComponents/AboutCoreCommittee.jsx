@@ -79,15 +79,15 @@ export default function AboutCoreCommittee() {
   let resetTimeout;
 
   const coreCommitteeMembers = [
+    { image: CC_6, name: "Parv Arora" },
+    { image: CC_9, name: "Sanskaar Kulshreshtha" },
+    { image: CC_3, name: "Amandeep Singh Chadha" },
+    { image: CC_7, name: "Sachleen Kaur Batra" },
+    { image: CC_5, name: "Divneet Kaur" },
+    { image: CC_8, name: "Sameeksha Srivastava" },
+    { image: CC_4, name: "Dhruv Sachdeva" },
     { image: CC_1, name: "Aashman Rawat" },
     { image: CC_2, name: "Achint Kaur" },
-    { image: CC_3, name: "Amandeep Singh Chadha" },
-    { image: CC_4, name: "Dhruv Sachdeva" },
-    { image: CC_5, name: "Divneet Kaur" },
-    { image: CC_6, name: "Parv Arora" },
-    { image: CC_7, name: "Sachleen Kaur Batra" },
-    { image: CC_8, name: "Sameeksha Srivastava" },
-    { image: CC_9, name: "Sanskaar Kulshreshtha" },
     { image: CC_10, name: "Shourya Raheja" },
   ];
 

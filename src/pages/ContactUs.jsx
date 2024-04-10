@@ -35,10 +35,10 @@ function ContactUs() {
             </div>
 
             <div className="flex flex-row items-center">
-              <h1 className="font-semibold text-lg md:text-2xl text-primary-color">
+              <h1 className="font-semibold text-xs sm:text-lg md:text-2xl  text-primary-color">
                 E-mail:
               </h1>
-              <h1 className="font-semibold text-lg md:text-2xl text-black">
+              <h1 className="font-semibold text-xs sm:text-lg md:text-2xl  text-black">
                 ignitepcinfo@gmail.com
               </h1>
             </div>
@@ -58,10 +58,10 @@ function ContactUs() {
             </div>
 
             <div className="flex flex-row">
-              <h1 className="font-semibold text-lg md:text-2xl text-primary-color">
+              <h1 className="font-semibold text-xs sm:text-lg md:text-2xl text-primary-color">
                 Phone:
               </h1>
-              <h1 className="font-semibold text-lg md:text-2xl text-black">
+              <h1 className="font-semibold text-xs sm:text-lg md:text-2xl text-black">
                 (+91) 7807417341
               </h1>
             </div>
