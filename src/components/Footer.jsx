@@ -31,7 +31,7 @@ const Footer = () => {
       <div className="text-primary-color">
         <h1 className="text-2xl font-semibold mb-4">Quick Links</h1>
         <div className="flex flex-col md:flex-row">
-          <div className="flex flex-col text-white py-2 px-3">
+          <div className="flex flex-col text-white md:py-2 md:px-3">
             <a href="/" className="text-lg hover:underline mb-2 pl-2 md:pl-0">
               Home
             </a>
@@ -48,7 +48,7 @@ const Footer = () => {
               Companies
             </a>
           </div>
-          <div className="flex flex-col ml-8 md:ml-0 py-2 px-3 text-white">
+          <div className="flex flex-col md:ml-8  md:py-2 md:px-3 text-white">
             <a
               href="/how-to-apply"
               className="text-lg hover:underline mb-2 pl-2 md:pl-0"

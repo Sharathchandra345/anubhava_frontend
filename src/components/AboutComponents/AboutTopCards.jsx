@@ -13,7 +13,7 @@ export default function AboutTopCards({ logo1, logo2 }) {
           />
         </div>
         <div
-          className="flex flex-col md:w-10/12 md:gap-8 gap-4 p-4 md:p-8 rounded-xl bg-primary-third"
+          className="flex flex-col md:w-10/12 md:gap-8 gap-4 p-4 md:p-4 rounded-xl bg-primary-third"
           style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)" }}
         >
           <h1 className="md:text-2xl text-lg font-semibold text-white">
@@ -58,12 +58,11 @@ export default function AboutTopCards({ logo1, logo2 }) {
             </span>
           </h1>
           <h1 className="text-white text-sm md:text-base">
-            Ignite is a full-fledged training and placement cell which
-            periodically liaises and interacts with the corporate world in order
-            to explore the possibility of training and job placement for the
-            students. Apart from bringing a varied list of recruiters to the
-            campus, it organizes talks, study abroad seminars, internship
-            opportunities, and workshops for the collective student body.
+            ANUBHAVA is our Annual PAN India Online Internship Fair. Our
+            previous internship fair emphasized on a pragmatic approach, making
+            it the ideal facilitator of a student's holistic development. It was
+            a remarkable success which served as a platform for companies to
+            engage with brilliant minds.
           </h1>
         </div>
       </div>
