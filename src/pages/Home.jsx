@@ -49,7 +49,7 @@ function Home() {
       </div>
       <HomeImageContinueScroll />
 
-      <div className="flex items-center justify-center">
+      {/* <div className="flex items-center justify-center">
         <h1 className="text-3xl md:my-5 my-3 md:text-4xl font-bold">
           <span className="text-primary-color">MEDIA</span>{" "}
           <span className="text-black">SPONSORS</span>
@@ -111,7 +111,7 @@ function Home() {
           { image: img5, link: "https://www.google.com/" },
           { image: img6, link: "https://www.google.com/" },
         ]}
-      />
+      /> */}
       {/* <HomeJoingCommunity /> */}
 
       <div className="flex items-center justify-center">
