@@ -32,7 +32,7 @@ const NewHomeTimeline = () => {
           <div className="justify-center items-center w-full">
             <p
               className=" mt-6 text-md w-full"
-              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+              style={{ textShadow: "2px 2px 4px rgba(255, 255, 255, 0.5)" }}
             >
               Visit our website to register for the fair. Once registered, you
               will receive more information about the fair and participating
