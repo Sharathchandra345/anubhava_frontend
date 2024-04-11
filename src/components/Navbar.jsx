@@ -10,7 +10,7 @@ function Button({ text, bg }) {
   return (
     <div>
       <div
-        className={`cursor-pointer text-primary-color border-2 border-primary-color px-4 py-4 ml-12 rounded-md 
+        className={`cursor-pointer text-primary-color border-2 border-primary-color px-4 py-4 md:ml-12 rounded-md 
           bg-black
         }`}
       >
@@ -90,7 +90,7 @@ function Navbar() {
           md:flex md:items-center md:z-auto md:static md:w-auto md:py-0 md:opacity-100 md:pl-0 pr-5 md:pr-0
           ${
             !menu ? "opacity-0" : "opacity-100"
-          } items-center absolute space-x-2 mr-10 bg-black
+          } items-center absolute mr-10 bg-black
           pl-5  rounded-b-lg pb-4 w-full left-0 transition-all ease-in duration-500`}
           >
             <NavBarTabs

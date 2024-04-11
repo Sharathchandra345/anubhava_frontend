@@ -41,7 +41,7 @@ function Home() {
         career journey.
       </p>
       <div className="flex items-center justify-center">
-        <h1 className="text-3xl md:my-5 my-3 md:text-4xl font-bold">
+        <h1 className="md:text-3xl text-xl md:my-5 my-3 md:text-4xl font-bold">
           <span className="text-black">OUR</span>{" "}
           <span className="text-primary-color">PROMINENT</span>{" "}
           <span className="text-black">RECRUITERS</span>

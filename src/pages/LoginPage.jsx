@@ -179,7 +179,7 @@ function LoginPage() {
                 Sign up now
               </span>{" "}
             </h1>
-            <h1 className=" mt-5 text-gray-600">
+            {/* <h1 className=" mt-5 text-gray-600">
               <span>Join our </span>
               <span
                 onClick={() =>
@@ -193,7 +193,7 @@ function LoginPage() {
                 {" "}
                 WhatsApp Community!
               </span>{" "}
-            </h1>
+            </h1> */}
           </div>
           <div className="flex flex-col items-start"></div>
         </div>
