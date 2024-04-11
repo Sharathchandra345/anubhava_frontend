@@ -41,20 +41,20 @@ const Footer = () => {
             >
               About
             </a>
-            <a
+            {/* <a
               href="/companies"
               className="text-lg hover:underline mb-2 pl-2 md:pl-0"
             >
               Companies
-            </a>
-          </div>
-          <div className="flex flex-col md:ml-8  md:py-2 md:px-3 text-white">
+            </a> */}
             <a
               href="/how-to-apply"
               className="text-lg hover:underline mb-2 pl-2 md:pl-0"
             >
               How to Apply
             </a>
+          </div>
+          <div className="flex flex-col md:ml-8  md:py-2 md:px-3 text-white">
             <a
               href="/resources"
               className="text-lg hover:underline mb-2 pl-2 md:pl-0"
