@@ -17,7 +17,7 @@ export default function AboutPrincipalMessage({
   return (
     <div className="relative mb-10 md:mb-0 px-5">
       <div
-        className="w-full h-full md:h-[600px] absolute inset-0"
+        className="w-full md:h-[600px] absolute inset-0"
         style={backgroundStyle}
       >
         <div className="bg-dark-color opacity-50 w-full h-full absolute inset-0"></div>
@@ -35,7 +35,7 @@ export default function AboutPrincipalMessage({
             <h1 className="md:text-3xl text-xl">
               Message from <span className="text-warning-color">Principal</span>
             </h1>
-            <p className="md:text-sm">{message}</p>
+            <p className="md:text-sm text-xs">{message}</p>
             <div className="flex items-center">
               <h1 className="font-bold text-base text-light-color">
                 - Dr Jaswinder Singh
@@ -59,7 +59,7 @@ export default function AboutPrincipalMessage({
             <h1 className="md:text-3xl text-xl">
               Message from <span className="text-warning-color">Convenor</span>
             </h1>
-            <p className="md:text-sm">{message2}</p>
+            <p className="md:text-sm text-xs">{message2}</p>
             <div className="flex items-center">
               <h1 className="font-bold text-base text-light-color">
                 - Dr Bibhu Prasad Sahoo

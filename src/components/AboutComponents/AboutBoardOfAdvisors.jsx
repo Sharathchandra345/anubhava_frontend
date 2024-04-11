@@ -145,7 +145,7 @@ export default function AboutBoardOfAdvisors({ images, text, special }) {
                 <img
                   src={image["img"]}
                   alt="image"
-                  className="w-[144px] h-[144px]"
+                  className="md:w-[144px] w-200 h-150 md:h-[144px]"
                 />
                 <div>
                   <h1 className="md:text-xl text-lg text-primary-new font-bold">

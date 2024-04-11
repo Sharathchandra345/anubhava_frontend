@@ -305,7 +305,7 @@ export default function AccountPage() {
           confirmButtonText: "Ok",
         }).then(() => {
           localStorage.setItem("timeOut", JSON.stringify(new Date()));
-          navigate("/companies");
+          navigate("/");
         });
       });
   };
@@ -450,8 +450,8 @@ export default function AccountPage() {
 
       {/* <PageBanner image={person} bannerText={`Welcome ${user.displayName}`} /> */}
       <div className="w-full flex justify-start">
-        <div className="m-10 h-20 w-1 bg-primary-color"></div>
-        <h1 className="text-4xl mt-10 pt-5 text-black font-semibold ">
+        <div className="md:m-10 m-2 mt-5 h-20 w-1 bg-primary-color"></div>
+        <h1 className="md:text-4xl text-3xl md:mt-10 mt-5 pt-5 text-black font-semibold ">
           Welcome,{" "}
           <span className="text-primary-color">{user.displayName}</span>
         </h1>
@@ -459,9 +459,9 @@ export default function AccountPage() {
       <div
         className={`${
           !loading ? "opacity-100 border-4 border-black " : "opacity-50"
-        } flex flex-col gap-4 md:gap-8 md:px-10 px-4 items-center justify-center`}
+        } flex flex-col gap-4 md:gap-8 md:px-10 px-4 m-4 items-center justify-center`}
       >
-        <div className="p-4 w-96 md:w-[860px]">
+        <div className="p-4 w-76 md:w-[860px]">
           <h1 className="text-primary-color text-3xl font-semibold mb-4">
             Profile
           </h1>
@@ -473,15 +473,15 @@ export default function AccountPage() {
           </div>
           <div className="flex flex-row">
             {/* Left Column */}
-            <div className="d1 flex justify-center items-center h-full">
-              <h2 className="text-black text-xl font-semibold mt-8 mb-2">
+            <div className="d1 flex justify-center items-center md:-ml-48 h-full md:w-full">
+              <h2 className="text-black text-xl font-semibold mb-2 ">
                 Basic Info
               </h2>
             </div>
 
             {/* Right Column */}
-            <div className="d2 flex flex-col ml-11">
-              <div className="flex flex-col text-black pl-4">
+            <div className="d2 flex flex-col md:-ml-56 md:w-full md:pl-0 sm:pl-6 pl-6">
+              <div className="flex flex-col text-black pl-4  ">
                 {/* Age Input */}
                 <input
                   disabled={loading}
@@ -490,8 +490,8 @@ export default function AccountPage() {
                   id="age"
                   type="number"
                   inputMode="numeric"
-                  placeholder="Enter your Age"
-                  className="bg-transparent focus:outline-none focus:border-primary-color"
+                  placeholder="Enter age here"
+                  className="bg-transparent focus:outline-none w-200 focus:border-primary-color"
                 />
               </div>
               <div className="flex flex-col text-black pl-4">
@@ -508,7 +508,7 @@ export default function AccountPage() {
                   onChange={(e) => handleContactNumberChange(e.target.value)}
                   id="contact_number"
                   type="text"
-                  placeholder="Enter your contact number"
+                  placeholder="Enter contact number here"
                   className="bg-transparent focus:outline-none focus:border-primary-color"
                 />
               </div>
@@ -520,19 +520,19 @@ export default function AccountPage() {
                   onChange={(e) => handleCityChange(e.target.value)}
                   id="city"
                   type="text"
-                  placeholder="Enter your City name"
+                  placeholder="Enter city here"
                   className="bg-transparent focus:outline-none focus:border-primary-color mb-5"
                 />
               </div>
             </div>
           </div>
           <div className="flex flex-row">
-            <div className="d1 flex justify-center items-center h-full">
+            <div className="d1 flex justify-center items-center h-full md:-ml-48 md:w-full">
               <h2 className="text-black text-xl font-semibold mb-2">
                 College Info
               </h2>
             </div>
-            <div className="d2 flex flex-col ml-6">
+            <div className="d2 flex flex-col md:w-full md:-ml-56">
               <div className="flex flex-col text-black pl-4">
                 {/* <h1 className="text-lg font-semibold">College:</h1> */}
                 <input
@@ -541,7 +541,7 @@ export default function AccountPage() {
                   onChange={(e) => handleCollegeChange(e.target.value)}
                   id="course"
                   type="text"
-                  placeholder="Enter your College name"
+                  placeholder="Enter college here"
                   className="bg-transparent focus:outline-none focus:border-primary-color"
                 />
               </div>
@@ -553,7 +553,7 @@ export default function AccountPage() {
                   onChange={(e) => handleCourseChange(e.target.value)}
                   id="course"
                   type="text"
-                  placeholder="Enter your course name"
+                  placeholder="Enter course name here"
                   className="bg-transparent focus:outline-none focus:border-primary-color"
                 />
               </div>
@@ -565,7 +565,7 @@ export default function AccountPage() {
                   onChange={(e) => handleYearOfStudyChange(e.target.value)}
                   id="year_of_study"
                   type="number"
-                  placeholder="Enter your current year of study"
+                  placeholder="Enter year of enrollment"
                   className="bg-transparent focus:outline-none focus:border-primary-color"
                 />
               </div>

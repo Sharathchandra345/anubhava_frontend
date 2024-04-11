@@ -9,7 +9,7 @@ export default function Resources() {
   document.title = "Resources";
   return (
     <div className="md:mt-20 mt-[65px] flex flex-col">
-      <PageBanner image={banner} bannerText={"Resources"} />
+      <PageBanner image={banner} bannerText={"RESOURCES"} />
       <div className="flex my-10 flex-col md:flex-row  items-center justify-center md:gap-10">
         <div>
           <div className="flex flex-row gap-2 items-center mb-5 px-12">

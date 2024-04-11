@@ -126,12 +126,12 @@ const images2 = [
   {
     img: img13,
     first: "Kushagra",
-    last: "",
+    last: "\u00A0",
   },
   {
     img: img14,
     first: "Lakshay",
-    last: "",
+    last: "Chhabra",
   },
   {
     img: img15,
@@ -146,7 +146,7 @@ const images2 = [
   {
     img: img17,
     first: "Tavleen",
-    last: "Kaur Sachdev",
+    last: "Sachdev",
   },
   {
     img: img18,
@@ -182,7 +182,7 @@ function About() {
       }} size={150} color={"#0f766e"} loading={isLoading} />
       <div className={`${!isLoading ? `opacity-100` : `opacity-50`}`}> */}
       <div>
-        <PageBanner image={person} bannerText={"About Us"} />
+        <PageBanner image={person} bannerText={"ABOUT US"} />
         {/* CONTENT */}
         <div className="flex flex-col">
           <AboutTopCards logo1={logo4} logo2={logo3} />

@@ -7,11 +7,10 @@ import "../pages/customCss/contact.css";
 
 function ContactUs() {
   document.title = "Contact Us";
-
   window.scrollTo(0, 0);
   return (
     <div className="md:mt-20 mt-[65px] flex flex-col">
-      <PageBanner bannerText={"Contact Us"} image={banner} />
+      <PageBanner bannerText={"CONTACT US"} image={banner} />
 
       <div className="flex flex-col justify-center items-center mt-10 mb-12">
         <div className="flex flex-col gap-4 my-10 mx-2 md:flex-row md:justify-between">
@@ -69,41 +68,61 @@ function ContactUs() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4  bg-primary-dark2-color p-10  bg-dark-color">
+      <div className="flex flex-col gap-4 bg-primary-dark2-color p-10 bg-dark-color">
         <h1 className="text-xl md:text-4xl font-semibold text-center text-white">
           For further queries,{" "}
           <span className="text-primary-color">contact</span>
         </h1>
-        <div className="flex justify-center gap-4">
-          <div className="rounded-md p-4 flex flex-col gap-2 ">
-            <h1 className="font-semibold text-md md:text-lg text-primary-color text-center">
-              Devanshi Wadhwa
-            </h1>
-            <h1 className="text-sm md:text-base text-white">+91 9050865102</h1>
+        <div className="flex flex-wrap justify-center gap-4">
+          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/6 xl:w-1/8">
+            <div className="rounded-md p-4 flex flex-col gap-2 ">
+              <h1 className="font-semibold text-md md:text-lg text-primary-color text-center">
+                Devanshi Wadhwa
+              </h1>
+              <h1 className="text-sm md:text-base text-white text-center">
+                +91 9050865102
+              </h1>
+            </div>
           </div>
-          <div className="rounded-md p-4 flex flex-col gap-2 ">
-            <h1 className="font-semibold text-md md:text-lg text-primary-color text-center">
-              Paladh Kukreja
-            </h1>
-            <h1 className="text-sm md:text-base text-white">+91 7267920107</h1>
+          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/6 xl:w-1/8">
+            <div className="rounded-md p-4 flex flex-col gap-2 ">
+              <h1 className="font-semibold text-md md:text-lg text-primary-color text-center">
+                Paladh Kukreja
+              </h1>
+              <h1 className="text-sm md:text-base text-white text-center">
+                +91 7267920107
+              </h1>
+            </div>
           </div>
-          <div className="rounded-md p-4 flex flex-col gap-2 ">
-            <h1 className="font-semibold text-md md:text-lg text-primary-color text-center">
-              Tavleen Kaur
-            </h1>
-            <h1 className="text-sm md:text-base text-white">+91 9372685856</h1>
+          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/6 xl:w-1/8">
+            <div className="rounded-md p-4 flex flex-col gap-2 ">
+              <h1 className="font-semibold text-md md:text-lg text-primary-color text-center">
+                Tavleen Kaur
+              </h1>
+              <h1 className="text-sm md:text-base text-white text-center">
+                +91 9372685856
+              </h1>
+            </div>
           </div>
-          <div className="rounded-md p-4 flex flex-col gap-2 ">
-            <h1 className="font-semibold text-md md:text-lg text-primary-color text-center">
-              Akshat Badhwar
-            </h1>
-            <h1 className="text-sm md:text-base text-white">+91 9372685856</h1>
+          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/6 xl:w-1/8">
+            <div className="rounded-md p-4 flex flex-col gap-2 ">
+              <h1 className="font-semibold text-md md:text-lg text-primary-color text-center">
+                Akshat Badhwar
+              </h1>
+              <h1 className="text-sm md:text-base text-white text-center">
+                +91 9372685856
+              </h1>
+            </div>
           </div>
-          <div className="rounded-md p-4 flex flex-col gap-2 ">
-            <h1 className="font-semibold text-md md:text-lg text-primary-color text-center">
-              Daksh Maheshwari
-            </h1>
-            <h1 className="text-sm md:text-base text-white">+91 87557739963</h1>
+          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/6 xl:w-1/8">
+            <div className="rounded-md p-4 flex flex-col gap-2 ">
+              <h1 className="font-semibold text-md md:text-lg text-primary-color text-center">
+                Daksh Maheshwari
+              </h1>
+              <h1 className="text-sm md:text-base text-white text-center">
+                +91 87557739963
+              </h1>
+            </div>
           </div>
         </div>
       </div>
