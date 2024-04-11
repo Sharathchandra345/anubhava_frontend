@@ -29,8 +29,9 @@ export default function Resources() {
           </div>
 
           <div className="flex flex-col gap-4 px-12 my-2 items-center">
-            <img className="w-[310px] h-[240px] rounded-lg" src={resource1} />
-
+            <a target="_blank" href="https://bit.ly/Sample_Resume_Ignite">
+              <img className="w-[310px] h-[240px] rounded-lg" src={resource1} />
+            </a>
             <div
               onClick={() => {
                 window.open("https://bit.ly/Sample_Resume_Ignite");
@@ -47,7 +48,9 @@ export default function Resources() {
               >
                 <path d="M14.5 11V14H2.5V11H0.5V14C0.5 15.1 1.4 16 2.5 16H14.5C15.6 16 16.5 15.1 16.5 14V11H14.5ZM13.5 7L12.09 5.59L9.5 8.17V0H7.5V8.17L4.91 5.59L3.5 7L8.5 12L13.5 7Z" />
               </svg> */}
-              <h1 className="text-2xl hover:text-black">Download</h1>
+              <h1 className="text-2xl text-2xl hover:text-white hover:bg-primary-color p-2 rounded-xl">
+                Download
+              </h1>
             </div>
           </div>
         </div>
@@ -70,7 +73,9 @@ export default function Resources() {
           </div>
 
           <div className="flex flex-col gap-4 px-12 my-2 items-center">
-            <img className="w-[310px] h-[240px] rounded-lg" src={resource2} />
+            <a href="https://drive.google.com/drive/folders/1ARKlh9s1yMDThVG9TRL9ulVcoLnRQIPt?usp=share_link">
+              <img className="w-[310px] h-[240px] rounded-lg" src={resource2} />
+            </a>
 
             <div
               onClick={() => {
@@ -90,7 +95,9 @@ export default function Resources() {
               >
                 <path d="M14.5 11V14H2.5V11H0.5V14C0.5 15.1 1.4 16 2.5 16H14.5C15.6 16 16.5 15.1 16.5 14V11H14.5ZM13.5 7L12.09 5.59L9.5 8.17V0H7.5V8.17L4.91 5.59L3.5 7L8.5 12L13.5 7Z" />
               </svg> */}
-              <h1 className="text-2xl hover:text-black">Download</h1>
+              <h1 className="text-2xl hover:text-white hover:bg-primary-color p-2 rounded-xl">
+                Download
+              </h1>
             </div>
           </div>
         </div>

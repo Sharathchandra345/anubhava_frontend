@@ -41,7 +41,7 @@ function App() {
             <Route path="/resources" element={<Resources />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/login" element={<LoginPage />} />
-            {/* <Route path="/tags" element={<TagDashboard />} /> */}
+            <Route path="/tags" element={<TagDashboard />} />
             <Route
               path="/account"
               element={

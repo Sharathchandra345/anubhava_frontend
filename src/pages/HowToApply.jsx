@@ -42,7 +42,7 @@ function HowToApply() {
           title={
             "I can't sign up on Anubhava's website using Google email. What should I do ?"
           }
-          children={`We recommend you to Google chrome browser to sign up on Anubhava's website. Otherwise you can use your personal email address to sign up
+          children={`We recommend you to use Google chrome browser to sign up on Anubhava's website. Otherwise you can use your personal email address to sign up
                     through the Sign up button. If you are still facing issues, please contact us.
                     `}
         />

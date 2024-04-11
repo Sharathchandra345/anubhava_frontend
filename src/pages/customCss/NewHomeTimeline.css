@@ -267,3 +267,17 @@
 .circle-done {
   border: none;
 }
+
+@media (max-width: 500px) {
+  .vertical-line {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 4px;
+    height: 72%;
+    background-color: transparent;
+    border-left: 2px dashed #000;
+    z-index: 1;
+    margin-top: 10%;
+  }
+}

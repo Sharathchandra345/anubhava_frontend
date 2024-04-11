@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import company from "../static/images/testimages/How to Apply (4).png";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
@@ -11,10 +11,16 @@ function Companies() {
   document.title = "Companies";
 
   const MySwal = withReactContent(Swal);
-  const loaderRef = useRef(null);
 
+  const [companies, setCompanies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [searchString, setSearchString] = useState("");
+  const [usersearched, setUserSearched] = useState(false);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
+  const [limit, setLimit] = useState(32); // Track the current limit
+
   useEffect(() => {
+    fetchData();
     function handleResize() {
       setScreenSize(window.innerWidth);
     }
@@ -22,32 +28,24 @@ function Companies() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const [companies, setCompanies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [searchString, setSearchString] = useState("");
-  const [usersearched, setUserSearched] = useState(false);
-  const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     setLoading(true);
 
-    const response = await fetch(
-      `https://anubhava-backend.vercel.app/companies?page=${page}`
-    );
-    const data = await response.json();
-
-    if (data.length === 0) {
-      // No more data available
+    try {
+      const response = await fetch(
+        `https://anubhava-backend.vercel.app/companies?limit=${limit}`
+      );
+      const data = await response.json();
+      setCompanies(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
       setLoading(false);
-      return;
     }
+  };
 
-    setCompanies((prevCompanies) => [ ...data]);
-    setLoading(false);
+  const handleShowMore = () => {
+    setLimit((prevLimit) => prevLimit + 32); // Increase the limit by 32
   };
 
   const handleFilter = (e) => {
@@ -116,15 +114,37 @@ function Companies() {
 
   const clearSearch = () => {
     setSearchString("");
-    setPage(1);
-    setCompanies([]);
-    setUserSearched(false);
     fetchData();
   };
 
-  const handleShowMore = () => {
-    setPage((prevPage) => prevPage + 1);
-    fetchData();
+  const renderCompanies = () => {
+    return companies
+      .map((company, index) => (
+        <motion.button key={company._id}>
+          <div className="max-h-50 w-full flex flex-col overflow-hidden companycard">
+            <div
+              onClick={() => window.open(`/companies/${company._id}`, "_blank")}
+              className="w-full h-40 bg-light-color overflow-hidden flex items-center justify-center company-image-container"
+            >
+              <img
+                className="object-cover h-full w-auto"
+                src={company.image}
+                alt={company.name}
+              />
+            </div>
+            <div className="w-full h-1/5 flex items-center justify-center companyName">
+              <h1 className="text-xl text-light-color font-medium text-center cnamediv">
+                {screenSize < 768
+                  ? company.name.length > 10
+                    ? company.name.substring(0, 10) + "..."
+                    : company.name
+                  : company.name}
+              </h1>
+            </div>
+          </div>
+        </motion.button>
+      ))
+      .slice(0, limit); // Slice the companies array to show only up to the limit
   };
 
   return (
@@ -212,44 +232,18 @@ function Companies() {
       </div>
       <Loader isLoading={loading} />
       <div className="grid grid-cols-2 md:grid-cols-4 mt-20 md:gap-4 gap-2 md:px-16 px-4 mb-10">
-        {companies.map((company, index) => (
-          <motion.button key={company._id}>
-            <div className="max-h-50 w-full flex flex-col overflow-hidden companycard">
-              <div
-                onClick={() =>
-                  window.open(`/companies/${company._id}`, "_blank")
-                }
-                className="w-full h-40 bg-light-color overflow-hidden flex items-center justify-center company-image-container"
-              >
-                <img
-                  className="object-cover h-full w-auto"
-                  src={company.image}
-                  alt={company.name}
-                />
-              </div>
-              <div className="w-full h-1/5 flex items-center justify-center companyName">
-                <h1 className="text-xl text-light-color font-medium text-center cnamediv">
-                  {screenSize < 768
-                    ? company.name.length > 10
-                      ? company.name.substring(0, 10) + "..."
-                      : company.name
-                    : company.name}
-                </h1>
-              </div>
-            </div>
-            {index === companies.length - 1 && (
-              <div className="flex justify-center mt-5">
-                <button
-                  onClick={handleShowMore}
-                  className="px-4 py-2 bg-primary-color text-light-color hover:bg-primary-color rounded-lg text-sm"
-                >
-                  Show More
-                </button>
-              </div>
-            )}
-          </motion.button>
-        ))}
+        {renderCompanies()}
       </div>
+      {limit < 160 && (
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={handleShowMore}
+            className="bg-primary-color text-light-color font-bold px-4 py-2 m-10 rounded-lg hover:bg-primary-dark transition-colors duration-300"
+          >
+            Show More
+          </button>
+        </div>
+      )}
     </div>
   );
 }
