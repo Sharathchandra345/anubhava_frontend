@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import company from "../static/images/testimages/How to Apply (4).png";
+import company from "../static/images/HowToApplyProcess.png";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -160,13 +160,13 @@ function Companies() {
   };
 
   return (
-    <div className="md:mt-20 mt-[65px] flex flex-col relative h-full w-full">
+    <div className="md:mt-11 mt-[65px] flex flex-col relative h-full w-full">
       <div
         className={`${
           !loading ? `opacity-100` : `opacity-50`
         } overflow-hidden flex flex-col bg-primary-new  mx-0 h-80 w-full`}
       >
-        <img src={company} alt="Process" />
+        <img src={company} alt="Process" className="mt-5" />
         <div className="h-80 z-1">
           <div className="flex items-center justify-center w-full h-full">
             {/* <h1 className="md:text-5xl font-bold text-4xl text-light-color md:font-medium text-center">
