@@ -45,7 +45,19 @@ function Companies() {
   };
 
   const handleShowMore = () => {
-    setLimit((prevLimit) => prevLimit + 32); // Increase the limit by 32
+    // Store the current scroll position
+    const scrollY = window.scrollY;
+
+    // Update the state to increase the limit
+    setLimit((prevLimit) => prevLimit + 32);
+
+    // Restore the scroll position after the state has been updated
+    setTimeout(() => {
+      window.scrollTo({
+        top: scrollY,
+        behavior: "smooth",
+      });
+    }, 0);
   };
 
   const handleFilter = (e) => {

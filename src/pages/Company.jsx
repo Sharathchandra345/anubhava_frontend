@@ -21,13 +21,13 @@ import "../static/css/job_profile_carousel.css";
 
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-
+import "../static/css/job_profile_carousel.css";
 import PerkAndEligibleCard from "../components/PerkAndEligibleCard";
 import Dropdown from "../components/Dropdown";
 import ReactElasticCarousel from "react-elastic-carousel";
 import { DotLoader } from "react-spinners";
 import { RWebShare } from "react-web-share";
-
+import Loader from "../components/Loader/Loader";
 function Company() {
   const date = new Date("2024-04-28T00:00:00+05:30") > new Date();
   // scroll to top
@@ -363,7 +363,7 @@ function Company() {
             </div>
           </div>
 
-          <DotLoader
+          {/* <DotLoader
             cssOverride={{
               display: "block",
               margin: "auto",
@@ -378,7 +378,9 @@ function Company() {
             className="text-white"
             color="#36528b"
             loading={loading}
-          />
+          /> */}
+
+          <Loader isLoading={loading} />
         </div>
         <div className={`flex flex-col md:my-8 md:mx-8 mx-0 my-0 `}>
           <div className="relative overflow-x-hidden md:mt-0 mt-[65px] flex flex-col md:gap-2 gap-">
@@ -473,16 +475,12 @@ function Company() {
               icon={"fa fa-building"}
               body={work_location}
             ></CompanyCard>
+
             {/* <CompanyCard
-              title={"Count"}
-              icon={"fa fa-gear"}
-              body={data.count}
-            ></CompanyCard> */}
-            <CompanyCard
               title={"Count"}
               icon={"fa fa-user-plus"}
               body={count}
-            ></CompanyCard>
+            ></CompanyCard> */}
             {/* {NEED TO COMPLETE THE ONE BELOW} */}
             {data.job_profile_description ? (
               <Dropdown

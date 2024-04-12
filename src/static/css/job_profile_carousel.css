@@ -3,6 +3,7 @@
   border: none !important;
   color: #000 !important;
   transition: border 0.3s ease;
+  margin: 0 !important; /* Remove margin */
 }
 
 .rec.rec-arrow:hover {
@@ -19,4 +20,18 @@
 
 .rec-dot {
   background-color: #2b6cb0;
+}
+
+@media (max-width: 800px) {
+  .rec-arrow {
+    font-size: 12px !important;
+    padding: 2px !important;
+    border: none !important;
+    outline: none !important; 
+  }
+
+  .rec-arrow:hover {
+    font-size: 12px !important;
+    padding: 2px !important;
+  }
 }
