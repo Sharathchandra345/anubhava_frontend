@@ -305,7 +305,7 @@ export default function AccountPage() {
           confirmButtonText: "Ok",
         }).then(() => {
           localStorage.setItem("timeOut", JSON.stringify(new Date()));
-          navigate("/");
+          navigate("/companies");
         });
       });
   };

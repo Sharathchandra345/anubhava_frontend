@@ -100,7 +100,7 @@ function ContactUs() {
                 Tavleen Kaur
               </h1>
               <h1 className="text-sm md:text-base text-white text-center">
-                +91 9372685856
+                +91 9625269494
               </h1>
             </div>
           </div>

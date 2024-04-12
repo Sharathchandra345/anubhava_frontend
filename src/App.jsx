@@ -25,8 +25,6 @@ function App() {
   const isLocation =
     location.pathname === "/login" || location.pathname === "/signup";
 
-  // Temporary to skip the navbar and footer
-
   return (
     <AuthContextProvider>
       <div className="overflow-x-hidden">
@@ -35,7 +33,7 @@ function App() {
           <Routes key={location.pathname} location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/secretcompanies" element={<Companies />} />
+            <Route path="/companies" element={<Companies />} />
             <Route path="/companies/:id" element={<Company />} />
             <Route path="/how-to-apply" element={<HowToApply />} />
             <Route path="/resources" element={<Resources />} />
