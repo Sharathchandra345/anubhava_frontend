@@ -27,11 +27,22 @@
     font-size: 12px !important;
     padding: 2px !important;
     border: none !important;
-    outline: none !important; 
+    outline: none !important;
   }
 
   .rec-arrow:hover {
     font-size: 12px !important;
     padding: 2px !important;
+  }
+  /* .rec.rec-arrow-left {
+    display: none;
+  } */
+  .rec.rec-arrow-right {
+    position: absolute;
+    right: 2px;
+  }
+  .rec.rec-arrow-left {
+    position: absolute;
+    left: 2px;
   }
 }

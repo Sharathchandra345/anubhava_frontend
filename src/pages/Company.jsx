@@ -323,7 +323,7 @@ function Company() {
   const handleDownload = () => {
     let linkText = data.pdfDescription;
     const link = document.createElement("a");
-    link.href = linkText;
+    link.href = linkText
     link.download = "file.pdf";
     link.target = "_blank";
     document.body.appendChild(link);
