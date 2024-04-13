@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "./customCss/company.css";
 import Loader from "../components/Loader/Loader";
-
+import mobileCompany from "../static/images/mobileProcess.png";
 function Companies() {
   window.scrollTo(0, 0);
   document.title = "Companies";
@@ -164,19 +164,28 @@ function Companies() {
       <div
         className={`${
           !loading ? `opacity-100` : `opacity-50`
-        } overflow-hidden flex flex-col bg-primary-new  mx-0 h-80 w-full`}
+        } overflow-hidden flex flex-col bg-primary-new  mx-0 md:h-80 h-50 w-full`}
       >
-        <img src={company} alt="Process" className="mt-5" />
-        <div className="h-80 z-1">
+        <img
+          src={company}
+          alt="Desktop Process"
+          className="hidden md:block mt-3 md:mt-5"
+        />
+        <img
+          src={mobileCompany}
+          alt="Mobile Process"
+          className="md:hidden mt-2 "
+        />
+        <div className="md:h-80  z-1">
           <div className="flex items-center justify-center w-full h-full">
             {/* <h1 className="md:text-5xl font-bold text-4xl text-light-color md:font-medium text-center">
-              Find your favourite company!
-            </h1> */}
+            Find your favourite company!
+          </h1> */}
           </div>
         </div>
-        <div className="w-full justify-center items-center flex ">
-          <div className="shadow-md absolute top-64 bottom-0 flex m-10 items-center bg-light-color h-20 w-11/12 rounded-lg mx-8 my-6 px-10">
-            <div className="flex flex-col w-full md:pr-10 pr-5">
+        <div className="w-full mt-50 justify-center items-center flex ">
+          <div className="shadow-md absolute top-64 bottom-0 flex m-10 items-center bg-light-color h-20  w-11/12 rounded-lg mx-8 md:my-6 -mt-12 px-10">
+            <div className="flex flex-col w-full md:pr-10 pr-5 ">
               <div className="flex justify-between items-center w-12/12">
                 <input
                   onKeyDown={(e) => {
