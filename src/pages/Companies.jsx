@@ -139,7 +139,7 @@ function Companies() {
               className="w-full h-40 bg-light-color overflow-hidden flex items-center justify-center company-image-container"
             >
               <img
-                className="object-cover h-full w-auto"
+                className="object-contain h-full sw-auto"
                 src={company.image}
                 alt={company.name}
               />
