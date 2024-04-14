@@ -6,6 +6,7 @@ import withReactContent from "sweetalert2-react-content";
 import "./customCss/company.css";
 import Loader from "../components/Loader/Loader";
 import mobileCompany from "../static/images/mobileProcess.png";
+
 function Companies() {
   window.scrollTo(0, 0);
   document.title = "Companies";
@@ -159,6 +160,10 @@ function Companies() {
       .slice(0, limit); // Slice the companies array to show only up to the limit
   };
 
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="md:mt-11 mt-[65px] flex flex-col relative h-full w-full">
       <div
@@ -169,14 +174,14 @@ function Companies() {
         <img
           src={company}
           alt="Desktop Process"
-          className="hidden md:block mt-3 md:mt-5"
+          className="hidden md:block mt-10"
         />
         <img
           src={mobileCompany}
           alt="Mobile Process"
           className="md:hidden mt-2 "
         />
-        <div className="md:h-80  z-1">
+        <div className="md:h-80 z-1">
           <div className="flex items-center justify-center w-full h-full">
             {/* <h1 className="md:text-5xl font-bold text-4xl text-light-color md:font-medium text-center">
             Find your favourite company!
@@ -184,7 +189,7 @@ function Companies() {
           </div>
         </div>
         <div className="w-full mt-50 justify-center items-center flex ">
-          <div className="shadow-md absolute top-64 bottom-0 flex m-10 items-center bg-light-color h-20  w-11/12 rounded-lg mx-8 md:my-6 -mt-12 px-10">
+          <div className="shadow-md absolute flex lg:m-10 items-center bg-light-color h-20 w-11/12 rounded-lg mx-8 lg:my-6 lg:mt-12 px-10 search_bar ">
             <div className="flex flex-col w-full md:pr-10 pr-5 ">
               <div className="flex justify-between items-center w-12/12">
                 <input
@@ -252,7 +257,7 @@ function Companies() {
         </div>
       </div>
       <Loader isLoading={loading} />
-      <div className="grid grid-cols-2 md:grid-cols-4 mt-20 md:gap-4 gap-2 md:px-16 px-4 mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-4 mt-32 md:gap-4 gap-2 md:px-16 px-4 mb-10">
         {renderCompanies()}
       </div>
       {limit < 160 && (
@@ -265,6 +270,26 @@ function Companies() {
           </button>
         </div>
       )}
+      {/* Scroll to top button */}
+      <button
+        onClick={handleScrollToTop}
+        className="fixed bottom-8 right-2 bg-primary-color text-white rounded-full p-3 shadow-md transition duration-300 hover:bg-primary-dark"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 transform "
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 15l7-7 7 7"
+          />
+        </svg>
+      </button>
     </div>
   );
 }

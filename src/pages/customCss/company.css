@@ -29,3 +29,34 @@
 .swal2-active {
   background-color: #2a3f6d;
 }
+
+.search_bar {
+  top: 18.5rem;
+}
+
+/* @media (max-width: 1120px) {
+  .search_bar {
+    top: 310px;
+  }
+} */
+
+/* @media (max-width: 950px) {
+  .search_bar {
+    top: 330px;
+  }
+}*/
+@media (max-width: 768px) {
+  .search_bar {
+    top: 60vw;
+  }
+}
+/* @media (max-width: 715px) {
+  .search_bar {
+    top: 25rem;
+  }
+}
+@media (max-width: 527px) {
+  .search_bar {
+    top: 20rem;
+  }
+}  */
