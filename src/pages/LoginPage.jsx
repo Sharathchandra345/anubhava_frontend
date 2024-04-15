@@ -179,6 +179,12 @@ function LoginPage() {
                 Sign up now
               </span>{" "}
             </h1>
+            <h1 className=" mt-5 text-black text-xs sm:text-sm">
+              <span className="text-primary-new">Note:</span>We recommend using
+              Chrome for logging in. If you encounter any issues while logging
+              in, please feel free to reach out to the team for assistance.
+            </h1>
+
             {/* <h1 className=" mt-5 text-gray-600">
               <span>Join our </span>
               <span

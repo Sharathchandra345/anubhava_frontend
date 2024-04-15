@@ -465,6 +465,7 @@ export default function AccountPage() {
           <h1 className="text-primary-color text-3xl font-semibold mb-4">
             Profile
           </h1>
+
           <div className="flex flex-row justify-start text-black mb-4">
             <h1 className="text-lg font-semibold">Number of applications: </h1>
             <h1 className="bg-transparent focus:outline-none focus:border-primary-color text-lg ml-1">

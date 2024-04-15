@@ -160,21 +160,21 @@ function SignupPage() {
                 Login in now
               </span>{" "}
             </h1>
-            <h1 className=" mt-5 text-gray-600">
-              <span>Join our </span>
-              <span
-                onClick={() =>
-                  window.open(
-                    " https://chat.whatsapp.com/Je7C9q0yAOXGp74Vq3tskJ",
-                    "_blank"
-                  )
-                }
-                className="font-bold cursor-pointer"
-              >
-                {" "}
-                WhatsApp Community!
-              </span>{" "}
-            </h1>
+              {/* <h1 className=" mt-5 text-gray-600">
+                <span>Join our </span>
+                <span
+                  onClick={() =>
+                    window.open(
+                      " https://chat.whatsapp.com/Je7C9q0yAOXGp74Vq3tskJ",
+                      "_blank"
+                    )
+                  }
+                  className="font-bold cursor-pointer"
+                >
+                  {" "}
+                  WhatsApp Community!
+                </span>{" "}
+              </h1> */}
           </div>
         </div>
       </form>
