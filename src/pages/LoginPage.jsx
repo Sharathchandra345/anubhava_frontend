@@ -93,9 +93,9 @@ function LoginPage() {
       <form
         id="formName"
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-wrap justify-center items-center absolute w-full h-screen z-10"
+        className="flex flex-wrap justify-center items-center absolute w-full  z-10"
       >
-        <div className="flex flex-col rounded-lg p-4 w-96 md:w-96 bg-white mx-auto my-auto  gap-4">
+        <div className="flex flex-col rounded-lg pt-4 w-96 md:w-96 bg-white mx-auto my-auto h-1200 gap-4">
           <div className="flex flex-col items-center pt-10 md:pt-20">
             <h1 className="font-semibold text-3xl md:text-4xl ">Login</h1>
             <h1 className="font-semibold text-base mt-2 text-center text-slate-400">

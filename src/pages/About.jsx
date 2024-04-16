@@ -191,7 +191,7 @@ function About() {
             campusPic={campusPic}
             principal={principal1}
             message={
-              "The college has a rich history of quality education. It has invested heavily in new teaching facilities, including a library, labs, auditorium, and seminar halls, as well as sports upgrades. With a dedicated faculty and skilled staff, it provides an excellent start to your career"
+              "The college has a longstanding reputation for quality education and boasts well-equipped facilities, including a library, labs, auditorium, seminar halls, and sports amenities. With a committed faculty and staff, it offers an excellent start to your career."
             }
             principal2={principal2}
             message2={

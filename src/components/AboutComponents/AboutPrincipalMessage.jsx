@@ -38,7 +38,7 @@ export default function AboutPrincipalMessage({
             <p className="md:text-sm text-xs">{message}</p>
             <div className="flex items-center">
               <h1 className="font-bold text-base text-light-color">
-                - Dr Jaswinder Singh
+                - Dr. Surinder Kaur
               </h1>
               <i
                 className="fa fa-quote-right text-warning-color text-base ml-2"
