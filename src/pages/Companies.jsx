@@ -36,7 +36,10 @@ function Companies() {
       const response = await fetch(
         `https://anubhava-backend.vercel.app/companies?limit=${limit}`
       );
-      const data = await response.json();
+      let data = await response.json();
+      data = data.sort((a, b) => {
+        return a.priority - b.priority;
+      });
       setCompanies(data);
     } catch (error) {
       console.error("Error fetching data:", error);
