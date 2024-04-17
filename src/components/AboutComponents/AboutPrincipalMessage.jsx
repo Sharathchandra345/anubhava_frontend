@@ -28,7 +28,7 @@ export default function AboutPrincipalMessage({
           <img
             src={principal}
             alt="principal"
-            className="md:h-56 h-[250px] md:w-32 w-20 object-cover object-center rounded-l-xl mr-4"
+            className="md:h-56 h-[250px] md:w-32 w-20 md:object-cover object-contain object-center rounded-l-xl mr-4"
             style={{ zIndex: 1 }}
           />
           <div className="flex-grow md:px-4 md:py-5 py-2 px-2 flex flex-col gap-4 text-light-color bg-dark-color opacity-70 rounded-r-xl md:h-56 h-[310px]">
@@ -52,7 +52,7 @@ export default function AboutPrincipalMessage({
           <img
             src={principal2}
             alt="principal2"
-            className="md:h-56 h-[250px] md:w-32 w-20 object-cover object-center rounded-l-xl mr-4"
+            className="md:h-56 h-[250px] md:w-32 w-20 md:object-cover object-contain object-center rounded-l-xl mr-4"
             style={{ zIndex: 1 }}
           />
           <div className="flex-grow md:px-4 md:py-5 py-2 px-2 flex flex-col gap-4 text-light-color bg-dark-color opacity-70 rounded-r-xl md:h-56 h-[310px]">
