@@ -70,7 +70,7 @@ export default function AccountPage() {
                 setCity(userData.city);
               }
               if (userData.applied) {
-                // Do something with applied data if needed
+                setApplied(userData.applied.length);
               }
               setLoading(false);
             } else {
@@ -141,6 +141,7 @@ export default function AccountPage() {
               }
               // applied is an array of strings which contains the id of the job the user has applied to
               if (doc.data().applied) {
+                setApplied(applied.length);
               }
               setLoading(false);
             } else {
