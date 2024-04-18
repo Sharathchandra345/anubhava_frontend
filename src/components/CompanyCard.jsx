@@ -2,7 +2,7 @@ import React from "react";
 
 export default function CompanyCard({ title, icon, body }) {
   return (
-    <div className="flex flex-col max-w-[350px] min-w-[300px] shadow-lg p-4 bg-primary-newdarkblue">
+    <div className="flex flex-col max-w-[250px]  shadow-lg p-4 bg-primary-newdarkblue">
       <div className="flex flex-row gap-4">
         <div className="flex flex-col items-center">
           <i className={`${icon} font-bold text-3xl mt-2 text-white`}></i>

@@ -42,13 +42,36 @@ function Company() {
   ];
   const MySwal = withReactContent(Swal);
   const [data, setData] = useState({});
-  const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [applyText, setApplyText] = useState("");
 
   const [keys, setKeys] = useState([]);
   const [hasResume, setHasResume] = useState("");
   const [applied, setApplied] = useState(false);
+
+  const [count, setCount] = useState(0);
+  const countFunc = async () => {
+    const companiesCollectionRef = collection(getDb, "companies");
+    const companyId = id;
+    const companyDocRef = doc(companiesCollectionRef, companyId);
+    const docSnap2 = await getDoc(companyDocRef);
+    // console.log(docSnap2);
+    console.log("Getting company document...");
+    try {
+      const docSnap = await getDoc(companyDocRef);
+      if (docSnap.exists()) {
+        // console.log("Document data:", docSnap.data());
+        const batch = writeBatch(getDb);
+        setCount(docSnap.data().count);
+        console.log(count);
+        // batch.update(companyDocRef, { count: docSnap.data().count + 1 });
+        // // console.log(batch);
+        // await batch.commit();
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const navigate = useNavigate();
   const backToCompanies = useCallback(() => {
@@ -155,8 +178,8 @@ function Company() {
         }
         // Check if the localStorage applied array length is more than 20
         if (
-          keys.length > 20 ||
-          (userCache.applied != undefined && userCache.applied.length > 20)
+          keys.length >= 20 ||
+          (userCache.applied != undefined && userCache.applied.length >= 20)
         ) {
           MySwal.fire({
             icon: "error",
@@ -336,6 +359,7 @@ function Company() {
   const website = data.about?.website;
   const work_location = data.about?.work_location;
   const about_comp = data.about?.about_comp;
+  countFunc();
   return (
     <div>
       <div className="relative overflow-x-hidden md:mt-20 mt-[65px] flex flex-col md:gap-8 gap-4">
@@ -477,13 +501,12 @@ function Company() {
               icon={"fa fa-building"}
               body={work_location}
             ></CompanyCard>
-
-            {/* <CompanyCard
+            <CompanyCard
               title={"Count"}
               icon={"fa fa-user-plus"}
               body={count}
-            ></CompanyCard> */}
-            {/* {NEED TO COMPLETE THE ONE BELOW} */}
+            ></CompanyCard>
+
             {data.job_profile_description ? (
               <Dropdown
                 onNameChange={handleNameChange}
