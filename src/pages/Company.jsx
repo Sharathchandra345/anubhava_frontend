@@ -34,6 +34,11 @@ function Company() {
   window.scrollTo(0, 0);
   const carouselRef = useRef(null);
 
+  // const hardReload = (
+
+  // ) => {};
+
+  // hardReload();
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2 },
@@ -157,6 +162,44 @@ function Company() {
       let applyTextUpdated = "";
       setLoading(true);
 
+      {
+        console.log("checking firestore");
+        const collectonRef2 = collection(getDb, "users");
+        const docRef = doc(collectonRef2, user.uid);
+        const docSnap = getDoc(docRef).then((doc) => {
+          if (doc.exists()) {
+            // if doc exists then copy it to local storage
+            localStorage.setItem(user.uid, JSON.stringify(doc.data()));
+            if (doc.data().contactNumber) {
+              setContactNumber(doc.data().contactNumber);
+            }
+            if (doc.data().age) {
+              setAge(doc.data().age);
+            }
+            if (doc.data().course) {
+              setCourse(doc.data().course);
+            }
+            if (doc.data().yearOfStudy) {
+              setYearOfStudy(doc.data().yearOfStudy);
+            }
+            if (doc.data().college) {
+              setCollege(doc.data().college);
+            }
+            if (doc.data().city) {
+              setCity(doc.data().city);
+            }
+            // applied is an array of strings which contains the id of the job the user has applied to
+            if (doc.data().applied) {
+            }
+            setLoading(false);
+          } else {
+            // make a new document in firestore database and copy it to local storage
+            console.log("nothing in firestore and localstorage");
+            setError(true);
+            setLoading(false);
+          }
+        });
+      }
       if (user != null && user != undefined && user.uid != undefined) {
         const userCache = JSON.parse(localStorage.getItem(user.uid));
         if (userCache == null || userCache.applied == undefined) {

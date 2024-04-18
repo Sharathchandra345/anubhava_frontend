@@ -36,6 +36,44 @@ export default function AccountPage() {
     return () => window.removeEventListener("resize", handleResize);
   }, [screenSize]);
   useEffect(() => {
+    {
+      console.log("checking firestore");
+      const collectonRef2 = collection(getDb, "users");
+      const docRef = doc(collectonRef2, user.uid);
+      const docSnap = getDoc(docRef).then((doc) => {
+        if (doc.exists()) {
+          // if doc exists then copy it to local storage
+          localStorage.setItem(user.uid, JSON.stringify(doc.data()));
+          if (doc.data().contactNumber) {
+            setContactNumber(doc.data().contactNumber);
+          }
+          if (doc.data().age) {
+            setAge(doc.data().age);
+          }
+          if (doc.data().course) {
+            setCourse(doc.data().course);
+          }
+          if (doc.data().yearOfStudy) {
+            setYearOfStudy(doc.data().yearOfStudy);
+          }
+          if (doc.data().college) {
+            setCollege(doc.data().college);
+          }
+          if (doc.data().city) {
+            setCity(doc.data().city);
+          }
+          // applied is an array of strings which contains the id of the job the user has applied to
+          if (doc.data().applied) {
+          }
+          setLoading(false);
+        } else {
+          // make a new document in firestore database and copy it to local storage
+          console.log("nothing in firestore and localstorage");
+          setError(true);
+          setLoading(false);
+        }
+      });
+    }
     if (user.uid !== null && user.uid !== undefined) {
       // check if a key with the user's uid exists in the local storage
       // if it exists then copy it to the state
@@ -69,44 +107,6 @@ export default function AccountPage() {
         }
       }
       // if it doesn't exist then check if it exists in the firestore database
-      else {
-        console.log("checking firestore");
-        const collectonRef2 = collection(getDb, "users");
-        const docRef = doc(collectonRef2, user.uid);
-        const docSnap = getDoc(docRef).then((doc) => {
-          if (doc.exists()) {
-            // if doc exists then copy it to local storage
-            localStorage.setItem(user.uid, JSON.stringify(doc.data()));
-            if (doc.data().contactNumber) {
-              setContactNumber(doc.data().contactNumber);
-            }
-            if (doc.data().age) {
-              setAge(doc.data().age);
-            }
-            if (doc.data().course) {
-              setCourse(doc.data().course);
-            }
-            if (doc.data().yearOfStudy) {
-              setYearOfStudy(doc.data().yearOfStudy);
-            }
-            if (doc.data().college) {
-              setCollege(doc.data().college);
-            }
-            if (doc.data().city) {
-              setCity(doc.data().city);
-            }
-            // applied is an array of strings which contains the id of the job the user has applied to
-            if (doc.data().applied) {
-            }
-            setLoading(false);
-          } else {
-            // make a new document in firestore database and copy it to local storage
-            console.log("nothing in firestore and localstorage");
-            setError(true);
-            setLoading(false);
-          }
-        });
-      }
     }
   }, [user]);
   // Function to upload file to firebase storage
@@ -317,44 +317,44 @@ export default function AccountPage() {
     }
   };
 
-  const renderItems = () => {
-    const [companiesData, setCompaniesData] = useState([]);
-    async function fetchData() {
-      setLoading(true);
-      try {
-        const response = await fetch(
-          "https://anubhava-backend.vercel.app/companies"
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await response.json();
-        setCompaniesData(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      }
-    }
+  // const renderItems = () => {
+  //   const [companiesData, setCompaniesData] = useState([]);
+  //   async function fetchData() {
+  //     setLoading(true);
+  //     try {
+  //       const response = await fetch(
+  //         "https://anubhava-backend.vercel.app/companies"
+  //       );
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch data");
+  //       }
+  //       const data = await response.json();
+  //       setCompaniesData(data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //       setLoading(false);
+  //     }
+  //   }
 
-    useEffect(() => {
-      fetchData();
-    }, []);
+  //   useEffect(() => {
+  //     fetchData();
+  //   }, []);
 
-    const desiredCompanyIds = [
-      "660c67b19bf977f2f9b28724",
-      "660d6220ebae1b9a81fda064",
-      "660d644260ce725d5b3fba33",
-      "660d869749e45047833d5d2e",
-    ];
+  //   const desiredCompanyIds = [
+  //     "660c67b19bf977f2f9b28724",
+  //     "660d6220ebae1b9a81fda064",
+  //     "660d644260ce725d5b3fba33",
+  //     "660d869749e45047833d5d2e",
+  //   ];
 
-    // Filter companies based on desiredCompanyIds
-    const filteredCompanies = companiesData.filter((company) =>
-      desiredCompanyIds.includes(company._id)
-    );
+  //   // Filter companies based on desiredCompanyIds
+  //   const filteredCompanies = companiesData.filter((company) =>
+  //     desiredCompanyIds.includes(company._id)
+  //   );
 
-    return filteredCompanies;
-  };
+  //   return filteredCompanies;
+  // };
 
   // Function to change the value of the contact number if the user changes it
   const handleContactNumberChange = (val) => {

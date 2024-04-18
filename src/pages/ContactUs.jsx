@@ -120,7 +120,7 @@ function ContactUs() {
                 Daksh Maheshwari
               </h1>
               <h1 className="text-sm md:text-base text-white text-center">
-                +91 87557739963
+                +91 8755773963
               </h1>
             </div>
           </div>
