@@ -30,7 +30,7 @@ import img10 from "../static/images/executivesphotos/Guneet Kaur.png";
 import img11 from "../static/images/executivesphotos/Harnoor Kaur.png";
 import img12 from "../static/images/executivesphotos/Jasmeet Kaur.png";
 import img13 from "../static/images/executivesphotos/Kushagra.png";
-import img14 from "../static/images/executivesphotos/Lakshay.png";
+import img14 from "../static/images/executivesphotos/LakshayChhabra.png";
 import img15 from "../static/images/executivesphotos/Paladh Kukreja.png";
 import img16 from "../static/images/executivesphotos/Rochit Handa.png";
 import img17 from "../static/images/executivesphotos/Tavleen Kaur Sachdev.png";
