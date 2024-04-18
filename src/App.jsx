@@ -19,16 +19,19 @@ import SignupPage from "./pages/SignupPage";
 import SliderTestPage from "./pages/SliderTestPage";
 import ComingSoon from "./components/ComingSoonPoster/ComingSoon";
 import TagDashboard from "./pages/TagDashboard";
+import Inaugral from "./pages/Inaugral";
 
 function App() {
   const location = useLocation();
   const isLocation =
     location.pathname === "/login" || location.pathname === "/signup";
 
+  const isPathInaugral = location.pathname === "/inaugral";
+
   return (
     <AuthContextProvider>
       <div className="overflow-x-hidden">
-        <Navbar />
+        {!isPathInaugral && <Navbar />}
         <div className="flex flex-col">
           <Routes key={location.pathname} location={location}>
             <Route path="/" element={<Home />} />
@@ -51,9 +54,10 @@ function App() {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/test" element={<SliderTestPage />} />
+            <Route path="/inaugral" element={<Inaugral />} />
           </Routes>
         </div>
-        <Footer />
+        {!isPathInaugral && <Footer />}
       </div>
     </AuthContextProvider>
   );
