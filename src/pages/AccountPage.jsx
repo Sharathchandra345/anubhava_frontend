@@ -36,48 +36,57 @@ export default function AccountPage() {
     return () => window.removeEventListener("resize", handleResize);
   }, [screenSize]);
   useEffect(() => {
-    {
-      console.log("checking firestore");
-      const collectonRef2 = collection(getDb, "users");
-      const docRef = doc(collectonRef2, user.uid);
-      const docSnap = getDoc(docRef).then((doc) => {
-        if (doc.exists()) {
-          // if doc exists then copy it to local storage
-          localStorage.setItem(user.uid, JSON.stringify(doc.data()));
-          if (doc.data().contactNumber) {
-            setContactNumber(doc.data().contactNumber);
-          }
-          if (doc.data().age) {
-            setAge(doc.data().age);
-          }
-          if (doc.data().course) {
-            setCourse(doc.data().course);
-          }
-          if (doc.data().yearOfStudy) {
-            setYearOfStudy(doc.data().yearOfStudy);
-          }
-          if (doc.data().college) {
-            setCollege(doc.data().college);
-          }
-          if (doc.data().city) {
-            setCity(doc.data().city);
-          }
-          // applied is an array of strings which contains the id of the job the user has applied to
-          if (doc.data().applied) {
-          }
-          setLoading(false);
-        } else {
-          // make a new document in firestore database and copy it to local storage
-          console.log("nothing in firestore and localstorage");
-          setError(true);
-          setLoading(false);
-        }
-      });
-    }
     if (user.uid !== null && user.uid !== undefined) {
       // check if a key with the user's uid exists in the local storage
       // if it exists then copy it to the state
+      const fetchUserData = async () => {
+        console.log("func");
+        if (user && user.uid) {
+          try {
+            const collectonRef2 = collection(getDb, "users");
+            const docRef = doc(collectonRef2, user.uid);
+            const docSnap = await getDoc(docRef);
 
+            if (docSnap.exists()) {
+              const userData = docSnap.data();
+              localStorage.setItem(user.uid, JSON.stringify(userData));
+
+              if (userData.contactNumber) {
+                setContactNumber(userData.contactNumber);
+              }
+              if (userData.age) {
+                setAge(userData.age);
+              }
+              if (userData.course) {
+                setCourse(userData.course);
+              }
+              if (userData.yearOfStudy) {
+                setYearOfStudy(userData.yearOfStudy);
+              }
+              if (userData.college) {
+                setCollege(userData.college);
+              }
+              if (userData.city) {
+                setCity(userData.city);
+              }
+              if (userData.applied) {
+                // Do something with applied data if needed
+              }
+              setLoading(false);
+            } else {
+              console.log("No data found in firestore for user: ", user.uid);
+              setError(true);
+              setLoading(false);
+            }
+          } catch (error) {
+            console.error("Error fetching user data: ", error);
+            setError(true);
+            setLoading(false);
+          }
+        }
+      };
+
+      fetchUserData();
       if (localStorage.getItem(user.uid) !== null) {
         setLoading(false);
         if (JSON.parse(localStorage.getItem(user.uid)).contactNumber) {
@@ -104,9 +113,49 @@ export default function AccountPage() {
         }
         if (JSON.parse(localStorage.getItem(user.uid)).applied) {
           setApplied(JSON.parse(localStorage.getItem(user.uid)).applied.length);
+        } else {
+          console.log("checking firestore");
+          const collectonRef2 = collection(getDb, "users");
+          const docRef = doc(collectonRef2, user.uid);
+          const docSnap = getDoc(docRef).then((doc) => {
+            if (doc.exists()) {
+              // if doc exists then copy it to local storage
+              localStorage.setItem(user.uid, JSON.stringify(doc.data()));
+              if (doc.data().contactNumber) {
+                setContactNumber(doc.data().contactNumber);
+              }
+              if (doc.data().age) {
+                setAge(doc.data().age);
+              }
+              if (doc.data().course) {
+                setCourse(doc.data().course);
+              }
+              if (doc.data().yearOfStudy) {
+                setYearOfStudy(doc.data().yearOfStudy);
+              }
+              if (doc.data().college) {
+                setCollege(doc.data().college);
+              }
+              if (doc.data().city) {
+                setCity(doc.data().city);
+              }
+              // applied is an array of strings which contains the id of the job the user has applied to
+              if (doc.data().applied) {
+              }
+              setLoading(false);
+            } else {
+              // make a new document in firestore database and copy it to local storage
+              console.log("nothing in firestore and localstorage");
+              setError(true);
+              setLoading(false);
+            }
+          });
         }
       }
       // if it doesn't exist then check if it exists in the firestore database
+      else {
+        console.log("checking firestore");
+      }
     }
   }, [user]);
   // Function to upload file to firebase storage
