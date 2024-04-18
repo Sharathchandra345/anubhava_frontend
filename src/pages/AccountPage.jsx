@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader/Loader";
 
 export default function AccountPage() {
-  const date = new Date("2024-04-30T00:00:00+05:30") > new Date();
+  const date = new Date("2024-04-22T00:00:00+05:30") > new Date();
   document.title = "Account";
   const [contactNumber, setContactNumber] = useState("");
   const [age, setAge] = useState("");

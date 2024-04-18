@@ -19,7 +19,6 @@ import SignupPage from "./pages/SignupPage";
 import SliderTestPage from "./pages/SliderTestPage";
 import ComingSoon from "./components/ComingSoonPoster/ComingSoon";
 import TagDashboard from "./pages/TagDashboard";
-import Inaugral from "./pages/Inaugral";
 
 function App() {
   const location = useLocation();
@@ -54,7 +53,6 @@ function App() {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/test" element={<SliderTestPage />} />
-            <Route path="/inaugral" element={<Inaugral />} />
           </Routes>
         </div>
         {!isPathInaugral && <Footer />}
