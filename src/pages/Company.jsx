@@ -177,15 +177,17 @@ function Company() {
         const companyId = id;
         const companyDocRef = doc(companiesCollectionRef, companyId);
         const docSnap2 = await getDoc(companyDocRef);
-        console.log(docSnap2);
+        // console.log(docSnap2);
         const getCompanyDoc = async () => {
           console.log("Getting company document...");
           try {
             const docSnap = await getDoc(companyDocRef);
             if (docSnap.exists()) {
-              console.log("Document data:", docSnap.data());
+              // console.log("Document data:", docSnap.data());
               const batch = writeBatch(getDb);
               batch.update(companyDocRef, { count: docSnap.data().count + 1 });
+              // console.log(batch);
+              await batch.commit();
             } else {
               await setDoc(companyDocRef, { count: 1, companyName: data.name });
             }
