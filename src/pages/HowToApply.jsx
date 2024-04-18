@@ -57,7 +57,7 @@ function HowToApply() {
             "In how many companies can one candidate apply for an internship ?"
           }
           children={`
-                    There is no restriction on the number of companies that a single candidate can apply in.`}
+                    A user can only apply in 20 profiles.`}
         />
         <Accordion
           title={"How to track the opportunity that one applies for ?"}
