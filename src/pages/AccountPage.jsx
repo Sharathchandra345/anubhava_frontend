@@ -367,44 +367,46 @@ export default function AccountPage() {
     }
   };
 
-  // const renderItems = () => {
-  //   const [companiesData, setCompaniesData] = useState([]);
-  //   async function fetchData() {
-  //     setLoading(true);
-  //     try {
-  //       const response = await fetch(
-  //         "https://anubhava-backend.vercel.app/companies"
-  //       );
-  //       if (!response.ok) {
-  //         throw new Error("Failed to fetch data");
-  //       }
-  //       const data = await response.json();
-  //       setCompaniesData(data);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //       setLoading(false);
-  //     }
-  //   }
+  const renderItems = () => {
+    const [companiesData, setCompaniesData] = useState([]);
+    async function fetchData() {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          "https://anubhava-backend.vercel.app/companies"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        setCompaniesData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    }
 
-  //   useEffect(() => {
-  //     fetchData();
-  //   }, []);
+    useEffect(() => {
+      fetchData();
+    }, []);
 
-  //   const desiredCompanyIds = [
-  //     "660c67b19bf977f2f9b28724",
-  //     "660d6220ebae1b9a81fda064",
-  //     "660d644260ce725d5b3fba33",
-  //     "660d869749e45047833d5d2e",
-  //   ];
+    const desiredCompanyIds = [
+      "660d869749e45047833d5d2e",
+      "661ae4efc5c92aea4ddd9a91",
+      "661ac11a6d6a6af31867d8e7",
+      "66166281f869a71753bdebf5",
+      "660d69261d95addd172066e1",
+      "661a9465cd2e82a47dd88e34",
+    ];
 
-  //   // Filter companies based on desiredCompanyIds
-  //   const filteredCompanies = companiesData.filter((company) =>
-  //     desiredCompanyIds.includes(company._id)
-  //   );
+    // Filter companies based on desiredCompanyIds
+    const filteredCompanies = companiesData.filter((company) =>
+      desiredCompanyIds.includes(company._id)
+    );
 
-  //   return filteredCompanies;
-  // };
+    return filteredCompanies;
+  };
 
   // Function to change the value of the contact number if the user changes it
   const handleContactNumberChange = (val) => {
@@ -675,13 +677,13 @@ export default function AccountPage() {
           No Data found! Please fill the form!{" "}
         </h1>
       )}
-      {/* <div className="flex justify-start">
+      <div className="flex justify-start">
         <h1 className="text-3xl mt-10 pt-5 text-black font-semibold mb-10 ">
           TOP <span className="text-primary-color">COMPANIES</span>
         </h1>
-      </div> */}
+      </div>
       {/* Displaying Company Cards */}
-      {/* <div
+      <div
         className={`${
           !loading ? `opacity-100` : `opacity-50`
         } grid grid-cols-2 md:grid-cols-4 md:gap-4 gap-2 md:px-16 px-4 mb-10`}
@@ -720,7 +722,7 @@ export default function AccountPage() {
             </div>
           </motion.button>
         ))}
-      </div> */}
+      </div>
 
       {/* Logout Button */}
       <motion.button
