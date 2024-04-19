@@ -38,7 +38,7 @@ export default function AboutPrincipalMessage({
             <p className="md:text-sm text-xs">{message}</p>
             <div className="flex items-center">
               <h1 className="font-bold text-base text-light-color">
-                - Dr. Surinder Kaur
+                - Prof. Surinder Kaur
               </h1>
               <i
                 className="fa fa-quote-right text-warning-color text-base ml-2"
@@ -62,7 +62,7 @@ export default function AboutPrincipalMessage({
             <p className="md:text-sm text-xs">{message2}</p>
             <div className="flex items-center">
               <h1 className="font-bold text-base text-light-color">
-                - Dr Bibhu Prasad Sahoo
+                - Prof. Bibhu Prasad Sahoo
               </h1>
               <i
                 className="fa fa-quote-right text-warning-color text-base ml-2"

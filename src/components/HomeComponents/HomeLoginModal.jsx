@@ -37,6 +37,7 @@ export default function HomeLoginModal() {
               Looking for your dream internship? View job opportunities by
               registering on our website.
             </p>{" "}
+            <p>Applications are open now !</p>
           </div>
           <div className="md:w-1/2 flex flex-col md:gap-8 ">
             <p
