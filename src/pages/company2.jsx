@@ -29,7 +29,7 @@ import { DotLoader } from "react-spinners";
 import { RWebShare } from "react-web-share";
 
 function Company() {
-  const date = new Date("2024-04-30T00:00:00+05:30") > new Date();
+  const date = new Date("2024-04-23T00:00:00+05:30") > new Date();
   window.scrollTo(0, 0);
   const carouselRef = useRef(null);
 
