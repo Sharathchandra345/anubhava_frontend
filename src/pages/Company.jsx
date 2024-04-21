@@ -378,9 +378,9 @@ function Company() {
         // title: "Error!",
         html:
           "<div class='text-xl text-primary-dark2 font-bold'>" +
-          " Applications will start on 19th April 2024." +
+          " ● We don't accept applications after 21st April 2023." +
           "</div>",
-        confirmButtonColor: "#36528b", // primary-color
+        confirmButtonColor: "#36528b",
         confirmButtonText: "OK",
       }).then(() => {
         return;
