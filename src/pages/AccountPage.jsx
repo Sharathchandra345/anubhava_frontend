@@ -677,13 +677,13 @@ export default function AccountPage() {
           No Data found! Please fill the form!{" "}
         </h1>
       )}
-      <div className="flex justify-start">
+      {/* <div className="flex justify-start">
         <h1 className="text-3xl mt-10 pt-5 text-black font-semibold mb-10 ">
           TOP <span className="text-primary-color">COMPANIES</span>
         </h1>
-      </div>
+      </div> */}
       {/* Displaying Company Cards */}
-      <div
+      {/* <div
         className={`${
           !loading ? `opacity-100` : `opacity-50`
         } grid grid-cols-2 md:grid-cols-4 md:gap-4 gap-2 md:px-16 px-4 mb-10`}
@@ -722,7 +722,7 @@ export default function AccountPage() {
             </div>
           </motion.button>
         ))}
-      </div>
+      </div> */}
 
       {/* Logout Button */}
       <motion.button

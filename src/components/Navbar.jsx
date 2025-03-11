@@ -113,7 +113,7 @@ function Navbar() {
                   : "bg-black text-white"
               }
             />
-            <NavBarTabs
+            {/* <NavBarTabs
               disable={menu}
               text="COMPANIES"
               link="/companies"
@@ -122,7 +122,7 @@ function Navbar() {
                   ? "bg-black text-primary-color font-bold"
                   : "bg-black text-white"
               }
-            />
+            /> */}
             <NavBarTabs
               disable={menu}
               text="HOW TO APPLY"
