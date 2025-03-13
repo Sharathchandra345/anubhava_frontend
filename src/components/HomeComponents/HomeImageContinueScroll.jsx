@@ -1,50 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import Marquee from "react-fast-marquee";
 import image from "../../static/images/Companies_Banner.png";
+import "../../pages/customCss/marquee.css";
 
 const HomeImageContinueScroll = () => {
-  // make a useEffect for window resize and change the speed of the marquee
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      if (window.innerWidth < 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    });
+    const updateSize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
   return (
-    <Marquee
-      speed={isMobile ? 12 : 12}
-      gradient={isMobile ? false : true}
-      pauseOnHover={true}
-    >
-      {/* Wrap each image inside an anchor tag */}
-      {/* <Link to="/companies"> */}
-      <img
-        src={image}
-        className="h-[100px] md:h-[150px] object-cover mx-[28px]"
-        alt="home_carousel_image"
-      />
-      {/* </Link> */}
-      {/* <Link to="/companies"> */}
-      <img
-        src={image}
-        className="h-[100px] md:h-[150px] object-cover mx-[28px]"
-        alt="home_carousel_image"
-      />
-      {/* </Link> */}
-      {/* <Link to="/companies"> */}
-      <img
-        src={image}
-        className="h-[100px] md:h-[150px] object-cover mx-[28px]"
-        alt="home_carousel_image"
-      />
-      {/* </Link> */}
-    </Marquee>
+    <div className="marquee-container">
+      <div
+        className="marquee-content"
+        style={{
+          animationDuration: isMobile ? "120s" : "120s",
+        }}
+      >
+        {[...Array(3)].map((_, index) => (
+          <img
+            key={index}
+            src={image}
+            className="marquee-image"
+            alt="home_carousel_image"
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 

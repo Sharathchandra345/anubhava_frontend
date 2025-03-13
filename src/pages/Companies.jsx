@@ -6,9 +6,14 @@ import withReactContent from "sweetalert2-react-content";
 import "./customCss/company.css";
 import Loader from "../components/Loader/Loader";
 import mobileCompany from "../static/images/mobileProcess.png";
+import { useInView } from "react-intersection-observer";
 
 function Companies() {
-  window.scrollTo(0, 0);
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+  });
+
   document.title = "Companies";
 
   const MySwal = withReactContent(Swal);
@@ -18,23 +23,19 @@ function Companies() {
   const [searchString, setSearchString] = useState("");
   const [usersearched, setUserSearched] = useState(false);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
-  const [limit, setLimit] = useState(32); // Track the current limit
 
   useEffect(() => {
-    fetchData();
-    function handleResize() {
-      setScreenSize(window.innerWidth);
+    if (inView && !loading && companies.length === 0) {
+      fetchData();
     }
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [inView]);
 
   const fetchData = async () => {
     setLoading(true);
 
     try {
       const response = await fetch(
-        `https://anubhava-backend.vercel.app/companies?limit=${limit}`
+        `https://anubhava-backend.vercel.app/companies`
       );
       let data = await response.json();
       data = data.sort((a, b) => {
@@ -46,22 +47,6 @@ function Companies() {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleShowMore = () => {
-    // Store the current scroll position
-    const scrollY = window.scrollY;
-
-    // Update the state to increase the limit
-    setLimit((prevLimit) => prevLimit + 32);
-
-    // Restore the scroll position after the state has been updated
-    setTimeout(() => {
-      window.scrollTo({
-        top: scrollY,
-        behavior: "smooth",
-      });
-    }, 0);
   };
 
   const handleFilter = (e) => {
@@ -134,33 +119,31 @@ function Companies() {
   };
 
   const renderCompanies = () => {
-    return companies
-      .map((company, index) => (
-        <motion.button key={company._id}>
-          <div className="max-h-50 w-full flex flex-col overflow-hidden companycard">
-            <div
-              onClick={() => window.open(`/companies/${company._id}`, "_blank")}
-              className="w-full h-40 bg-light-color overflow-hidden flex items-center justify-center company-image-container"
-            >
-              <img
-                className="object-contain h-full sw-auto"
-                src={company.image}
-                alt={company.name}
-              />
-            </div>
-            <div className="w-full h-1/5 flex items-center justify-center companyName">
-              <h1 className="text-xl text-light-color font-medium text-center cnamediv">
-                {screenSize < 768
-                  ? company.name.length > 10
-                    ? company.name.substring(0, 10) + "..."
-                    : company.name
-                  : company.name}
-              </h1>
-            </div>
+    return companies.map((company, index) => (
+      <motion.button key={company._id}>
+        <div className="max-h-50 w-full flex flex-col overflow-hidden companycard">
+          <div
+            onClick={() => window.open(`/companies/${company._id}`, "_blank")}
+            className="w-full h-40 bg-light-color overflow-hidden flex items-center justify-center company-image-container"
+          >
+            <img
+              className="object-contain h-full sw-auto"
+              src={company.image}
+              alt={company.name}
+            />
           </div>
-        </motion.button>
-      ))
-      .slice(0, limit); // Slice the companies array to show only up to the limit
+          <div className="w-full h-1/5 flex items-center justify-center companyName">
+            <h1 className="text-xl text-light-color font-medium text-center cnamediv">
+              {screenSize < 768
+                ? company.name.length > 10
+                  ? company.name.substring(0, 10) + "..."
+                  : company.name
+                : company.name}
+            </h1>
+          </div>
+        </div>
+      </motion.button>
+    ));
   };
 
   const handleScrollToTop = () => {
@@ -187,8 +170,8 @@ function Companies() {
         <div className="md:h-80 z-1">
           <div className="flex items-center justify-center w-full h-full">
             {/* <h1 className="md:text-5xl font-bold text-4xl text-light-color md:font-medium text-center">
-            Find your favourite company!
-          </h1> */}
+              Find your favourite company!
+            </h1> */}
           </div>
         </div>
         <div className="w-full mt-50 justify-center items-center flex ">
@@ -263,16 +246,8 @@ function Companies() {
       <div className="grid grid-cols-2 md:grid-cols-4 mt-32 md:gap-4 gap-2 md:px-16 px-4 mb-10">
         {renderCompanies()}
       </div>
-      {limit < 160 && (
-        <div className="flex justify-center mt-4">
-          <button
-            onClick={handleShowMore}
-            className="bg-primary-color text-light-color font-bold px-4 py-2 m-10 rounded-lg hover:bg-primary-dark transition-colors duration-300"
-          >
-            Show More
-          </button>
-        </div>
-      )}
+      <div ref={ref} className="h-10 w-full"></div>
+
       {/* Scroll to top button */}
       <button
         onClick={handleScrollToTop}

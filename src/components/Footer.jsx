@@ -41,10 +41,7 @@ const Footer = () => {
             >
               About
             </a>
-            <a
-              href="/companies"
-              className="text-lg hover:underline mb-2 pl-2 md:pl-0"
-            >
+            <a href="/" className="text-lg hover:underline mb-2 pl-2 md:pl-0">
               Companies
             </a>
           </div>
