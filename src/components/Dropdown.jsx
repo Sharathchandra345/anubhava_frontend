@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export default function Dropdown({ body, onNameChange }) {
   const newBody = {};
@@ -9,52 +9,40 @@ export default function Dropdown({ body, onNameChange }) {
     }
   }
   body = Object.entries(newBody).map((el) => {
-    return { [el[0]]: el[1] };
+    return { number: el[0], name: el[1] }; // Store both number & name properly
   });
+
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedProfiles, setSelectedProfiles] = useState([]);
+  const [selectedProfile, setSelectedProfile] = useState(null);
 
-  function handleCheckboxClick(profileName) {
-    // Remove profile from selectedProfiles if it is already selected
-    if (selectedProfiles.includes(profileName)) {
-      setSelectedProfiles(
-        selectedProfiles.filter((name) => name !== profileName)
-      );
-      // Else add it
-    } else {
-      setSelectedProfiles([...selectedProfiles, profileName]);
-    }
-  }
-
-  function handleCancelClick() {
-    setSelectedProfiles([]);
-    setShowDropdown(false);
+  function handleRadioClick(profileName) {
+    setSelectedProfile(profileName);
   }
 
   function handleSubmitClick() {
-    onNameChange(selectedProfiles);
-    setShowDropdown(false);
+    if (selectedProfile) {
+      onNameChange([selectedProfile]);
+      setShowDropdown(false);
+    }
   }
 
   return (
-    <div className="relative z-10 ">
+    <div className="relative z-10">
       <motion.button
         whileTap={{ scale: 0.9 }}
         onClick={() => setShowDropdown(!showDropdown)}
-        className="bg-primary-newdarkblue text-dark-color font-medium hover:bg-gray-100 focus:outline-none focus:shadow-outline "
+        className="bg-primary-newdarkblue text-dark-color font-medium hover:bg-gray-100 focus:outline-none focus:shadow-outline"
       >
         <div className="flex flex-col w-[280px] min-w-[300px] h-20 p-auto shadow-lg p-4 bg-primary-newdarkblue">
           <div className="flex flex-row gap-4">
             <div className="flex flex-col items-center">
-              <i className="fa fa-suitcase font-bold text-3xl mt-2 text-white "></i>
+              <i className="fa fa-suitcase font-bold text-3xl mt-2 text-white"></i>
             </div>
             <div className="flex flex-col items-start justify-around">
-              <h1 className="text-white text-lg font-bold">
-                Profile(s) included
-              </h1>
-              <h1 className="text-white font-bold text-md truncate overflow-ellipsis max-w-[250px]">
-                {selectedProfiles.length > 0
-                  ? "You have selected " + selectedProfiles.length + " profiles"
+              <h1 className="text-white text-lg font-bold">Profile included</h1>
+              <h1 className="text-white font-bold text-md truncate overflow-ellipsis max-w-[220px]">
+                {selectedProfile
+                  ? `Selected: ${selectedProfile}`
                   : "Please select a profile"}
               </h1>
             </div>
@@ -66,7 +54,7 @@ export default function Dropdown({ body, onNameChange }) {
           <div className="bg-light-color rounded-md shadow-xs">
             <div className="py-1">
               <h1 className="text-gray-500 font-semibold text-lg px-4 py-2">
-                Select profiles
+                Select profile
               </h1>
               {body.map((el, index) => (
                 <a
@@ -74,28 +62,22 @@ export default function Dropdown({ body, onNameChange }) {
                   className="cursor-pointer flex flex-row gap-2 px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-100"
                 >
                   <input
-                    type="checkbox"
-                    onChange={() => handleCheckboxClick(Object.keys(el)[0])}
-                    className="cursor-pointer form-checkbox h-5 w-5 text-gray-600"
-                    checked={selectedProfiles.includes(Object.keys(el)[0])}
+                    type="radio"
+                    name="profile"
+                    onChange={() => handleRadioClick(el.name)}
+                    className="cursor-pointer form-radio h-5 w-5 text-gray-600"
+                    checked={selectedProfile === el.name}
                   />
-                  {Object.values(el)[0]}
+                  {el.name}
                 </a>
               ))}
-
               <div className="flex flex-row gap-2 py-2 px-4">
                 <button
                   className="bg-primary-color hover:bg-primary-light text-white font-bold py-1 px-4 rounded-lg"
                   onClick={handleSubmitClick}
+                  disabled={!selectedProfile}
                 >
-                  Select ({selectedProfiles.length})
-                </button>
-                <button
-                  className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-
-                                2 px-4 rounded-lg"
-                  onClick={handleCancelClick}
-                >
-                  Cancel
+                  Select
                 </button>
               </div>
             </div>

@@ -29,7 +29,7 @@ import { DotLoader } from "react-spinners";
 import { RWebShare } from "react-web-share";
 import Loader from "../components/Loader/Loader";
 function Company() {
-  const date = new Date("2024-04-23T00:30:00+05:30") > new Date();
+  const date = new Date("2025-04-23T00:30:00+05:30") > new Date();
   // scroll to top
   window.scrollTo(0, 0);
   const carouselRef = useRef(null);
@@ -53,6 +53,12 @@ function Company() {
   const [keys, setKeys] = useState([]);
   const [hasResume, setHasResume] = useState("");
   const [applied, setApplied] = useState(false);
+  const [contactNumber, setContactNumber] = useState("");
+  const [age, setAge] = useState("");
+  const [course, setCourse] = useState("");
+  const [yearOfStudy, setYearOfStudy] = useState("");
+  const [college, setCollege] = useState("");
+  const [city, setCity] = useState("");
 
   const [count, setCount] = useState(0);
   const countFunc = async () => {
@@ -156,236 +162,131 @@ function Company() {
   }, [user]);
 
   const handleApply = async () => {
-    // Check if the date is after 21st April 2023
-    if (date == true) {
-      let alreadyApplied = false;
-      let applyTextUpdated = "";
-      setLoading(true);
-
-      {
-        console.log("checking firestore");
-        const collectonRef2 = collection(getDb, "users");
-        const docRef = doc(collectonRef2, user.uid);
-        const docSnap = getDoc(docRef).then((doc) => {
-          if (doc.exists()) {
-            // if doc exists then copy it to local storage
-            localStorage.setItem(user.uid, JSON.stringify(doc.data()));
-            if (doc.data().contactNumber) {
-              setContactNumber(doc.data().contactNumber);
-            }
-            if (doc.data().age) {
-              setAge(doc.data().age);
-            }
-            if (doc.data().course) {
-              setCourse(doc.data().course);
-            }
-            if (doc.data().yearOfStudy) {
-              setYearOfStudy(doc.data().yearOfStudy);
-            }
-            if (doc.data().college) {
-              setCollege(doc.data().college);
-            }
-            if (doc.data().city) {
-              setCity(doc.data().city);
-            }
-            // applied is an array of strings which contains the id of the job the user has applied to
-            if (doc.data().applied) {
-            }
-            setLoading(false);
-          } else {
-            // make a new document in firestore database and copy it to local storage
-            console.log("nothing in firestore and localstorage");
-            setError(true);
-            setLoading(false);
-          }
-        });
-      }
-      if (user != null && user != undefined && user.uid != undefined) {
-        const userCache = JSON.parse(localStorage.getItem(user.uid));
-        if (userCache == null || userCache.applied == undefined) {
-          // If there is no cache then send the user back to account page and ask him to fill the details
-          MySwal.fire({
-            icon: "error",
-            title: "Error!",
-            html:
-              "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'>" +
-              "Please fill your details." +
-              "</div>",
-            confirmButtonColor: "#36528b", // primary-color
-            confirmButtonText: "Ok",
-          }).then(() => {
-            navigate("/account");
-          });
-          setLoading(false);
-          return;
-        }
-        // Check if the localStorage applied array length is more than 20
-        if (
-          keys.length >= 20 ||
-          (userCache.applied != undefined && userCache.applied.length >= 20)
-        ) {
-          MySwal.fire({
-            icon: "error",
-            title: "Error!",
-            html:
-              "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'>" +
-              "Maximum 20 jobs can be applied at a time." +
-              "</div>",
-            confirmButtonColor: "#36528b", // primary-color
-            confirmButtonText: "Ok",
-          });
-          setLoading(false);
-          return;
-        }
-
-        // Assuming getDb is your Firestore instance
-        const companiesCollectionRef = collection(getDb, "companies");
-        const companyId = id;
-        const companyDocRef = doc(companiesCollectionRef, companyId);
-        const docSnap2 = await getDoc(companyDocRef);
-        // console.log(docSnap2);
-        const getCompanyDoc = async () => {
-          console.log("Getting company document...");
-          try {
-            const docSnap = await getDoc(companyDocRef);
-            if (docSnap.exists()) {
-              // console.log("Document data:", docSnap.data());
-              const batch = writeBatch(getDb);
-              batch.update(companyDocRef, { count: docSnap.data().count + 1 });
-              // console.log(batch);
-              await batch.commit();
-            } else {
-              await setDoc(companyDocRef, { count: 1, companyName: data.name });
-            }
-          } catch (error) {
-            console.error("Error getting document:", error);
-          }
-        };
-
-        // If userCache applied is empty then write the elements of keys to firestore WRITE * KEYS
-        if (userCache.applied.length == 0) {
-          const collectonRef = collection(getDb, "users");
-          const docRef = doc(collectonRef, user.uid);
-          const batch = writeBatch(getDb);
-          batch.update(docRef, { applied: arrayUnion(...keys) });
-          // Commit the batch
-          // console.log(collectonRef, docRef, batch, keys);
-          await batch.commit();
-          // Update the cache
-          userCache.applied = [...userCache.applied, ...keys];
-          // Update the localStorage
-          localStorage.setItem(user.uid, JSON.stringify(userCache));
-
-          // check if the user has already applied for the job in cache
-        } else {
-          for (const key of keys) {
-            if (userCache.applied.includes(key)) {
-              alreadyApplied = true;
-              applyTextUpdated +=
-                data.job_profile_description[key][0][0] + ", ";
-            }
-          }
-          if (alreadyApplied) {
-            // Do not write to firestore
-          } else {
-            const collectonRef = collection(getDb, "users");
-            const docRef = doc(collectonRef, user.uid);
-            const batch = writeBatch(getDb);
-            batch.update(docRef, { applied: arrayUnion(...keys) });
-            // Commit the batch
-            await batch.commit();
-            // Update the cache
-            userCache.applied = [...userCache.applied, ...keys];
-            // Update the localStorage
-            localStorage.setItem(user.uid, JSON.stringify(userCache));
-            getCompanyDoc();
-          }
-        }
-      } else {
-        // If user is not logged in
-        MySwal.fire({
-          icon: "error",
-          title: "Error!",
-          html:
-            "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'>" +
-            "Please fill details on Accounts page!" +
-            "</div>",
-          confirmButtonColor: "#36528b", // primary-color
-          confirmButtonText: "Ok",
-        }).then(() => {
-          navigate("/account");
-        });
-      }
-      setLoading(false);
-      // Handle error messages
-      if (
-        user == undefined ||
-        alreadyApplied == true ||
-        applyTextUpdated != "" ||
-        keys.length == 0 ||
-        hasResume == ""
-      ) {
-        let errorString = "";
-        if (user == undefined) {
-          errorString += "<h1> ● Please Login!";
-        }
-        if (keys.length == 0) {
-          errorString += "<h1> ● Please select a Job!";
-        }
-        if (applyText == true) {
-          errorString += "<h1> ● Already applied!";
-        }
-        if (hasResume == "") {
-          errorString += "<h1> ● Missing resume!";
-        }
-        if (applyTextUpdated != "") {
-          errorString += "<h1> ● Already applied for " + applyTextUpdated;
-        }
-        MySwal.fire({
-          icon: "error",
-          title: "Error!",
-          html:
-            "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'>" +
-            errorString +
-            "</div>",
-          confirmButtonColor: "#36528b", // primary-color
-          confirmButtonText: "Ok",
-        }).then(() => {
-          setApplyText("");
-          return;
-        });
-      } else {
-        // Success message
-        MySwal.fire({
-          icon: "success",
-          title: "Application Successful!",
-          text: "Your application has been submitted successfully.",
-          confirmButtonColor: "#36528b", // primary-color
-          confirmButtonText: "Ok",
-        }).then(() => {
-          // Optionally, you can perform any additional actions after the user acknowledges the success message.
-          // For example, navigate to another page.
-          // navigate('/another-page');
-        });
-
-        // if there are no errors, go
-        backToCompanies();
-      }
-    } else {
-      // This error depends on the date, change the < or > accordingly to display error for before / after different dates
+    if (!date) {
       MySwal.fire({
         icon: "error",
         title: "Error!",
-        html:
-          "<div class='text-xl text-primary-dark2 font-bold'>" +
-          " ● Applications are now closed" +
-          "</div>",
+        html: "<div class='text-xl text-primary-dark2 font-bold'> ● Applications are now closed</div>",
         confirmButtonColor: "#36528b",
         confirmButtonText: "OK",
-      }).then(() => {
-        return;
       });
+      return;
     }
+
+    setLoading(true);
+
+    console.log("Checking Firestore...");
+
+    const usersCollectionRef = collection(getDb, "users");
+    const userDocRef = doc(usersCollectionRef, user.uid);
+
+    let userData;
+    try {
+      const userDocSnap = await getDoc(userDocRef);
+      if (userDocSnap.exists()) {
+        userData = userDocSnap.data();
+        localStorage.setItem(user.uid, JSON.stringify(userData));
+
+        setContactNumber(userData?.contactNumber || "");
+        setAge(userData?.age || "");
+        setCourse(userData?.course || "");
+        setYearOfStudy(userData?.yearOfStudy || "");
+        setCollege(userData?.college || "");
+        setCity(userData?.city || "");
+
+        // Ensure applied field exists
+        if (!userData.applied) userData.applied = {};
+
+        // Check if the user has already applied to this company
+        if (userData.applied[id]) {
+          MySwal.fire({
+            icon: "error",
+            title: "Error!",
+            html: `<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'> You have already applied to ${data.name}. </div>`,
+            confirmButtonColor: "#36528b",
+            confirmButtonText: "Ok",
+          });
+          setLoading(false);
+          return;
+        }
+      } else {
+        console.log("No user data in Firestore or localStorage");
+        setError(true);
+        setLoading(false);
+        return;
+      }
+    } catch (error) {
+      console.error("Error fetching user document:", error);
+      setLoading(false);
+      return;
+    }
+
+    if (!user?.uid) {
+      MySwal.fire({
+        icon: "error",
+        title: "Error!",
+        html: "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'> Please fill details on Accounts page! </div>",
+        confirmButtonColor: "#36528b",
+        confirmButtonText: "Ok",
+      }).then(() => navigate("/account"));
+      setLoading(false);
+      return;
+    }
+
+    if (keys.length === 0) {
+      MySwal.fire({
+        icon: "error",
+        title: "Error!",
+        html: "<div class='flex flex-col items-start gap-2 font-bold text-xl text-red-500'> Please select a job profile! </div>",
+        confirmButtonColor: "#36528b",
+        confirmButtonText: "Ok",
+      });
+      setLoading(false);
+      return;
+    }
+
+    const companyDocRef = doc(collection(getDb, "companies"), id);
+
+    const getCompanyDoc = async () => {
+      console.log("Getting company document...");
+      try {
+        const docSnap = await getDoc(companyDocRef);
+        const batch = writeBatch(getDb);
+
+        if (docSnap.exists()) {
+          batch.update(companyDocRef, { count: docSnap.data().count + 1 });
+        } else {
+          batch.set(companyDocRef, { count: 1, companyName: data.name });
+        }
+        await batch.commit();
+      } catch (error) {
+        console.error("Error updating company document:", error);
+      }
+    };
+
+    const batch = writeBatch(getDb);
+    batch.update(userDocRef, {
+      [`applied.${id}`]: keys, // Store applied job profiles under company ID (overwrite to prevent multiple applications)
+    });
+    await batch.commit();
+
+    // Update local storage
+    const userCache = JSON.parse(localStorage.getItem(user.uid)) || {};
+    userCache.applied = userCache.applied || {};
+    userCache.applied[id] = keys; // Overwrite so user can't apply again
+    localStorage.setItem(user.uid, JSON.stringify(userCache));
+
+    await getCompanyDoc();
+
+    setLoading(false);
+
+    MySwal.fire({
+      icon: "success",
+      title: "Application Successful!",
+      text: "Your application has been submitted successfully.",
+      confirmButtonColor: "#36528b",
+      confirmButtonText: "Ok",
+    }).then(() => backToCompanies());
   };
 
   const handleDownload = () => {
